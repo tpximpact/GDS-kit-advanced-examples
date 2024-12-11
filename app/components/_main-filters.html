@@ -1,0 +1,444 @@
+<!-- filters-->
+<div class="govuk-grid-row">  
+    <div class="govuk-grid-column-full">
+  
+      <!-- Application reference, Address, Postcode -->
+      <div class="govuk-grid-row">
+  
+        <div class="govuk-grid-column-one-third">
+          {{ govukInput({
+            label: {
+              text: "Application reference"
+            },
+            classes: "govuk-!-width-full",
+            id: "reference",
+            name: "reference"
+          }) }}
+        </div>
+  
+        <div class="govuk-grid-column-one-third">
+          {{ govukInput({
+            label: {
+              text: "Address"
+            },
+            classes: "govuk-!-width-full",
+            id: "address",
+            name: "address"
+          }) }}
+        </div>
+  
+        <div class="govuk-grid-column-one-third">
+          {{ govukInput({
+            label: {
+              text: "Postcode"
+            },
+            classes: "govuk-!-width-full",
+            id: "postcode",
+            name: "postcode"
+          }) }}
+        </div> 
+  
+        
+      </div>
+  
+      <!-- description and dates -->
+      <div class="govuk-grid-row">
+                    
+        <div class="govuk-grid-column-one-third">
+          {{ govukInput({
+            label: {
+              text: "Description"
+            },
+            classes: "govuk-!-width-full",
+            id: "description",
+            name: "description"
+          }) }}
+        </div>
+  
+        <div class="govuk-grid-column-one-third">
+          <label class="govuk-label" for="date5">
+            Received date
+          </label>
+          <input class="govuk-input govuk-input--width-7 inline-block" id="date-5" name="date5" type="date">
+          <p class="inline-block">to</p>
+          <input class="govuk-input govuk-input--width-7 inline-block" id="date-6" name="date6" type="date">
+        </div>
+        
+        <div class="govuk-grid-column-one-third">
+          <label class="govuk-label" for="date3">
+            Valid from date
+          </label>
+          <input class="govuk-input govuk-input--width-7 inline-block" id="date-3" name="date3" type="date">
+          <p class="inline-block">to</p>
+          <input class="govuk-input govuk-input--width-7 inline-block" id="date-4" name="date4" type="date">
+        </div>
+        
+      </div>
+  
+      <!-- more dates -->
+      <div class="govuk-grid-row average-bottom-margin">
+                    
+        <div class="govuk-grid-column-one-third">
+          <label class="govuk-label" for="date3">
+            Published date
+          </label>
+          <input class="govuk-input govuk-input--width-7 inline-block" id="date-3" name="date3" type="date">
+          <p class="inline-block">to</p>
+          <input class="govuk-input govuk-input--width-7 inline-block" id="date-4" name="date4" type="date">
+        </div>
+  
+        <div class="govuk-grid-column-one-third">
+          <label class="govuk-label" for="date5">
+            Consultation end date
+          </label>
+          <input class="govuk-input govuk-input--width-7 inline-block" id="date-5" name="date5" type="date">
+          <p class="inline-block">to</p>
+          <input class="govuk-input govuk-input--width-7 inline-block" id="date-6" name="date6" type="date">
+        </div>
+        
+        <div class="govuk-grid-column-one-third">
+          <label class="govuk-label" for="date3">
+            Council decision date
+          </label>
+          <input class="govuk-input govuk-input--width-7 inline-block" id="date-3" name="date3" type="date">
+          <p class="inline-block">to</p>
+          <input class="govuk-input govuk-input--width-7 inline-block" id="date-4" name="date4" type="date">
+        </div>
+        
+      </div>
+
+      <div class="govuk-grid-row average-bottom-margin">
+
+        <div class="govuk-grid-column-one-third">
+          <label class="govuk-label" for="date3">
+            Appeal decision date
+          </label>
+          <input class="govuk-input govuk-input--width-7 inline-block" id="date-3" name="date3" type="date">
+          <p class="inline-block">to</p>
+          <input class="govuk-input govuk-input--width-7 inline-block" id="date-4" name="date4" type="date">
+        </div>
+
+      </div>
+  
+      <!-- detail accordians -->
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Application type
+              </span>
+            </summary>
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                <div class="govuk-grid-column-one-half">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Lawful development certificate" name="Lawful development certificate" type="checkbox" value="Lawful development certificate">
+                    <label class="govuk-label govuk-checkboxes__label" for="Lawful development certificate">
+                      Lawful development certificate
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Prior approval" name="Prior approval" type="checkbox" value="Prior approval">
+                    <label class="govuk-label govuk-checkboxes__label" for="Prior approval">
+                      Prior approval
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Householder planning permission" name="Householder planning permission" type="checkbox" value="Householder planning permission">
+                    <label class="govuk-label govuk-checkboxes__label" for="Householder planning permission">
+                      Householder planning permission
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Full planning permission - minor and changes of use" name="Full planning permission - minor and changes of use" type="checkbox" value="Full planning permission - minor and changes of use">
+                    <label class="govuk-label govuk-checkboxes__label" for="Full planning permission - minor and changes of use">
+                      Full planning permission - minor and changes of use
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Full planning permission - major" name="Full planning permission - major" type="checkbox" value="Full planning permission - major">
+                    <label class="govuk-label govuk-checkboxes__label" for="Full planning permission - major">
+                      Full planning permission - major
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Full planning permission - minerals extraction" name="Full planning permission - minerals extraction" type="checkbox" value="Full planning permission - minerals extraction">
+                    <label class="govuk-label govuk-checkboxes__label" for="Full planning permission - minerals extraction">
+                      Full planning permission - minerals extraction
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Full planning permission - oil and gas extraction" name="Full planning permission - oil and gas extraction" type="checkbox" value="Full planning permission - oil and gas extraction">
+                    <label class="govuk-label govuk-checkboxes__label" for="Full planning permission - oil and gas extraction">
+                      Full planning permission - oil and gas extraction
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Full planning permission - waste" name="Full planning permission - waste" type="checkbox" value="Full planning permission - waste">
+                    <label class="govuk-label govuk-checkboxes__label" for="Full planning permission - waste">
+                      Full planning permission - waste
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Listed building consent" name="Listed building consent" type="checkbox" value="Listed building consent">
+                    <label class="govuk-label govuk-checkboxes__label" for="Listed building consent">
+                      Listed building consent
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Work to trees - works to trees in a conservation area" name="Work to trees - works to trees in a conservation area" type="checkbox" value="Work to trees - works to trees in a conservation area">
+                    <label class="govuk-label govuk-checkboxes__label" for="Work to trees - works to trees in a conservation area">
+                      Work to trees - works to trees in a conservation area
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Work to trees - works to a protected tree" name="Work to trees - works to a protected tree" type="checkbox" value="Work to trees - works to a protected tree">
+                    <label class="govuk-label govuk-checkboxes__label" for="Work to trees - works to a protected tree">
+                      Work to trees - works to a protected tree
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Advertisement consent" name="Advertisement consent" type="checkbox" value="Advertisement consent">
+                    <label class="govuk-label govuk-checkboxes__label" for="Advertisement consent">
+                      Advertisement consent
+                    </label>
+                  </div>
+                </div> 
+                <div class="govuk-grid-column-one-half">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Hedgerow removal notice" name="Hedgerow removal notice" type="checkbox" value="Hedgerow removal notice">
+                    <label class="govuk-label govuk-checkboxes__label" for="Hedgerow removal notice">
+                      Hedgerow removal notice
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Hazardous Substance Consent" name="Hazardous Substance Consent" type="checkbox" value="Hazardous Substance Consent">
+                    <label class="govuk-label govuk-checkboxes__label" for="Hazardous Substance Consent">
+                      Hazardous Substance Consent
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Footpath diversions - planning act (S257 TCPA)" name="Footpath diversions - planning act (S257 TCPA)" type="checkbox" value="Footpath diversions - planning act (S257 TCPA)">
+                    <label class="govuk-label govuk-checkboxes__label" for="Footpath diversions - planning act (S257 TCPA)">
+                      Footpath diversions - planning act (S257 TCPA)
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Application for additional environmental approval to extend planning permission " name="Application for additional environmental approval to extend planning permission " type="checkbox" value="Application for additional environmental approval to extend planning permission ">
+                    <label class="govuk-label govuk-checkboxes__label" for="Application for additional environmental approval to extend planning permission ">
+                      Application for additional environmental approval to extend planning permission 
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Land drainage consent" name="Land drainage consent" type="checkbox" value="Land drainage consent">
+                    <label class="govuk-label govuk-checkboxes__label" for="Land drainage consent">
+                      Land drainage consent
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Full planning permission - regulation 3 (developed by LPA on LPA land)" name="Full planning permission - regulation 3 (developed by LPA on LPA land)" type="checkbox" value="Full planning permission - regulation 3 (developed by LPA on LPA land)">
+                    <label class="govuk-label govuk-checkboxes__label" for="Full planning permission - regulation 3 (developed by LPA on LPA land)">
+                      Full planning permission - regulation 3 (developed by LPA on LPA land)
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Full planning permission - regulation 4 (development by someone else on LPA land, or by the LPA on non-LPA owned land)" name="Full planning permission - regulation 4 (development by someone else on LPA land, or by the LPA on non-LPA owned land)" type="checkbox" value="Full planning permission - regulation 4 (development by someone else on LPA land, or by the LPA on non-LPA owned land)">
+                    <label class="govuk-label govuk-checkboxes__label" for="Full planning permission - regulation 4 (development by someone else on LPA land, or by the LPA on non-LPA owned land)">
+                      Full planning permission - regulation 4 (development by someone else on LPA land, or by the LPA on non-LPA owned land)
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Consultation on applications in adjourning authority" name="Consultation on applications in adjourning authority" type="checkbox" value="Consultation on applications in adjourning authority">
+                    <label class="govuk-label govuk-checkboxes__label" for="Consultation on applications in adjourning authority">
+                      Consultation on applications in adjourning authority
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Pre-application advice - householder" name="Pre-application advice - householder" type="checkbox" value="Pre-application advice - householder">
+                    <label class="govuk-label govuk-checkboxes__label" for="Pre-application advice - householder">
+                      Pre-application advice - householder
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Pre-application advice - non-householder" name="Pre-application advice - non-householder" type="checkbox" value="Pre-application advice - non-householder">
+                    <label class="govuk-label govuk-checkboxes__label" for="Pre-application advice - non-householder">
+                      Pre-application advice - non-householder
+                    </label>
+                  </div>
+                 </div> 
+                </div>
+              </fieldset>
+            </div>
+          </details>
+        </div>  
+  
+        <div class="govuk-grid-column-full">
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Status
+              </span>
+            </summary>
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Consultation in progress" name="Consultation in progress" type="checkbox" value="Consultation in progress">
+                    <label class="govuk-label govuk-checkboxes__label" for="Consultation in progress">
+                      Consultation in progress
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Assessment in progress" name="Assessment in progress" type="checkbox" value="Assessment in progress">
+                    <label class="govuk-label govuk-checkboxes__label" for="Assessment in progress">
+                      Assessment in progress
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Determined" name="Determined" type="checkbox" value="Determined">
+                    <label class="govuk-label govuk-checkboxes__label" for="Determined">
+                      Determined
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Appeal lodged" name="Appeal lodged" type="checkbox" value="Appeal lodged">
+                    <label class="govuk-label govuk-checkboxes__label" for="Appeal lodged">
+                      Appeal lodged
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Appeal validated" name="Appeal validated" type="checkbox" value="Appeal validated">
+                    <label class="govuk-label govuk-checkboxes__label" for="Appeal validated">
+                      Appeal validated
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Appeal started" name="Appeal started" type="checkbox" value="Appeal started">
+                    <label class="govuk-label govuk-checkboxes__label" for="Appeal started">
+                      Appeal started
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Appeal decided" name="Appeal decided" type="checkbox" value="Appeal decided">
+                    <label class="govuk-label govuk-checkboxes__label" for="Appeal decided">
+                      Appeal decided
+                    </label>
+                  </div>
+
+                </div>
+              </fieldset>
+            </div>
+          </details>
+        </div>
+  
+        <div class="govuk-grid-column-full">
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Council decision
+              </span>
+            </summary>
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Granted" name="Granted" type="checkbox" value="Granted">
+                    <label class="govuk-label govuk-checkboxes__label" for="Granted">
+                      Granted
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Refused" name="Refused" type="checkbox" value="Refused">
+                    <label class="govuk-label govuk-checkboxes__label" for="Refused">
+                      Refused
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Prior approval required and approved" name="Prior approval required and approved" type="checkbox" value="Prior approval required and approved">
+                    <label class="govuk-label govuk-checkboxes__label" for="Prior approval required and approved">
+                      Prior approval required and approved
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Prior approval required and refused" name="Prior approval required and refused" type="checkbox" value="Prior approval required and refused">
+                    <label class="govuk-label govuk-checkboxes__label" for="Prior approval required and refused">
+                      Prior approval required and refused
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Prior approval not required" name="Prior approval not required" type="checkbox" value="Prior approval not required">
+                    <label class="govuk-label govuk-checkboxes__label" for="Prior approval not required">
+                      Prior approval not required
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </details>
+        </div>
+
+        <!-- appeal decision accordion -->
+        <div class="govuk-grid-column-full">
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Appeal decision
+              </span>
+            </summary>
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Appeal allowed" name="Appeal allowed" type="checkbox" value="Appeal allowed">
+                    <label class="govuk-label govuk-checkboxes__label" for="Appeal allowed">
+                      Appeal allowed
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Appeal dismissed" name="Appeal dismissed" type="checkbox" value="Appeal dismissed">
+                    <label class="govuk-label govuk-checkboxes__label" for="Appeal dismissed">
+                      Appeal dismissed
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Appeal split decision" name="Appeal split decision" type="checkbox" value="Appeal split decision">
+                    <label class="govuk-label govuk-checkboxes__label" for="Appeal split decision">
+                      Appeal split decision
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Appeal withdrawn" name="Appeal withdrawn" type="checkbox" value="Appeal withdrawn">
+                    <label class="govuk-label govuk-checkboxes__label" for="Appeal withdrawn">
+                      Appeal withdrawn
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </details>
+        </div>
+  
+      </div>
+  
+      <!-- Sort by -->
+      <div class="govuk-grid-row">
+  
+        <div class="govuk-grid-column-one-third">
+          {% set sort_type="multifield" %}
+          {% include "../components/_sort-by.html" %}
+        </div>
+        
+      </div>
+  
+      <!-- Search button -->
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <a href="/camden/list-filters-no-results" role="button" class="govuk-button govuk-button--primary grid-row-extra-bottom-margin" data-module="govuk-button">Search</a>
+        </div>
+      </div>
+    
+  
+    </div>
+  </div>

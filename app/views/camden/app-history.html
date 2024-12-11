@@ -1,0 +1,41 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Comments for {{ data.application_array[data['current_app']].reference }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% include "../../components/_context-setter.html" %}
+
+<h1 class="govuk-heading-l">Application update history</h1>
+
+
+<hr class="govuk-section-break govuk-section-break--visible grid-row-extra-bottom-margin">
+
+{% set history_date="1 Feb 2024" %}
+{% set history_array=["status","decision","documents"] %}
+{% include "../../components/_history-entry.html" %}
+
+{% set history_date="12 Jan 2024" %}
+{% set history_array=["content","comments","documents"] %}
+{% include "../../components/_history-entry.html" %}
+
+{% set history_date="6 Jan 2024" %}
+{% set history_array=["comments"] %}
+{% include "../../components/_history-entry.html" %}
+
+{% set history_date="1 Jan 2024" %}
+{% set history_array=["created"] %}
+{% include "../../components/_history-entry.html" %}
+
+{% include "../../components/_pagination.html" %}
+
+{% endblock %}

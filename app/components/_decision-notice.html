@@ -1,0 +1,118 @@
+{% if decision=="granted" %}
+<div class="govuk-grid-row faux-document huge-bottom-margin">
+   
+    <div class="govuk-grid-column-full">
+  
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class="govuk-heading-l">Decision notice</h2>
+  
+          <h3 class="govuk-heading-m">The application is granted due to the following reason(s)</h3>
+          <p>The Council has considered your application and decided to grant permission subject to
+            the following condition(s)</p>
+  
+          <h3 class="govuk-heading-m">Conditions</h3>
+          <ol class="govuk-list govuk-list--number">
+            <li>
+              <p class="govuk-body">The development hereby permitted shall be commenced within three years of the date of this permission.</p>
+  
+              <p class="govuk-body">To comply with the provisions of Section 91 of the Town and Country Planning Act 1990 (as amended).</p>
+  
+            </li>
+            <li>
+              <p class="govuk-body">The development hereby permitted must be undertaken in accordance with the approved plans and documents.</p>
+  
+              <p class="govuk-body">For the avoidance of doubt and in the interests of proper planning.</p>
+  
+            </li>
+            <li>
+              <p class="govuk-body">All new external work and finishes and work of making good shall match the original work in respect of the materials, colour, texture, profile and finished appearance, except where indicated otherwise on the drawings hereby approved or unless otherwise required by condition.</p>
+  
+              <p class="govuk-body">To preserve the character and appearance of the local area.</p>
+  
+            </li>
+          </ol>
+  
+          <h3 class="govuk-heading-m">This decision is based on the following approved plans</h3>
+          <p>No plans specified</p>
+  
+          <h3 class="govuk-heading-m">Notes:</h3>
+          <p>Enquiries regarding this decision should include the application number and be sent to:</p>
+  
+          <h3 class="govuk-heading-m">Email</h3>
+          <p><a href="mailto:digitalplanning@camden.gov.uk">digitalplanning@camden.gov.uk</a></p>
+  
+          <h3 class="govuk-heading-m">Post</h3>
+          <p>Camden council, <br>
+            Director of Property,<br>
+            Camden Council,<br>
+            Planning,<br>
+            London Borough of Camden</p>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <div class="govuk-grid-row faux-document huge-bottom-margin">
+   
+    <div class="govuk-grid-column-full">
+  
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class="govuk-heading-l">Decision notice</h2>
+  
+          <h3 class="govuk-heading-m">The application is refused due to the following reason(s)</h3>
+          
+          <ol class="govuk-list govuk-list--number">
+            <li>
+              <p class="govuk-body">The proposal would fail to meet the Nationally Described Space Standards in respect of floorspace and
+                storage space. All flats would not benefit from a sufficient quantum or quality of amenity space or additional
+                compensatory internal living space. The basement flat would have compromised outlook and privacy. As such the
+                proposals would provide poor quality accommodation and fail to comply with Policies H5 and Q2 of the Lambeth
+                Local Plan 2020- 2035 (2021) and Policy D6 of the London Plan (2021).</p>
+            </li>
+            <li>
+              <p class="govuk-body">Insufficient information has been submitted to demonstrate that the proposed flats would benefit from
+                adequate levels of daylight and sunlight to accord with the objectives of policy D6 of the London Plan (2021) and
+                policies Q2 and H5 of the Lambeth Local Plan (2021).</p>
+            </li>
+            <li>
+              <p class="govuk-body">In the absence of detailed plans showing the provision for cycle parking, it has not been demonstrated that
+                the total number of long and short stay cycle spaces would be conveniently located to aid manoeuvrability for
+                cyclists and step-free in a safe and covered store for the future occupants and visitors as required by the London
+                Cycle Design Standards. The proposal would therefore be contrary to Policy Q13 and T3 of the Lambeth Local
+                Plan (2021) and Policy T5 of the London Plan (2021).</p>
+            </li>
+          </ol>
+  
+          <h3 class="govuk-heading-m">Notes:</h3>
+          <p>In dealing with this application the Council has implemented the requirement in the National Planning Policy
+            Framework 2021 to work with the applicant in a positive and proactive manner. The Council has made available on
+            its website the policies and guidance provided by the Lambeth Local Plan 2020-2035 (September 2021) and its
+            supplementary planning documents. We also offer a full pre-application advice service in order to ensure that the
+            applicant has every opportunity to submit an application that’s likely to be considered acceptable.</p>
+          <p>However, where an applicant submits an application that’s considered unacceptable, it’s not always possible for
+            the Council to seek amendments during the course of the application to make the proposals acceptable. This can
+            be the case where the applicant has chosen to submit an application that’s directly contrary to clear advice
+            provided by the Council, or where the amendments that would be required to make the proposals acceptable would
+            be so significant as to require a further public consultation that would cause the application to exceed its statutory
+            deadline.</p>
+  
+            <p>Enquiries regarding this decision should include the application number and be sent to:</p>
+  
+          <h3 class="govuk-heading-m">Email</h3>
+          <p><a href="mailto:digitalplanning@camden.gov.uk">digitalplanning@camden.gov.uk</a></p>
+  
+          <h3 class="govuk-heading-m">Post</h3>
+          <p>Camden council, <br>
+            Director of Property,<br>
+            Camden Council,<br>
+            Planning,<br>
+            London Borough of Camden</p>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}

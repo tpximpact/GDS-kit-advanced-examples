@@ -1,0 +1,151 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Application details {{ data.application_array[data['current_app']].reference }} – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<!-- App hero -->
+{% include "../../components/_app-hero.html" %}
+
+<!-- Contents -->
+<div class="govuk-grid-row">
+
+  <!-- Contents sidebar -->
+{% include "../../components/_app-contents.html" %}
+  
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+  
+  <!-- Progress -->
+  {% include "../../components/_progress.html" %}
+
+  <!-- Description -->
+  {% include "../../components/_app-description.html" %}
+
+  <!-- Appeal -->
+  {% if data.application_array[data['current_app']].result_override|length %}
+
+    <h2 class="govuk-heading-l" id="appeal">Appeal</h2>
+
+    <h3 class="govuk-heading-m" id="appeal">Appeal reason</h3>
+    <p>The reason for the appeal will be described here. Such as "We don't believe the council took into consideration the environmental impact alleviation approach during their assessment."</p>
+
+    <h3 class="govuk-heading-m" id="appeal">Appeal documents</h3>
+    <div class="govuk-grid-row grid-row-extra-bottom-margin file-table">
+      {% set filename = "Appeal statement.PDF" %}
+      {% include "../../components/_file.html" %}
+
+      {% set filename = "Appeal decision document.PDF" %}
+      {% include "../../components/_file.html" %}
+    </div>
+
+  {% endif %}
+
+  <!-- Images -->
+  {% include "../../components/_image-gallery.html" %}
+
+  <!-- Impact -->
+  {% include "../../components/_app-impact.html" %}
+  
+
+<!-- Documents -->
+<h2 class="govuk-heading-l" id="documents">Documents</h2>
+<p>To find out more detailed information, you can check the documents from the applicant.</p>
+
+<div class="govuk-grid-row grid-row-extra-bottom-margin file-table">
+  <!-- Decision notice -->
+  {% if data.application_array[data['current_app']].result_flag|length %}
+    {% set file_type = "decision-notice" %}
+    {% include "../../components/_file.html" %}
+  {% endif %}
+
+  <!-- Application form -->
+  {% set file_type = "application-form" %}
+  {% include "../../components/_file.html" %}
+
+  <!-- Other documents -->
+  {% set file_type = null %}
+  {% set filename = "Design and Access statement.PDF" %}
+  {% include "../../components/_file.html" %}
+
+  {% set filename = "Affordable housing statement.PDF" %}
+  {% include "../../components/_file.html" %}
+
+  {% set file_type = "png" %}
+  {% set filename = "Elevation.png" %}
+  {% include "../../components/_file.html" %}
+
+  {% set file_type = "jpg" %}
+  {% set filename = "Massing image 1.JPG" %}
+  {% include "../../components/_file.html" %}
+
+  {% if not data.application_array[data['current_app']].result_flag|length %}
+    {% set filename = "Massing image 2.JPG" %}
+    {% include "../../components/_file.html" %}
+  {% endif %}
+</div>
+
+<!-- Showing more -->
+{% set shown_number = "6" %}
+{% set show_more_of = "documents" %}
+{% set show_more_link = "all-documents" %}
+{% include "../../components/_show-more.html" %}
+
+<!-- People -->
+{% include "../../components/_app-people.html" %}
+
+<!-- Constraints -->
+{% include "../../components/_app-constraints.html" %}
+
+
+<!-- Consultee Comments -->
+<h2 class="govuk-heading-l" id="specialist-comments">Specialist Comments</h2>
+
+{% include "../../components/_specialist-comments.html" %}
+
+{% set spec_comment_type="short" %}
+{% include "../../components/_specialist-comments.html" %}
+
+{% set spec_comment_type="thread" %}
+{% include "../../components/_specialist-comments.html" %}
+
+<!-- Showing more specialist comments -->
+{% set shown_number = "2" %}
+{% set show_more_of = "specialist comments" %}
+{% set show_more_link = "all-consultee-comments" %}
+{% include "../../components/_show-more.html" %}
+
+<!-- Neighbour Comments -->
+<h2 class="govuk-heading-l" id="public-comments">Public Comments</h2>
+
+<!-- Short comment -->
+{% set comment_number = "104" %}
+{% set comment_sentiment = "Support" %}
+{% include "../../components/_public-comments.html" %}
+
+<!-- Long comment 1 -->
+{% set comment_number = "103" %}
+{% set comment_type="long1" %}
+{% include "../../components/_public-comments.html" %}
+
+<!-- Long comment 2 -->
+{% set comment_number = "102" %}
+{% set comment_type="long2" %}
+{% include "../../components/_public-comments.html" %}
+
+<!-- Showing more neighbour comments -->
+{% set shown_number = "3" %}
+{% set show_more_of = "public comments" %}
+{% set show_more_link = "all-comments" %}
+{% include "../../components/_show-more.html" %}
+
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Manage your email subscriptions – {{ serviceName }}
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-xl">You are signed up for email updates on this application</h1>
+
+{% include "../../../components/_context-setter.html" %}
+
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Unsubscribe from this application",
+    classes: "govuk-button--secondary blue-button grid-row-extra-bottom-margin"
+  }) }}
+</div>
+
+{% include "../../../components/_alerts-types.html" %}
+
+
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Save changes to what we email you about",
+    classes: "govuk-button--secondary grid-row-extra-bottom-margin"
+  }) }}
+</div>
+
+<hr class="grid-row-extra-bottom-margin">
+
+{% include "../../../components/_alerts-frequency.html" %}
+
+
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Save changes to email frequency",
+    classes: "govuk-button--secondary grid-row-extra-bottom-margin"
+  }) }}
+</div>
+
+<hr class="grid-row-extra-bottom-margin">
+
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Save all changes"
+  }) }}
+</div>
+
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Application details {{ data.application_array[data['current_app']].reference }} – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<!-- App hero -->
+{% include "../../components/_app-hero.html" %}
+
+<!-- Contents -->
+<div class="govuk-grid-row">
+
+  <!-- Contents sidebar -->
+{% include "../../components/_app-contents.html" %}
+  
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+  
+  <!-- Progress -->
+  {% include "../../components/_progress.html" %}
+
+  <!-- Description -->
+  {% include "../../components/_app-description.html" %}
+
+  <!-- Images -->
+  {% include "../../components/_image-gallery.html" %}
+
+  <!-- Impact -->
+  {% include "../../components/_app-impact.html" %}
+  
+
+<!-- Documents -->
+<h2 class="govuk-heading-l" id="documents">Documents</h2>
+<p>To find out more detailed information, you can check the documents from the applicant.</p>
+
+<div class="govuk-grid-row grid-row-extra-bottom-margin file-table">
+  <!-- Decision notice -->
+  {% if data.application_array[data['current_app']].result_flag|length %}
+    {% set file_type = "decision-notice" %}
+    {% include "../../components/_file.html" %}
+  {% endif %}
+
+  <!-- Application form -->
+  {% set file_type = "application-form" %}
+  {% include "../../components/_file.html" %}
+
+  <!-- Other documents -->
+  {% set file_type = null %}
+  {% set filename = "Design and Access statement.PDF" %}
+  {% include "../../components/_file.html" %}
+
+  {% set filename = "Affordable housing statement.PDF" %}
+  {% include "../../components/_file.html" %}
+
+  {% set file_type = "jpg" %}
+  {% set filename = "Massing image 1.JPG" %}
+  {% include "../../components/_file.html" %}
+
+  {% set filename = "Massing image 2.JPG" %}
+  {% include "../../components/_file.html" %}
+
+  {% if not data.application_array[data['current_app']].result_flag|length %}
+    {% set filename = "Massing image 3.JPG" %}
+    {% include "../../components/_file.html" %}
+  {% endif %}
+</div>
+
+<!-- Showing more -->
+{% set shown_number = "6" %}
+{% set show_more_of = "documents" %}
+{% set show_more_link = "all-documents" %}
+{% include "../../components/_show-more.html" %}
+
+<!-- People -->
+{% include "../../components/_app-people.html" %}
+
+<!-- Constraints -->
+{% include "../../components/_app-constraints.html" %}
+
+
+<!-- Consultee Comments -->
+<h2 class="govuk-heading-l">Specialist Comments</h2>
+
+<div class="govuk-grid-row grid-row-extra-bottom-margin">
+  <div class="govuk-grid-column-full">
+    <p class="govuk-hint"><em>No comments from specialists have been published at this time.</em></p>
+  </div>
+</div>
+
+<!-- Neighbour Comments -->
+<h2 class="govuk-heading-l">Public Comments</h2>
+
+<div class="govuk-grid-row grid-row-extra-bottom-margin">
+  <div class="govuk-grid-column-full">
+    <p class="govuk-hint"><em>No comments from the public have been published at this time.</em></p>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% if data.application_array[data['current_app']].constraints|length %}
+<h2 class="govuk-heading-l" id="constraints">Constraints</h2>
+<p class="govuk-body">These policies apply to this application, and will need to be taken into consideration by the planning team when assessing this application.</p>
+
+<div class="govuk-accordion huge-bottom-margin" data-module="govuk-accordion" id="accordion-default">
+
+  {% for constraint, constraintValue in data.application_array[data['current_app']].constraints %}
+    <div class="govuk-accordion__section">
+      <div class="govuk-accordion__section-header">
+        <h2 class="govuk-accordion__section-heading">
+          <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+            {{constraintValue.description}}: {{constraintValue.name}}
+          </span>
+        </h2>
+      </div>
+      <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+        <h3 class="no-top-margin">Start date</h3>
+        <p class="govuk-body">{{constraintValue.start_date}}</p>
+
+        <h3>Location covered</h3>
+        <img src="/public/images/{{constraintValue.map}}" alt="Map of the area covered by this constraint">
+
+        <h3>Documentation</h3>
+        <p class="govuk-body"><a href="{{constraintValue.documentation_url}}" target="_blank">{{constraintValue.documentation_url}}</a></p>
+      </div>
+    </div>
+  {%- endfor %}
+</div>
+{% endif %}

@@ -1,0 +1,75 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Public comments for {{ data.application_array[data['current_app']].reference }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% include "../../components/_context-setter.html" %}
+
+<h1 class="govuk-heading-l">Public Comments</h1>
+
+<!-- Search -->
+{% include "../../components/_comment-search.html" %}
+
+
+<hr class="govuk-section-break govuk-section-break--visible grid-row-extra-bottom-margin">
+
+
+<!-- Short comment -->
+{% set comment_number = "104" %}
+{% include "../../components/_public-comments.html" %}
+
+<!-- Long comment 1 -->
+{% set comment_number = "103" %}
+{% set comment_type="long1" %}
+{% include "../../components/_public-comments.html" %}
+
+<!-- Long comment 2 -->
+{% set comment_number = "102" %}
+{% set comment_type="long2" %}
+{% include "../../components/_public-comments.html" %}
+
+<!-- Short comment -->
+{% set comment_number = "101" %}
+{% include "../../components/_public-comments.html" %}
+
+<!-- Long comment 1 -->
+{% set comment_number = "100" %}
+{% set comment_type="long1" %}
+{% include "../../components/_public-comments.html" %}
+
+<!-- Long comment 2 -->
+{% set comment_number = "99" %}
+{% set comment_type="long2" %}
+{% include "../../components/_public-comments.html" %}
+
+<!-- Short comment -->
+{% set comment_number = "98" %}
+{% include "../../components/_public-comments.html" %}
+
+<!-- Long comment 1 -->
+{% set comment_number = "97" %}
+{% set comment_type="long1" %}
+{% include "../../components/_public-comments.html" %}
+
+<!-- Long comment 2 -->
+{% set comment_number = "96" %}
+{% set comment_type="long2" %}
+{% include "../../components/_public-comments.html" %}
+
+<!-- Short comment -->
+{% set comment_number = "95" %}
+{% include "../../components/_public-comments.html" %}
+
+{% include "../../components/_pagination.html" %}
+
+{% endblock %}

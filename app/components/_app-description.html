@@ -1,0 +1,16 @@
+<h2 class="govuk-heading-l" id="description">Description</h2>
+<p>{{ data.application_array[data['current_app']].description }}</p>
+
+{% if data.application_array[data['current_app']].site_notice_content|length %}
+<h3 class="govuk-heading-m">How the site will be used</h3>
+<div class="govuk-body">
+  <ul>
+    <li>Residential</li>
+  </ul>
+</div>
+<h3 class="govuk-heading-m">Height</h3>
+<p class="govuk-body">Maximum 1 storey</p>
+<h3 class="govuk-heading-m">Estimated construction time</h3>
+{% if data.application_array[data['current_app']].result_flag|length %}<p class="govuk-body grid-row-extra-bottom-margin">2024-2025</p>{% endif %}
+{% if not data.application_array[data['current_app']].result_flag|length %}<p class="govuk-body">2024-2025</p>{% endif %}
+{% endif %}

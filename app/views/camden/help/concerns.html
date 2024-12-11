@@ -1,0 +1,122 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+What can you do if your concerns can't be addressed by planning? – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-l">What can you do if your concerns can't be addressed by planning?</h1>
+<p class="govuk-body">If you have concerns about the issues on this page, planning cannot consider them in their asessment.</p>
+<p class="govuk-body">We know that these can be very important, and have big impacts on people, so we want to ensure you can reach the appropriate people to address them.</p>
+
+<div class="govuk-grid-row extra-top-margin">   
+  <div class="govuk-grid-column-one-third-from-desktop contents-bar">
+    <h2 class="govuk-heading-l">Contents</h2>
+    <p class="list-heading"><a href="#application-statuses">Loss of property value</a></p>
+    <p class="list-heading"><a href="#application-statuses">Disputes about civil matters</a></p>
+    <p class="list-heading"><a href="#important-dates">Property and ownership disputes</a></p>
+    <p class="list-heading"><a href="#application-statuses">Views</a></p>
+    <p class="list-heading"><a href="#decisions">Other council matters</a></p>
+      <p class="sub-list"><a href="#approved">Parking</a></p>
+      <p class="sub-list"><a href="#approved">Damaged or unsafe buildings</a></p>
+      <p class="sub-list"><a href="#approved">Damage to highways</a></p>
+      <p class="sub-list"><a href="#rejected">Abandoned vehicles</a></p>
+      <p class="sub-list"><a href="#prior-approved">Fly tipping</a></p>
+      <p class="sub-list"><a href="#prior-not-needed">Noise and other nuisances</a></p>
+      <p class="sub-list"><a href="#prior-rejected">Licensing</a></p>
+      <p class="sub-list"><a href="#non-planning-consents">Other concerns</a></p>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    <h2 class="govuk-heading-m">Loss of property value</h2>
+    <p class="govuk-body">This is not something the council or government can address at this time. If this is something you feel strongly about, we can suggest contacting your local councillors or MP.</p>
+
+    <h2 class="govuk-heading-m">Disputes about civil matters</h2>
+    <p class="govuk-body">These sort of matters include:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Personal disputes with neighbours</li>
+      <li>Disputes around 'right to light'</li>
+    </ul>
+    <p class="govuk-body">These are concerned with the private affairs of citizens. If you are concerned about one or more of these issues, it is recommended that you seek legal advice or contact <a href="https://www.citizensadvice.org.uk/" target="_blank">Citizens Advice</a>.</p>
+    <p>You can also find <a href="https://www.gov.uk/government/publications/rights-to-light" target="_blank">additional information about 'right to light' on gov.uk</a></p>
+
+    <h2 class="govuk-heading-m">Property and ownership disputes</h2>
+    <p class="govuk-body">These sort of disputes include:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Property boundary disputes</li>
+      <li>Property ownership disputes</li>
+      <li>Party wall disputes</li>
+    </ul>
+    <p class="govuk-body">These are concerned with the private affairs of citizens. If you are concerned about one or more of these issues, it is recommended that you seek legal advice or contact <a href="https://www.citizensadvice.org.uk/" target="_blank">Citizens Advice</a>.</p>
+    <p class="govuk-body">You can also refer to <a href="https://www.gov.uk/party-walls-building-works" target="_blank">the government's advice on party wall disputes</a>.</p>
+    <p class="govuk-body">You may also find the records available at <a href="https://www.gov.uk/government/organisations/land-registry" target="_blank">HM Land Registry</a> may help resolve some of these disputes.</p>
+
+    <h2 class="govuk-heading-m">Views</h2>
+    <p class="govuk-body">Most changes to views are not protected by law or considered by planning officers. This is not something the council or government can address at this time. If this is something you feel strongly about, we can suggest contacting your local councillors or MP.</p>
+    <p class="govuk-body">There are some legally protected views. If you are concerned about something related to a protected view, please raise it as a comment on the relevant application.</p>
+
+    <h2 class="govuk-heading-m">Other council matters</h2>
+    <p class="govuk-body">There are matters that may seem to be relevant to planning, but which are actually addressed by other local government departments.</p>
+
+    <h3 class="govuk-heading-s">Parking</h3>
+    <p class="govuk-body">Changes to parking as part of a planning application are considered by planning officers during assessment. But if you have concerns about existing parking arrangements, you can find more information about who to contact <a href="https://www.camden.gov.uk/parking">on your council's website</a>.</p>
+
+    <h3 class="govuk-heading-s">Damaged or unsafe buildings</h3>
+    <p class="govuk-body">This includes:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Existing property damage</li>
+      <li>Structures in danger of collapse</li>
+    </ul>
+    <p class="govuk-body">If you have concerns relating to an existing building which poses a current safety risk, please <a href="https://www.camden.gov.uk/building-control">report this to the council</a>.</p>
+
+    <h3 class="govuk-heading-s">Repairs needed to council housing</h3>
+    <p class="govuk-body">This includes:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Emergency repairs such as gas or water leaks</li>
+      <li>Mould</li>
+      <li>Non-emergency repairs</li>
+    </ul>
+    <p class="govuk-body">If you have concerns relating to council housing in need of repair, please <a href="https://www.camden.gov.uk/report-a-housing-repair">report this to the council</a>.</p>
+    
+
+    <h3 class="govuk-heading-s">Damage to highways</h3>
+    <p class="govuk-body"> If you have concerns about a road which you believe poses a current safety risk, please <a href="https://www.camden.gov.uk/report-street-issue">report this to the council</a>.</p>
+
+    <h3 class="govuk-heading-s">Abandoned vehicles</h3>
+    <p class="govuk-body"> If you have concerns about a vehicle you believe has been abandoned, please <a href="https://www.camden.gov.uk/abandoned-vehicles">report this to the council</a>.</p>
+
+    <h3 class="govuk-heading-s">Fly tipping</h3>
+    <p class="govuk-body"> If you have concerns about illegally dumped rubbish, please <a href="https://www.camden.gov.uk/fly-tipping-street-obstructions">report this to the council</a>.</p>
+
+    <h3 class="govuk-heading-s">Noise and other nuisances</h3>
+    <p class="govuk-body">This includes:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Noise</li>
+      <li>Smoke</li>
+      <li>Dust</li>
+      <li>Odour</li>
+      <li>Light pollution</li>
+    </ul>
+    <p class="govuk-body"> If you have concerns about any of these issues, please <a href="https://www.camden.gov.uk/noise">report this to the council</a>.</p>
+
+    <h3 class="govuk-heading-s">Licensing</h3>
+    <p class="govuk-body">If you are concerned about a building or business operating without a licence, or believe a building is in violation of its licence, you should <a href="https://www.camden.gov.uk/complain-about-licensed-premises">report this to the council</a>.</p>
+
+    <h3 class="govuk-heading-s">Regularisation certificates</h3>
+    <p class="govuk-body">If you need a regularisation certificate for work done to a property, you can <a href="https://www.camden.gov.uk/apply-for-building-control-regularisation">apply via your council</a>.</p>
+
+    <h2 class="govuk-heading-m">Other concerns</h2>
+    <p class="govuk-body">If you are unsure who to contact about your concern, general enquiries can be made to <a href="https://www.camden.gov.uk/contact-camden">Camden council</a></p>
+
+  </div>
+</div>
+
+{% endblock %}

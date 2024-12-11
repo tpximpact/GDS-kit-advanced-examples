@@ -1,0 +1,42 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Decision notice {{ data.application_array[data['current_app']].reference }} – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% include "../../components/_context-setter.html" %}
+
+<h1 class="govuk-heading-xl">Decision notice</h1>
+<p>This is the full application form as submitted by the applicant to the planning team.</p>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half grid-row-extra-bottom-margin">
+    <h2 class="govuk-heading-m">Decision</h2>
+    <p>{{govukTag({
+      text: "Granted"  ,
+      classes: "govuk-tag--green"
+    })}}</p>
+  </div>
+
+  <div class="govuk-grid-column-one-half">
+    <h2 class="govuk-heading-m">Decision published</h2>
+    <p>{{ data.application_submission.submission.metadata.submittedAt | govukDateTime }}</p>
+  </div>
+</div>
+
+
+{% set decision = "granted" %}
+{% include "../../components/_decision-notice.html" %}
+
+
+
+{% endblock %}

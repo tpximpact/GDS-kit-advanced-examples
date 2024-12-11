@@ -1,0 +1,19 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Your subscription is confirmed – {{ serviceName }}
+{% endblock %}
+
+
+{% block content %}
+
+{{ govukPanel({
+  titleText: "Your subscription is confirmed"
+}) }}
+
+<h1 class="govuk-heading-l">You have signed up for email alerts for new site notices</h1>
+
+<a href="/camden/dsn" role="button" class="govuk-button govuk-button--secondary grid-row-extra-bottom-margin" data-module="govuk-button">View current site notices</a>
+
+
+{% endblock %}

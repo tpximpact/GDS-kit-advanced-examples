@@ -1,0 +1,65 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+What you need to know before you comment – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-l">What you need to know before you comment</h1>
+
+<h2 class="govuk-heading-m">What isn't considered in planning approval</h2>
+<p class="govuk-body">There are issues that may be of concern to you, and are very important, but which generally cannot be considered as a <a href="https://www.camden.gov.uk/commenting-planning-application" class="govuk-link" target="_blank">material planning consideration</a> when assessing a planning application. These include:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>disputes about civil matters, such as building freeholds or the 'right to light'</li>
+  <li>loss of property value</li>
+  <li>issues which are dealt with by other forms of law, such as party wall matters.</li>
+</ul>
+<p class="govuk-body">We cannot refuse permission because of construction noise. However, we can restrict the hours of work to reduce disturbance to residents and other sensitive neighbours.</p>
+
+<a class="govuk-button govuk-button--secondary" href="/camden/help/concerns">What to do if these things concern you</a>
+
+<h2 class="govuk-heading-m">Why your comments are important</h2>
+<p class="govuk-body">There are three main reasons we ask residents to comment on planning applications:</p>
+<ol class="govuk-list govuk-list--number">
+  <li> 
+    <h3 class="govuk-heading-s">To use your knowledge of the area</h3> 
+    <p>You may be able to highlight on-the-ground details we don't know about – for example, that a mature tree was left out of a developer's plans.</p>
+  </li>
+  <li> 
+    <h3 class="govuk-heading-s">To influence the details</h3> 
+    <p>Your understanding of an area's needs can help planners decide on things like amount of open space, cycling facilities, or what materials are appropriate for a scheme.</p>
+  </li>
+  <li> 
+    <h3 class="govuk-heading-s">To make sure we balance our priorities</h3> 
+    <p>It's useful know  which priorities are most important to residents, so we can push developers to be more ambitious with their targets. Telling us what your priorities are can help planners make that decision.</p>
+  </li>
+</ol>
+
+<h2 class="govuk-heading-m">What happens to your comments</h2>
+
+<p class="govuk-body">Your comments will be published online after being reviewed by the planning team. <strong>We will not include your address, telephone number or email address - but the name you give us may be published alongside your comment.</strong></p> 
+
+<p>We'll make sure any other personal or sensitive information is removed where needed, in line with the <a href="https://ico.org.uk/for-organisations/guide-to-the-general-data-protection-regulation-gdpr/key-definitions/what-is-personal-data/" target="_blank">General Data Protection Regulation (GDPR)</a>. If you have concerns about any data you have sent being published, <a href="https://www.camden.gov.uk/contact-the-planning-advice-and-information-service" target="_blank">contact the Planning Advice and Information Service</a>.</p>
+    
+<p>Read our <a href="https://www.camden.gov.uk/data-protection-privacy-and-cookies" target="_blank">corporate privacy statement</a> and our <a href="https://www.camden.gov.uk/documents/20142/2247044/Privacy+Notice_regenerationandplanning+-+updated+May19.pdf/23506373-1b95-2cc5-55b2-55897cfe4b42" target="_blank">planning service privacy statement</a> for more information.</p>
+
+<p class="govuk-body">You will not receive a direct reply to your comment.</p>
+
+<p class="govuk-body">When the case officer decides whether or not to approve the application they will take into account all comments related to <a href="https://www.camden.gov.uk/commenting-planning-application" class="govuk-link" target="_blank">material considerations</a>. The case officer will summarise their findings in the officer's report and decision notice.</p>
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Start now",
+  href: "comment/comment-01",
+  isStartButton: true
+}) }}
+{% endblock %}

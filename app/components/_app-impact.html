@@ -1,0 +1,90 @@
+{% if data.application_array[data['current_app']].site_notice_content|length %}
+<section class="govuk-grid-row impact-wrap huge-bottom-margin">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l" id="impact">How this could impact you</h1>
+    <p class="govuk-body">Any new development in your local area will have an effect on your community.</p>
+    <p class="govuk-body">Here are some of the ways we think this development would impact your community. You can give us feedback on what is important for us to consider. We will use this feedback when we're deciding whether to give planning permission to a development.</p>
+    <div class="impact-info">
+      <div class="impact-item-container">
+        <div class="wrap-impact-item">
+          <h2 class="govuk-heading-m">New homes</h2>
+          <img alt="icon homes" loading="lazy" width="64" height="64" srcset="https://camden-digital-site-notice.netlify.app/_next/image?url=%2Fassets%2Fimages%2Ficon-homes.png&amp;w=64&amp;q=75 1x, https://camden-digital-site-notice.netlify.app/_next/image?url=%2Fassets%2Fimages%2Ficon-homes.png&amp;w=128&amp;q=75 2x" src="https://camden-digital-site-notice.netlify.app/_next/image?url=%2Fassets%2Fimages%2Ficon-homes.png&amp;w=128&amp;q=75" style="color: transparent;">
+        </div>
+        <p class="govuk-body large-margin-top">
+          <span class="govuk-!-font-weight-bold">80</span> new homes
+        </p>
+        <p class="govuk-body" style="margin-top: -10px;">
+          <span class="govuk-!-font-weight-bold">35%</span> affordable housing
+        </p>
+        <details class="govuk-details undefined" data-module="govuk-details">
+          <summary class="govuk-details__summary" style="color: white;">
+            <span class="govuk-details__summary-text" role="definition">How did we calculate this?</span>
+          </summary>
+          <div class="govuk-details__text">
+            <p class="govuk-body">The number of self contained homes that are being proposed. This includes affordable, social and private housing. Larger schemes might have a range showing the minimum and maximum number of homes if the total number is going to be decided later.</p>
+            <p class="govuk-body">Affordable housing is a term used to cover different types of housing that are less costly than housing on the private market. This might be social rented housing, affordable rented housing or housing the government helps people to buy. It can be shown as a proportion of the total number of homes, or as a proportion of the total residential floorspace.</p>
+          </div>
+        </details>
+      </div>
+      <div class="impact-item-container">
+        <div class="wrap-impact-item">
+          <h2 class="govuk-heading-m">Open spaces</h2>
+          <img alt="icon open spaces" loading="lazy" width="64" height="64" srcset="https://camden-digital-site-notice.netlify.app/_next/image?url=%2Fassets%2Fimages%2Ficon-open-spaces.png&amp;w=64&amp;q=75 1x, https://camden-digital-site-notice.netlify.app/_next/image?url=%2Fassets%2Fimages%2Ficon-open-spaces.png&amp;w=128&amp;q=75 2x" src="https://camden-digital-site-notice.netlify.app/_next/image?url=%2Fassets%2Fimages%2Ficon-open-spaces.png&amp;w=128&amp;q=75" style="color: transparent;">
+        </div>
+        <p class="govuk-body large-margin-top">
+          <span class="govuk-!-font-weight-bold">1200</span> square metres
+        </p>
+        <details class="govuk-details undefined" data-module="govuk-details">
+          <summary class="govuk-details__summary" style="color: white;">
+            <span class="govuk-details__summary-text" role="definition">How did we calculate this?</span>
+          </summary>
+          <div class="govuk-details__text">
+            <p class="govuk-body">Open space includes land and areas of water (such as rivers and canals) available for sport, recreation and relaxation. Applicants calculate the amount of open space, and this is checked by council planners when assessing the application.</p>
+          </div>
+        </details>
+      </div>
+      <div class="impact-item-container">
+        <div class="wrap-impact-item">
+          <h2 class="govuk-heading-m">New jobs</h2>
+          <img alt="icon office" loading="lazy" width="64" height="64" srcset="https://camden-digital-site-notice.netlify.app/_next/image?url=%2Fassets%2Fimages%2Ficon-office.png&amp;w=64&amp;q=75 1x, https://camden-digital-site-notice.netlify.app/_next/image?url=%2Fassets%2Fimages%2Ficon-office.png&amp;w=128&amp;q=75 2x" src="https://camden-digital-site-notice.netlify.app/_next/image?url=%2Fassets%2Fimages%2Ficon-office.png&amp;w=128&amp;q=75" style="color: transparent;">
+        </div>
+        <p class="govuk-body large-margin-top">
+          <span class="govuk-!-font-weight-bold">45-100</span> new roles
+        </p>
+        <details class="govuk-details undefined" data-module="govuk-details">
+          <summary class="govuk-details__summary" style="color: white;">
+            <span class="govuk-details__summary-text" role="definition">How did we calculate this?</span>
+          </summary>
+          <div class="govuk-details__text">
+            <p class="govuk-body" style="max-width: 25rem;">The council estimates how many new jobs a new development will create based on the size and type of development. This estimate is based on the Employment Density Guide (3rd addition) produced by Homes &amp; Community Agency (2015). A summary of this guide is published as part of the Camden Planning Guidance for Employment sites and business premises (Appendix 1).</p>
+          </div>
+        </details>
+      </div>
+      <div class="impact-item-container">
+        <div class="wrap-impact-item">
+          <h2 class="govuk-heading-m">Carbon emissions</h2>
+          <img alt="icon carbon" loading="lazy" width="64" height="64" srcset="https://camden-digital-site-notice.netlify.app/_next/image?url=%2Fassets%2Fimages%2Ficon-co2.png&amp;w=64&amp;q=75 1x, https://camden-digital-site-notice.netlify.app/_next/image?url=%2Fassets%2Fimages%2Ficon-co2.png&amp;w=128&amp;q=75 2x" src="https://camden-digital-site-notice.netlify.app/_next/image?url=%2Fassets%2Fimages%2Ficon-co2.png&amp;w=128&amp;q=75" style="color: transparent;">
+        </div>
+        <p class="govuk-body large-margin-top">
+          <span class="govuk-!-font-weight-bold">66%</span> less than minimum requirements
+        </p>
+        <details class="govuk-details undefined" data-module="govuk-details">
+          <summary class="govuk-details__summary" style="color: white;">
+            <span class="govuk-details__summary-text" role="definition">How did we calculate this?</span>
+          </summary>
+          <div class="govuk-details__text">
+            <p class="govuk-body">This shows how far below the legal requirements the proposal is. Building regulations set the amount of carbon emissions a development can generate once it is in use.</p>
+          </div>
+        </details>
+      </div>
+      <div class="impact-item-container">
+        <div class="wrap-impact-item">
+          <h2 class="govuk-heading-m">Pedestrian and vehicle access</h2>
+          <img alt="icon pedestrian crossing" loading="lazy" width="64" height="48" srcset="https://camden-digital-site-notice.netlify.app/_next/image?url=%2Fassets%2Fimages%2Ficon-crossing.png&amp;w=64&amp;q=75 1x, https://camden-digital-site-notice.netlify.app/_next/image?url=%2Fassets%2Fimages%2Ficon-crossing.png&amp;w=128&amp;q=75 2x" src="https://camden-digital-site-notice.netlify.app/_next/image?url=%2Fassets%2Fimages%2Ficon-crossing.png&amp;w=128&amp;q=75" style="color: transparent;">
+        </div>
+        <p class="govuk-body" style="grid-column-end: 3;">Two access points from Finchley Road to the east. One access point from Blackburn Road to the west.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}

@@ -1,0 +1,84 @@
+{% if comment_type=="long1" %}
+<div class="govuk-grid-row huge-bottom-margin">
+    <div class="govuk-grid-column-full comment">
+       
+      <input type="checkbox" id="show-comment-2" name="show-comment-2" class="show-comment">
+  
+      <div class="comment-container">
+        <h3 class="govuk-heading-m">Comment {{ comment_number }}</h3>
+        <p class="govuk-body"><em>Published 01/02/2024</em></p>
+  
+        <h4 class="govuk-heading-s">Sentiment towards this application</h4>
+        <p>Opposed</p>
+        
+        <h3 class="govuk-heading-s">Use and function of the proposed development</h3>
+        <p class="govuk-body">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+      
+        <h3 class="govuk-heading-s">Impacts on natural light</h3>
+        <p class="govuk-body">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+      
+        <h3 class="govuk-heading-s">Disabled persons' access</h3>
+        <p class="govuk-body">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+  
+        <h3 class="govuk-heading-s">Noise from new uses</h3>
+        <p class="govuk-body">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+      </div>
+   
+      <label class="govuk-body govuk-link govuk-link--no-visited-state comment-expander" for="show-comment-2">
+        <span class="read-comment">Read the rest of</span> <span class="hide-comment">Minimise</span> this comment
+      </label>
+    </div>
+  </div>
+  <hr class="govuk-section-break govuk-section-break--visible huge-bottom-margin">
+
+{% elif comment_type=="long2" %}
+<div class="govuk-grid-row huge-bottom-margin">
+    <div class="govuk-grid-column-full comment">
+       
+      <input type="checkbox" id="show-comment-3" name="show-comment-3" class="show-comment">
+  
+      <div class="comment-container">
+        <h3 class="govuk-heading-m">Comment {{ comment_number }}</h3>
+        <p class="govuk-body"><em>Published 01/02/2024</em></p>
+  
+        <h4 class="govuk-heading-s">Sentiment towards this application</h4>
+        <p>Opposed</p>
+        
+        <h3 class="govuk-heading-s">Use and function of the proposed development</h3>
+        <p class="govuk-body">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+      
+        <h3 class="govuk-heading-s">Impacts on natural light</h3>
+        <p class="govuk-body">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+      
+        <h3 class="govuk-heading-s">Disabled persons' access</h3>
+        <p class="govuk-body">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+      </div>
+   
+      <label class="govuk-body govuk-link govuk-link--no-visited-state comment-expander" for="show-comment-3">
+        <span class="read-comment">Read the rest of</span> <span class="hide-comment">Minimise</span> this comment
+      </label>
+    </div>
+</div>
+<hr class="govuk-section-break govuk-section-break--visible grid-row-extra-bottom-margin">
+
+{% else %}
+<div class="govuk-grid-row huge-bottom-margin">
+    <div class="govuk-grid-column-full comment">
+      <h3 class="govuk-heading-m">Comment {{ comment_number }}</h3>
+      <p class="govuk-body"><em>Published 01/02/2024</em></p>
+  
+      <h4 class="govuk-heading-s">Sentiment towards this application</h4>
+      <p>{{ comment_sentiment }}</p>
+  
+      <h4 class="govuk-heading-s">Design, size or height of new buildings or extensions</h4>
+      <p class="govuk-body">It's not in keeping with the village's rural aesthetic.</p>
+  
+      <h4 class="govuk-heading-s">Impacts on natural light</h4>
+      <p class="govuk-body">It will block the light falling on the neighbouring park during midday.</p>
+  
+      <h4 class="govuk-heading-s">Other</h4>
+      <p class="govuk-body">I think it should be required to have solar panels to make better use of the space.</p>
+    </div>
+</div>
+<hr class="govuk-section-break govuk-section-break--visible huge-bottom-margin">
+ {% endif %}

@@ -1,0 +1,57 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Help – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-xl">Decisions</h1>
+
+<p class="huge-bottom-margin">What kinds of outcomes different planning applications can have, because there can be more complexity than just 'granted' or 'refused'.</p>
+
+
+<div class="govuk-grid-row">   
+  <div class="govuk-grid-column-one-third-from-desktop contents-bar">
+    <h2 class="govuk-heading-l">Contents</h2>
+
+    <p class="list-heading"><a href="#approved">Granted</a></p>
+    <p class="list-heading"><a href="#rejected">Refused</a></p>
+    <p class="list-heading"><a href="#prior-approved">Prior approval required and approved</a></p>
+    <p class="list-heading"><a href="#prior-not-needed">Prior approval not required</a></p>
+    <p class="list-heading"><a href="#prior-rejected">Prior approval required and refused</a></p>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    
+    <h2 class="govuk-heading-l" id="approved">Granted</h2>
+    <p>Planning applications which have been granted are given permission to go ahead. The work must begin within three years of approval, unless special circumstances apply. If the work is not started within three years, another application would need to be submitted.</p>
+    <p>Granted permissions can be conditional on certain criteria being met. These will be published in the decision notice for the application.</p>
+
+    <h2 class="govuk-heading-l" id="rejected">Refused</h2>
+    <p>Refused planning applications do not have permission to go ahead. The applicant is not allowed to perform the work they applied to do. The reasons for the rejection will be included in the decision notice for the application.</p>
+    <p>Refused planning applications can be appealed by applicants or their agents.</p>
+
+    <h2 class="govuk-heading-l" id="prior-approved">Prior approval required and approved</h2>
+    <p>When a <a href="/camden/help/application-types#prior-approval">prior approval</a> application has been examined, it was found that the proposal requires prior approval, and prior approval has been granted.</p>
+    <p>This means that the work proposed can go ahead, and does not require planning permission.</p>
+
+    <h2 class="govuk-heading-l" id="prior-not-needed">Prior approval not required</h2>
+    <p>When a <a href="/camden/help/application-types#prior-approval">prior approval</a> application has been examined, it was found that the proposal does not require prior approval.</p>
+    <p>This means that the works can go ahead without prior approval or planning permission.</p>
+
+    <h2 class="govuk-heading-l" id="prior-rejected">Prior approval required and refused</h2>
+    <p>When a <a href="/camden/help/application-types#prior-approval">prior approval</a> application has been examined, it was found that the proposal requires prior approval, and prior approval has been refused.</p>
+    <p>This means that the work proposed cannot go ahead without submitting an application for planning permission.</p>
+
+  </div>
+</div>
+
+{% endblock %}

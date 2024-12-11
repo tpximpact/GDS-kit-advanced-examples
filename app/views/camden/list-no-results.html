@@ -1,0 +1,41 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Search for an application – {{ serviceName }}
+{% endblock %}
+
+{% block header %}
+
+<!--Cookies Banner-->
+{% include "../../components/_cookies-banner.html" %}
+
+<!-- Header -->
+{% set active_nav = "app-search-nav" %}
+{% include "../../components/_header.html" %}
+{% include "../../components/_beta-banner.html" %}
+
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<!-- search bar and button -->
+{% include "../../components/_main-search.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <a href="/camden/alerts/search" role="button" class="govuk-button govuk-button--secondary" data-module="govuk-button">Sign up for email alerts to this search</a>
+  </div>
+</div>
+
+{% include "../../components/_no-matches.html" %}
+
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+You have signed up for email alerts to an application – {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+{{ govukPanel({
+  titleText: "Your subscription is confirmed"
+}) }}
+
+<h1 class="govuk-heading-l">You have signed up for email alerts on the following application</h1>
+
+{% include "../../../components/_context-setter.html" %}
+
+</div>
+
+
+{% endblock %}

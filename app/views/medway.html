@@ -1,0 +1,120 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Search for an application – {{ serviceName }}
+{% endblock %}
+
+{% block header %}
+
+<!--Cookies Banner-->
+{% include "../components/_cookies-banner.html" %}
+
+<!-- Header -->
+{% set active_nav = "app-search-nav" %}
+{% set council_logo = "Medway" %}
+{% include "../components/_header.html" %}
+{% include "../components/_beta-banner.html" %}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row huge-bottom-margin">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Welcome to the Digital Planning Register</h1>
+    <p>You can find planning applications submitted through the Open Digital Planning system for your local council planning authority.</p>
+    <p>Not all planning applications will be available through this register. You may need to check individual council's websites to see what records are kept here.</p>
+   </div>
+
+  <div class="govuk-grid-column-one-third">
+    <a href="/camden/alerts/search" role="button" class="govuk-button govuk-button--secondary blue-button" data-module="govuk-button ">
+      <svg class="button-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 459.334 459.334"><path fill="currentColor" d="M177.216 404.514c-.001.12-.009.239-.009.359 0 30.078 24.383 54.461 54.461 54.461s54.461-24.383 54.461-54.461c0-.12-.008-.239-.009-.359H175.216zM403.549 336.438l-49.015-72.002v-89.83c0-60.581-43.144-111.079-100.381-122.459V24.485C254.152 10.963 243.19 0 229.667 0s-24.485 10.963-24.485 24.485v27.663c-57.237 11.381-100.381 61.879-100.381 122.459v89.83l-49.015 72.002a24.76 24.76 0 0 0 20.468 38.693H383.08a24.761 24.761 0 0 0 20.469-38.694z"></path></svg>
+      Sign up for email alerts</a>
+  </div>
+</div>
+
+<!-- search bar and button -->
+{% include "../components/_main-search.html" %}
+
+<h2 class="govuk-heading-l">Recently published applications</h2>
+
+<!-- Sort by -->
+<div class="govuk-grid-row">
+  
+  <div class="govuk-grid-column-one-third">
+    {% set sort_type="multifield" %}
+    {% include "../components/_sort-by.html" %}
+  </div>
+  
+</div>
+
+<!-- For loop of applications-->
+{% for application_id, application_data in data.application_array %}
+  {% include "../components/_application-card.html" %}
+{% endfor %}
+
+<!-- Example with no comments -->
+<div class="govuk-grid-row grid-row-extra-bottom-margin search-card">  
+  <div class="govuk-grid-column-full">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-s">Application reference</h2>
+        <p>2024/0648/T</p>
+      </div>
+
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-s">Address</h2>
+        <p>23 Lyndhurst Road London NW3 5NX </p>
+      </div>
+    </div> 
+    
+    <div class="govuk-grid-row grid-row-extra-bottom-margin">
+      <div class="govuk-grid-column-one-third">
+        <img src="/public/images/redline-map-01.png" alt="Boundary map">
+      </div>
+
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-s">Description</h2>
+        <p class="card-description">FRONT GARDEN: 3 x Leylandii (T1) - Prune height & width up to 2.5m & shape. REAR GARDEN: 1 x Walnut Tree (T2) - Prune height & width up to 2m & shape. 2 x Laurels & Elaeagnus (T3) - Prune height & width up to 2.5m & shape. 1 x Sycamore (T4) - Prune height & width up to 2m & shape. 4 x Cypress (T4) - Prune height & width up to 2.5m & shape. 2 x Leylandii (T5) - Prune height up to 3m, width 1.5m & shape. 5 x something else and also some more things and I just need this description to be longer</p>
+      </div>
+    </div>
+    
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-s">Application Type</h2>
+        <p>Trees </p>
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-s">Status</h2>
+        <p>Registered </p>
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-s">Received date</h2>
+        <p>8 Sept 2023</p>
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-s">Published Date</h2>
+        <p>08 Sept 2023</p>
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-s">Consultation End Date</h2>
+        <p>11 Jan 2024</p>
+      </div>
+    </div>
+    
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <a href="/camden/application-details-no-comments" class="govuk-button govuk-button--secondary blue-button">View details</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include "../components/_pagination.html" %}
+
+{% endblock %}

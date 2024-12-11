@@ -1,0 +1,42 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+{% set comment_page=false %}
+{% include "../../../components/_context-setter.html" %}
+
+{{ govukPanel({
+  titleText: "Comment submitted",
+  html: "Thank you for your input",
+  classes: "grid-row-extra-bottom-margin"
+}) }} 
+
+<h2 class="govuk-heading-m">What happens now</h2>
+<p class="govuk-body">If you provided your email, you will receive an email confirming that your comment was received.</p> 
+<p class="govuk-body">Your comment will be published on this site once a member of the planning team has reviewed your comment and removed any identifying information. This can take several days, depending on the volume of comments being received.</p> 
+<p class="govuk-body">You will not receive a direct reply, but your comment will be addressed in the decision report.</p>
+
+<p class="govuk-body">You can sign up for email alerts to receive notifications when new comments are published, including your own comment. You can also receive notifications when anything else changes with this application.</p>
+<a class="govuk-button govuk-button--secondary blue-button" href="/camden/alerts/applications" style="text-decoration: none;">Sign up for email alerts</a>
+  
+<h2 class="govuk-heading-m">Discover other planning applications in your area</h2>
+<p class="govuk-body">If you're interested in learning more about planning applications in your area, you can view all currently active applications and provide comments on them.</p>
+
+<a href="/camden" role="button" class="govuk-button govuk-button--secondary button-extra-right-margin" data-module="govuk-button">Back to application search</a>
+
+<!-- We don't have a link for this
+
+<h2 class="govuk-heading-m">Get involved with Camden's planning policy</h2>
+<p class="govuk-body">You can have a big impact on developments in your local community by getting involved in local initiatives.</p>
+
+<a href="#" role="button" class="govuk-button govuk-button--secondary button-extra-right-margin" data-module="govuk-button">Find out how you can get involved</a>
+ -->
+
+
+
+
+{% endblock %}

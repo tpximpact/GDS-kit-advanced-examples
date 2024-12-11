@@ -1,0 +1,48 @@
+<div class="govuk-grid-row grid-row-extra-bottom-margin">
+  <p>{{data['current-app']}}</p>
+  <div class="govuk-grid-column-one-quarter">
+
+    {% if data.application_array[data['current_app']].boundary_geojson %}
+    {% set geojsonData = data.application_array[data['current_app']].boundary_geojson %}
+    {% if geojsonData.type == "FeatureCollection" or geojsonData.type == "Feature" %}
+      {% set validGeojson = geojsonData %}
+    {% else %}
+      {% set validGeojson = {
+        "type": "Feature",
+        "geometry": geojsonData.geometry,
+        "properties": geojsonData.properties | default({})
+      } %}
+    {% endif %}
+  
+    {% if validGeojson %}
+
+      <my-map class="comment-map"
+        zoom="24"
+        geojsonColor="#ff0000"
+        geojsonBuffer="12"
+        hideResetControl
+        geojsonData="{{ validGeojson | dump | escape }}"
+        osCopyright="© Crown copyright and database rights 2024 OS (0)100024857"
+        showScale="true"
+        staticMode="true"
+      ></my-map>
+      {# Add the static mode property to enable zooming in and out and
+      moving around the map #} {% endif %} {% endif %}
+  </div>
+  <div class="govuk-grid-column-three-quarters">
+    <h2 class="govuk-heading-m">{{ data.application_array[data['current_app']].site.address_1 }}, 
+      {% if data.application_array[data['current_app']].site.address_2|length %}
+        {{data.application_array[data['current_app']].site.address_2}}, 
+      {% endif %}
+      {% if data.application_array[data['current_app']].town|length %}
+        {{data.application_array[data['current_app']].town}}, 
+      {% endif %}
+      {{ data.application_array[data['current_app']].site.postcode }}</h2>
+    <h2 class="govuk-heading-s">Application Reference</h2>
+    <p><a href="/camden/application-details?current_app={{ data['current_app'] }}">{{ data.application_array[data['current_app']].reference }}</a></p>
+
+    {% if comment_page %}
+    <p>Your feedback helps us improve developments so they meet the needs of people in Camden. It's important you let us know what you think.</p>
+    {% endif %}
+  </div>
+</div>

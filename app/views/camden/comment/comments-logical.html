@@ -1,0 +1,71 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Tell us what you think – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+<h1 class="govuk-heading-l">Tell us what you think</h1>
+
+{% set comment_page=true %}
+{% include "../../../components/_context-setter.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="comment-flow" method="post">
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--m" for="comment-{{ data['questionNumber'] }}">
+              Comment on {{ data['questionName'] | lower }}
+            </label>
+          </h1>
+          <div id="comment-{{ data['questionNumber'] }}-hint" class="govuk-hint">
+            {% if data['questionName'] == "the design, size or height of new buildings or extensions" %}
+              <p class="govuk-hint">Such as if a building is too tall, or does not fit into the surrounding environment.</p>
+
+            {% elseif data['questionName'] == "the use and function of the proposed development" %}
+              <p class="govuk-hint">Such as a proposed business that would not serve the area well, or could cause problems due to its operation.</p>
+
+            {% elseif data['questionName'] == "any impacts on natural light" %}
+              <p class="govuk-hint">Such as a building casting a shadow over residential buildings nearby.</p>
+
+            {% elseif data['questionName'] == "impacts to the privacy of neighbours" %}
+              <p class="govuk-hint">Such as a large building overlooking houses and gardens next to it, or being too close to prevent viewing into neighbours windows.</p>
+
+            {% elseif data['questionName'] == "impacts on disabled persons' access" %}
+              <p class="govuk-hint">Such as a development not providing accessible access to it's entrance, or removing a previous accessible route.</p>
+
+            {% elseif data['questionName'] == "any noise from new uses" %}
+              <p class="govuk-hint">Such as a new business causing excessive noise in a residential area.</p>
+
+            {% elseif data['questionName'] == "impacts to traffic, parking or road safety" %}
+              <p class="govuk-hint">Such as the parking proposed being inadequate, or important parking provisions being removed.</p>
+
+            {% elseif data['questionName'] == "any other things" %}
+              <p class="govuk-hint">Anything that does not fit into other categories.</p>
+            {% endif %}
+            
+            <p class="govuk-hint">{{ data['questionNumber'] }} of {{ data['selectedQs'] }}</p>
+          </div>
+          <textarea class="govuk-textarea" id="comment-{{ data['questionNumber'] }}" name="comment-{{ data['questionNumber'] }}" rows="5" aria-describedby="design-comment-{{ data['questionNumber'] }}-hint"></textarea>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

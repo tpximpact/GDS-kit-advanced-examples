@@ -1,0 +1,47 @@
+{% if sort_type=="alphachrono" %}
+<div class="govuk-form-group huge-bottom-margin">
+    <label class="govuk-label" for="sort">
+      Sort by
+    </label>
+    <select class="govuk-select" id="sort" name="sort">
+      <option value="newest" selected >Most recent to oldest</option>
+      <option value="oldest">Oldest to most recent</option>
+      <option value="newest">A-Z</option>
+      <option value="oldest">Z-A</option>
+    </select>
+</div>
+{% elif sort_type=="multifield" %}
+<div class="govuk-form-group">
+    <label class="govuk-label" for="sort">
+      Sort by
+    </label>
+    <select class="govuk-select" id="sort" name="sort">
+      <optgroup label="By received date">
+        <option value="published" selected>Newest to oldest</option>
+        <option value="updated">Oldest to newest</option>
+      </optgroup>
+      <optgroup label="By decision date">
+        <option value="published">Newest to oldest</option>
+        <option value="updated">Oldest to newest</option>
+      </optgroup>
+      <optgroup label="By consultation end date">
+        <option value="published">Newest to oldest</option>
+        <option value="updated">Oldest to newest</option>
+      </optgroup>
+      <optgroup label="By status">
+        <option value="published">Most to least progressed</option>
+        <option value="updated">Least to most progressed</option>
+      </optgroup>
+    </select>
+  </div>
+{% else %}
+<div class="govuk-form-group huge-bottom-margin">
+    <label class="govuk-label" for="sort">
+      Sort by
+    </label>
+    <select class="govuk-select" id="sort" name="sort">
+      <option value="newest" selected >Most recent to oldest</option>
+      <option value="oldest">Oldest to most recent</option>
+    </select>
+</div>
+{% endif %}

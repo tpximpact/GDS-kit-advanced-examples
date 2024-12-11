@@ -1,0 +1,124 @@
+<div class="govuk-grid-row grid-row-extra-bottom-margin search-card">  
+    <form class="govuk-grid-column-full" action="/camden/application-details?current_app={{ application_id }}">
+      <a class="govuk-body info-icon" href="/camden/help" title="Get help understnding what everything here means">i</a>
+      <input class="hidden" name="current_app" id="current_app" value="{{ application_id }}">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+          <h2 class="govuk-heading-s">Application reference</h2>
+          <p>{{ application_data['reference'] }}</p>
+        </div>
+  
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-s">Address</h2>
+          <p>{{ application_data.site.address_1 }}, 
+            {% if application_data.site.address_2|length %}
+              {{application_data.site.address_2}}, 
+            {% endif %}
+            {% if application_data.site.town|length %}
+              {{application_data.site.town}}, 
+            {% endif %}
+            {{ application_data.site.postcode }}</p>
+        </div>
+      </div> 
+      
+      <div class="govuk-grid-row  grid-row-extra-bottom-margin">
+          <div class="govuk-grid-column-one-third">
+            {% if application_data.boundary_geojson %} {% set geojsonData =
+            application_data.boundary_geojson %} {% if geojsonData.type ==
+            "FeatureCollection" %} {% set validGeojson = geojsonData %} {% elif
+            geojsonData.type == "Feature" %} {% set validGeojson = geojsonData %} {%
+            else %} {% set validGeojson = { "type": "Feature", "geometry":
+            geojsonData.geometry, "properties": geojsonData.properties or {} } %} {%
+            endif %} {% if validGeojson %}
+    
+            <my-map
+              zoom="24"
+              latitude="{{ application_data.site.latitude }}"
+              longitude="{{ application_data.site.longitude }}"
+              geojsonColor="#ff0000"
+              geojsonBuffer="12"
+              hideResetControl
+              geojsonData="{{ validGeojson | dump | escape }}"
+              osCopyright="© Crown copyright and database rights 2024 OS (0)100024857"
+              showScale="true"
+              staticMode="true"
+            ></my-map>
+            {# Remove the static mode property to enable zooming in and out and
+            moving around the map #} {% endif %} {% endif %}
+          </div>
+  
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-s">Description</h2>
+          <p class="card-description">{{ application_data['description'] }}</p>
+        </div>
+      </div>
+      
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+          <h2 class="govuk-heading-s">Application type</h2>
+          <p>{{ application_data['application_type'] | capitalize }}</p>
+        </div>
+  
+        <div class="govuk-grid-column-one-third">
+          <h2 class="govuk-heading-s">Status</h2>
+          <p>{{ application_data['status'] | capitalize }}</p>
+        </div>
+  
+        <div class="govuk-grid-column-one-third">
+          <h2 class="govuk-heading-s">Received date</h2>
+          <p>{{ application_data['received_date'] | govukDate("truncate") }}</p>
+        </div>
+      </div>
+  
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+          <h2 class="govuk-heading-s">Published date</h2>
+          <p>{{ application_data['in_assessment_at'] | govukDate("truncate") }}</p>
+        </div>
+        
+        {% if application_data.consultation.end_date|length %}
+          <div class="govuk-grid-column-one-third">
+            <h2 class="govuk-heading-s">Consultation end date</h2>
+          <p>{{ application_data.consultation.end_date | govukDate("truncate") }}</p>
+          </div>
+        {% endif %}
+        
+        {% if application_data.determination_date|length %}
+          <div class="govuk-grid-column-one-third">
+            <h2 class="govuk-heading-s">Council decision date</h2>
+            <p>{{ application_data.determination_date | govukDate("truncate") }}</p>
+          </div>
+        {% endif %}
+      </div>
+
+      {% if application_data.result_flag|length %}
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">       
+            <h2 class="govuk-heading-s">Council decision</h2>
+            <p>{{ application_data.result_flag }}</p>
+          </div>
+
+          {% if application_data.result_override|length %}
+            <div class="govuk-grid-column-one-third">       
+              <h2 class="govuk-heading-s">Appeal decision date</h2>
+              <p>{{ application_data.invalidated_at | govukDate("truncate")  }}</p>
+            </div>
+          {% endif %}
+
+          {% if application_data.result_override|length %}
+            <div class="govuk-grid-column-one-third">       
+              <h2 class="govuk-heading-s">Appeal decision</h2>
+              <p>{{ application_data.result_override }}</p>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+            <button type="submit" data-module="govuk-button" class="govuk-button govuk-button--secondary blue-button">View details</button>
+        </div>
+      </div>
+    </form>
+</div>

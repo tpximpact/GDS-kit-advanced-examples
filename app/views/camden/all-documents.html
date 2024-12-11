@@ -1,0 +1,66 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Documents for {{ data.application_array[data['current_app']].reference }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% include "../../components/_context-setter.html" %}
+
+<h1 class="govuk-heading-l">Documents</h1>
+<p>To find out more detailed information, you can check the documents from the applicant.</p>
+
+
+<!-- Search -->
+{% include "../../components/_document-search.html" %}
+
+<hr class="govuk-section-break govuk-section-break--visible grid-row-extra-bottom-margin">
+
+
+<div class="govuk-grid-row grid-row-extra-bottom-margin file-table">
+  {% set file_type = "application-form" %}
+  {% include "../../components/_file.html" %}
+
+  {% set file_type = null %}
+  {% set filename = "Design and access statement.PDF" %}
+  {% include "../../components/_file.html" %}
+
+  {% set filename = "Affordable housing statement.PDF" %}
+  {% include "../../components/_file.html" %}
+
+  {% set filename = "Environment impact assessment.PDF" %}
+  {% include "../../components/_file.html" %}
+
+  {% set file_type = "jpg" %}
+  {% set filename = "Massing image 1.JPG" %}
+  {% include "../../components/_file.html" %}
+
+  {% set filename = "Massing image 2.JPG" %}
+  {% include "../../components/_file.html" %}
+
+  {% set filename = "Massing image 3.JPG" %}
+  {% include "../../components/_file.html" %}
+
+  {% set filename = "Elevation 1.JPG" %}
+  {% include "../../components/_file.html" %}
+
+  {% set filename = "Elevation 2.JPG" %}
+  {% include "../../components/_file.html" %}
+
+  {% set filename = "Floor plan 1.JPG" %}
+  {% include "../../components/_file.html" %}
+
+</div>
+
+
+{% include "../../components/_pagination.html" %}
+
+{% endblock %}

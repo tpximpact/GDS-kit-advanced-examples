@@ -1,0 +1,36 @@
+<div class="govuk-grid-row grid-row-extra-bottom-margin">
+    <div class="govuk-grid-column-full comment">
+      <h3 class="govuk-heading-m">{{ history_date }}</h3>
+    
+      {% if "status" in history_array %}
+      <h4 class="govuk-heading-s">Status</h4>
+      <p>Status changed to 'determined'</p>
+      {% endif %}
+        
+      {% if "decision" in history_array %}
+      <h4 class="govuk-heading-s">Decision</h4>
+      <p class="govuk-body">Decision set to 'granted'</p>
+      {% endif %}
+
+      {% if "content" in history_array %}
+      <h4 class="govuk-heading-s">Application content</h4>
+      <p class="govuk-body">Height updated</p>
+      {% endif %}
+
+      {% if "comments" in history_array %}
+      <h4 class="govuk-heading-s">Comments</h4>
+      <p>3 public comments added</p>
+      <p>1 specialist comment added</p>
+      {% endif %}
+
+      {% if "documents" in history_array %}
+      <h4 class="govuk-heading-s">Documents</h4>
+      <p class="govuk-body">Document 'Decision notice' added</p>
+      {% endif %}
+
+      {% if "created" in history_array %}
+      <h4>Application created</h4>
+      {% endif %}
+    </div>
+  </div>
+<hr class="govuk-section-break govuk-section-break--visible grid-row-extra-bottom-margin">

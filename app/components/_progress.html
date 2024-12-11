@@ -1,0 +1,167 @@
+<h2 class="govuk-heading-l" id="progress">Progress</h2>
+
+<div class="govuk-accordion timeline" data-module="govuk-accordion" id="accordion-default">
+    <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+        <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+            Received <span class="timeline-date">{{ data.application_array[data['current_app']].in_assessment_at | govukDate("truncate") }}</span>
+        </span>
+        </h2>
+    </div>
+    <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+        <p class="govuk-body">This is the date that the application is received by the council. It may not be the date it was sent, if there have been delays in the submission process.</p>
+    </div>
+    </div>
+
+    <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+        <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+            Valid from <span class="timeline-date">{{ data.application_array[data['current_app']].in_assessment_at | govukDate("truncate") }}</span>
+        </span>
+        </h2>
+    </div>
+    <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+        <p class="govuk-body">This is the date the application is considered valid and processing officially begins. Usually this will be the same as the received date, but sometimes applications are submitted incorrectly which delays validation. </p>
+    </div>
+    </div>
+
+    <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+        <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+            Published <span class="timeline-date">{{ data.application_array[data['current_app']].in_assessment_at | govukDate("truncate") }}</span>
+        </span>
+        </h2>
+    </div>
+    <div id="accordion-default-content-3" class="govuk-accordion__section-content">
+        <p class="govuk-body">This is the date the application is registered by the council and published on the digital planning register. </p>
+    </div>
+    </div>
+
+    {% if data.application_array[data['current_app']].result_flag|length %}
+    <div class="govuk-accordion__section">
+    {% endif %}
+    {% if not data.application_array[data['current_app']].result_flag|length %}
+    <div class="govuk-accordion__section timeline-end">
+    {% endif %}
+    <div class="govuk-accordion__section-header">
+        <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+            {% if data.application_array[data['current_app']].result_flag|length %}
+            Consultation ended <span class="timeline-date">{{ data.application_array[data['current_app']].consultation.end_date | govukDate("truncate") }}</span>
+            {% endif %}
+            {% if not data.application_array[data['current_app']].result_flag|length %}
+            Consultation ends <span class="timeline-date">{{ data.application_array[data['current_app']].consultation.end_date | govukDate("truncate") }}</span>
+            {% endif %}
+        </span>
+        </h2>
+    </div>
+    <div id="accordion-default-content-4" class="govuk-accordion__section-content">
+        <p class="govuk-body"><em>Consultation was extended from 20 Mar 2024 to 26 Mar 2024 on 18 Mar 2024.<br>Reason given: More time needed to include neighbours input.</em></p>
+        <p class="govuk-body">This is the date that the statutory consultation ends for the application.</p>
+        <p class="govuk-body">Once an application has been submitted, there are at least 21 days (excluding bank/public holidays) where the council is not permitted to make a decision. This is the statutory consultation period. It can go on for longer than 21 days, but it cannot be any less.</p>
+        <p class="govuk-body">During this time, comments can be submitted for consideration. Some councils allow comments to be submitted until a decision has been made.</p>
+    </div>
+    </div>
+
+    {% if data.application_array[data['current_app']].result_flag|length %}
+        {% if data.application_array[data['current_app']].result_override|length %}
+            <div class="govuk-accordion__section">
+        {% endif %}
+        {% if not data.application_array[data['current_app']].result_override|length %}
+            <div class="govuk-accordion__section timeline-end">
+        {% endif %}
+        <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                Decision made <span class="timeline-date">{{ data.application_array[data['current_app']].determination_date | govukDate("truncate") }}</span>
+            </span>
+            </h2>
+        </div>
+        <div id="accordion-default-content-3" class="govuk-accordion__section-content">
+            <p class="govuk-body">The date the council made a formal decision to grant or refuse the planning application.</p>
+        </div>
+        </div>
+    {% endif %}
+
+    {% if data.application_array[data['current_app']].result_override|length %}
+    <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                Appeal lodged <span class="timeline-date">{{ data.application_array[data['current_app']].invalidated_at | govukDate("truncate") }}</span>
+            </span>
+            </h2>
+        </div>
+        <div id="accordion-default-content-3" class="govuk-accordion__section-content">
+            <p class="govuk-body">The date an appeal was lodged with the planning inspectorate. At this stage the appeal still needs to be checked that it valid.</p>
+        </div>  
+    </div>
+
+    <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                Appeal valid from <span class="timeline-date">{{ data.application_array[data['current_app']].invalidated_at | govukDate("truncate") }}</span>
+            </span>
+            </h2>
+        </div>
+        <div id="accordion-default-content-3" class="govuk-accordion__section-content">
+            <p class="govuk-body">The date the appeal was confirmed to be valid. This appeal can now be examined in detail by the planning inspectorate.</p>
+        </div>
+    </div>
+
+    <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                Appeal started <span class="timeline-date">{{ data.application_array[data['current_app']].invalidated_at | govukDate("truncate") }}</span>
+            </span>
+            </h2>
+        </div>
+        <div id="accordion-default-content-3" class="govuk-accordion__section-content">
+            <p class="govuk-body">The date the planning inspectorate began considering the appeal. <a href="https://www.gov.uk/guidance/appeals-average-timescales-for-arranging-inquiries-and-hearings">There is guidance available on how long this process is likely to take.</a> </p>
+        </div>
+    </div>
+
+    <div class="govuk-accordion__section timeline-end">
+        <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                Appeal decided <span class="timeline-date">{{ data.application_array[data['current_app']].invalidated_at | govukDate("truncate") }}
+                </span>
+            </span>
+            </h2>
+        </div>
+        <div id="accordion-default-content-3" class="govuk-accordion__section-content">
+            <p class="govuk-body">The date the planning inspectorate published their decision about the appeal. This decision is final.</p>
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+
+<!-- Buttons -->
+{% if data.application_array[data['current_app']].result_flag == "Refused"  %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <a href="/camden/decision-notice-refused" role="button" class="govuk-button govuk-button--secondary blue-button" data-module="govuk-button">View decision notice</a>
+  </div>
+</div>
+{% endif %}
+
+{% if data.application_array[data['current_app']].result_flag == "Granted"  %}
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-full">
+  <a href="/camden/decision-notice-granted" role="button" class="govuk-button govuk-button--secondary blue-button" data-module="govuk-button">View decision notice</a>
+</div>
+</div>
+{% endif %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-full">
+  <a class="govuk-button govuk-button--secondary" href="/camden/app-history" style="text-decoration: none;">View application history</a>
+</div>
+</div>

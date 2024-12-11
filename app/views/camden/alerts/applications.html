@@ -1,0 +1,44 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Sign up for email updates on this application – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-xl">Sign up for email updates on this application</h1>
+
+
+{% include "../../../components/_context-setter.html" %}
+
+
+<form class="form" action="applications-consent-sent" method="post">
+
+  {{ govukInput({
+    label: {
+      text: "Email address"
+    },
+    classes: "govuk-input--width-20",
+    id: "email",
+    name: "email"
+  }) }}
+
+  
+  {% include "../../../components/_alerts-types.html" %}
+  
+  {% include "../../../components/_alerts-frequency.html" %}
+
+  {% include "../../../components/_alerts-signup.html" %}
+  
+
+</form>
+
+
+{% endblock %}

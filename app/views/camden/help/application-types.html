@@ -1,0 +1,83 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Help – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-xl">Application types</h1>
+
+<p class="huge-bottom-margin">The different sorts of applications that are published on the planning register, and what they are for.</p>
+
+
+<div class="govuk-grid-row">   
+  <div class="govuk-grid-column-one-third-from-desktop contents-bar">
+    <h2 class="govuk-heading-l">Contents</h2>
+
+    <p class="list-heading"><a href="#householder-planning-application">Householder planning application</a></p> 
+    <p class="list-heading"><a href="#full-planning-permission-minor">Full planning permission</a></p> 
+      <p class="list-heading sub-list"><a href="#full-planning-permission-minor">Minor and changes of use</a></p>
+      <p class="list-heading sub-list"><a href="#full-planning-permission-major">Major</a></p>
+    <p class="list-heading"><a href="#outline-planning-permission">Outline planning permission</a></p>
+    <p class="list-heading"><a href="#lawful-development-certificate">Lawful development certificate</a></p>
+    <p class="list-heading"><a href="#prior-approval">Prior approval</a></p>
+    <p class="list-heading"><a href="#approval-of-reserved-matters">Approval of reserved matters</a></p>
+    <p class="list-heading"><a href="#non-planning-consents">Non-planning consents</a></p>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    
+    <h2 class="govuk-heading-l" id="householder-planning-application">Householder</h2>
+    <p>Applying for planning permission to make changes to a single house. This does not include works to flats.</p>
+
+    <h2 class="govuk-heading-l" id="full-planning-permission-minor">Full planning permission</h2>
+    <p>This is the most common type of planning application. This type can be a wide range of different proposals. Most applications are covered by two kinds of full planning permission.</p>
+      
+      <h3 class="govuk-heading-m" id="full-planning-permission-minor">Minor and changes of use</h3>
+      <p>Applying for planning permission to:</p>
+      <ul>
+        <li>extend or alter flats or non-residential property</li>
+        <li>change the use of a property</li>
+        <li>get permission to construct small buildings, either residential or non-residential</li>
+      </ul>
+      
+      <h3 class="govuk-heading-m" id="full-planning-permission-major">Major</h3>
+      <p>Applying for planning permission to significantly extend buildings, or to construct large buildings. These can be residential or non-residential.</p>
+    
+    <h2 class="govuk-heading-l" id="outline-planning-permission">Outline planning permission</h2>
+    <p>Assesses whether the nature of a development is acceptable, saving the details for future applications.</p>
+    
+    <h2 class="govuk-heading-l" id="lawful-development-certificate">Lawful development certificate</h2>
+    <p>Applying for a certificate which verifies that something being proposed, or which has already been built, is lawful.</p>
+    <p>For existing buildings or changes to buildings, this certificate can be applied for retrospectively, and there are many ways that something can be deemed lawful in this situation.</p>
+
+    <h2 class="govuk-heading-l" id="prior-approval">Prior approval</h2>
+    <p>This checks whether the proposal is considered 'permitted development' according to national legislation. If the proposal does not receive or is not eligible for prior approval, a planning application needs to be submitted. If the proposal is considered 'permitted development' it can be done without further planning applications.</p>
+    <p>This covers a wide range of changes or additions to buildings, including:</p>
+    <ul>
+      <li>certain changes of use</li>
+      <li>extensions to buildings</li>
+      <li>non-domestic solar panels</li>
+      <li>certain demolitions</li>
+    </ul>
+    <p>You can find out what is eligible for permitted development by reading <a href="https://www.gov.uk/guidance/when-is-permission-required#What-are-permitted-development-rights" target="_blank">the gov.uk guidance on planning.</a></p>
+
+    <h2 class="govuk-heading-l" id="approval-of-reserved-matters">Approval of reserved matters</h2>
+    <p>An application for reserved matters provides details of a development that has been agreed in principle through outline planning permission. The level of details are similar to a full planning application.</p>
+    
+    <h2 class="govuk-heading-l" id="non-planning-consents">Non-planning consents</h2>
+    <p>These kinds of applications cover things such as getting consent for advertisements, making changes to protected trees, or dealing with hazardous substances. The description of these application types will provide more information about them.</p>
+
+
+  </div>
+</div>
+
+{% endblock %}

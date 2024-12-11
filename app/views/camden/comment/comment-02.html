@@ -1,0 +1,111 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Tell us what you think – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+<h1 class="govuk-heading-l">Tell us what you think</h1>
+
+{% set comment_page=true %}
+{% include "../../../components/_context-setter.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <form class="form" action="comment-flow" method="post">
+
+        
+        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+              {{ govukCheckboxes({
+                name: "topics",
+                fieldset: {
+                  legend: {
+                    text: "What topics do you want to comment on?",
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l"
+                  }
+                },
+                hint: {
+                  text: "Help us understand what your comments on this development are about. Select all the topics that apply."
+                },
+                items: [
+                  {
+                    value: "the design, size or height of new buildings or extensions",
+                    text: "Design, size or height of new buildings or extensions",
+                    hint: {
+                      text: "Such as if a building is too tall, or does not fit into the surrounding environment."
+                    }
+                  },
+                  {
+                    value: "the use and function of the proposed development",
+                    text: "Use and function of the proposed development",
+                    hint: {
+                      text: "Such as a proposed business that would not serve the area well, or could cause problems due to its operation."
+                    }
+                  },
+                  {
+                    value: "any impacts on natural light",
+                    text: "Impacts on natural light",
+                    hint: {
+                      text: "Such as a building casting a shadow over residential buildings nearby."
+                    }
+                  },
+                  {
+                    value: "impacts to the privacy of neighbours",
+                    text: "Privacy of neighbours",
+                    hint: {
+                      text: "Such as a large building overlooking houses and gardens next to it, or being too close to prevent viewing into neighbours windows."
+                    }
+                  },
+                  {
+                    value: "impacts on disabled persons' access",
+                    text: "Disabled persons' access",
+                    hint: {
+                      text: "Such as a development not providing accessible access to it's entrance, or removing a previous accessible route."
+                    }
+                  },
+                  {
+                    value: "any noise from new uses",
+                    text: "Noise from new uses",
+                    hint: {
+                      text: "Such as a new business causing excessive noise in a residential area."
+                    }
+                  },
+                  {
+                    value: "impacts to traffic, parking or road safety",
+                    text: "Traffic, parking or road safety",
+                    hint: {
+                      text: "Such as the parking proposed being inadequate, or important parking provisions being removed."
+                    }
+                  },
+                  {
+                    value: "any other things",
+                    text: "Other",
+                    hint: {
+                      text: "Anything that does not fit into other categories."
+                    }
+                  }
+                ]
+              }) }}
+              
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

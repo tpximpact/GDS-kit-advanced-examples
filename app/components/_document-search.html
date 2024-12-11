@@ -1,0 +1,88 @@
+<h2 class="govuk-heading-m">Search documents</h2>
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    {{ govukInput({
+      label: {
+        text: "Document name"
+      },
+      classes: "govuk-!-width-full",
+      id: "description",
+      name: "description"
+    }) }}
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="type">
+        Document type
+      </label>
+      <select class="govuk-select govuk-!-width-full" id="type" name="type">
+
+        <option value="All" selected="">All</option>
+        <option value="Design and Access Statement">Design and Access Statement</option>
+        <option value="Heritage Statement">Heritage Statement</option>
+        <option value="Sunlight and daylight report">Sunlight and daylight report</option>
+        <option value="Noise assessment">Noise assessment</option>
+        <option value="Affordable housing statement">Affordable housing statement</option>
+        <option value="Planning statement">Planning statement</option>
+        <option value="Application details">Application details</option>
+        <option value="Maps and location plans">Maps and location plans</option>
+        <option value="Reports">Reports</option>
+        
+        <optgroup label="Supporting documents">
+          <option value="all-supporting">All supporting documents</option>
+          <option value="transport-supporting">Transport</option>
+          <option value="environment-supporting">Environment and sustainability</option>
+          <option value="evidence-supporting">Evidence</option>
+          <option value="other-supporting">Other</option>
+        </optgroup>
+
+        <optgroup label="Drawings">
+          <option value="all-drawings">All drawings</option>
+          <option value="proposed-drawings">Proposed drawings</option>
+          <option value="existing-drawings">Existing drawings</option>
+          <option value="other-drawings">Other drawings</option>
+        </optgroup>
+      </select>
+    </div>
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    <label class="govuk-label" for="date3">
+      Published date
+    </label>
+    <input class="govuk-input  govuk-input--width-7 inline-block" id="date-3" name="date3" type="date">
+    <p class="inline-block">to</p>
+    <input class="govuk-input  govuk-input--width-7 inline-block" id="date-4" name="date4" type="date">
+  </div>
+  
+</div>
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    {% set sort_type = "alphachrono" %}
+    {% include "../components/_sort-by.html" %}
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    <label class="govuk-label" for="show-number">
+      Documents per page
+    </label>
+    <select class="govuk-select" id="show-number" name="show-number">
+      <option value="10" selected >10</option>
+      <option value="25">25</option>
+      <option value="50">50</option>
+      <option value="all">All documents</option>
+    </select>
+  </div>
+
+</div>
+
+<!-- Search button -->
+<div class="govuk-grid-row grid-row-extra-bottom-margin">
+  <div class="govuk-grid-column-full">
+    <a href="#" role="button" class="govuk-button govuk-button--primary grid-row-extra-bottom-margin" data-module="govuk-button">Search</a>
+  </div>
+</div>

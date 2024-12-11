@@ -1,0 +1,74 @@
+<h2 class="govuk-heading-l" id="people">People</h2>
+<p>If you want to find out more about this application, please contact the case officer first.</p>
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-half-from-desktop grid-row-extra-bottom-margin">
+    <h3 class="govuk-heading-m">Case Officer</h3>
+    <p class="govuk-hint">This is the individual at the council who is currently responsible for assessing this application.</p>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h4 class="govuk-heading-s">Name</h4>
+        <p>John Smith</p>
+      </div>
+    </div>
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h4 class="govuk-heading-s">Email</h4>
+        <p>johnsmith@email.com</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="govuk-grid-column-one-half-from-desktop grid-row-extra-bottom-margin">
+    <h3 class="govuk-heading-m">Applicant's Agent</h3>
+    <p class="govuk-hint">This is who the applicant has engaged to manage this application for them.</p>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h4 class="govuk-heading-s">Name</h4>
+        <p>{{ data.application_array[data['current_app']].agent_first_name }} {{ data.application_array[data['current_app']].agent_last_name }}</p>
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h4 class="govuk-heading-s">Address</h4>
+        <p>19 Road Street, Placeton, Cityville, PO5 7CO</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-half-from-desktop grid-row-extra-bottom-margin">
+    <h3 class="govuk-heading-m">Applicant</h3>
+    <p class="govuk-hint">This is who has submitted this application.</p>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h4 class="govuk-heading-s">Name</h4>
+        <p>{{ data.application_array[data['current_app']].applicant_first_name }} {{ data.application_array[data['current_app']].applicant_last_name }}</p>
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h4 class="govuk-heading-s">Type</h4>
+        <p>Company</p>
+      </div>
+    </div>
+    
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h4 class="govuk-heading-s">Address</h4>
+        <p>19 Road Street, Placeton, Cityville, PO5 7CO</p>
+      </div>
+    </div>
+  </div>
+  
+</div>

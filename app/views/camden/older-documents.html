@@ -1,0 +1,42 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Documents for {{ data.application_array[data['current_app']].reference }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% include "../../components/_context-setter.html" %}
+
+<h1 class="govuk-heading-l">Document versions</h1>
+<p>These are the versions of a document that has been updated, from most recent to oldest.</p>
+
+<hr class="govuk-section-break govuk-section-break--visible grid-row-extra-bottom-margin">
+
+
+<div class="govuk-grid-row grid-row-extra-bottom-margin file-table">
+  {% set filename = "Design and access statement - final.PDF" %}
+  {% include "../../components/_file.html" %}
+  
+  {% set filename = "Design and access statement - version 3.PDF" %}
+  {% include "../../components/_file.html" %}
+
+  {% set filename = "Design and access statement - version 2.PDF" %}
+  {% include "../../components/_file.html" %}
+
+  {% set filename = "Design and access statement - version 1.PDF" %}
+  {% include "../../components/_file.html" %}
+
+  {% set filename = "Design and access statement.PDF" %}
+  {% include "../../components/_file.html" %}
+
+</div>
+
+{% endblock %}

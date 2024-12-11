@@ -1,0 +1,24 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+You have signed up for email alerts on your search – {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+{{ govukPanel({
+  titleText: "Your subscription is confirmed"
+}) }}
+
+<h1 class="govuk-heading-l">You have signed up for email alerts on the following search</h1>
+
+<ul class="govuk-body">
+  <li>Application reference: Any</li>
+  <li>Address: Any</li>
+  <li>Postcode: NW1</li>
+  <li>Description: Any</li>
+  <li>Application type: Any</li>
+</ul>
+
+
+{% endblock %}

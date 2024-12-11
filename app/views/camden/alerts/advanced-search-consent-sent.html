@@ -1,0 +1,23 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+We have sent you an email to confirm your subscription – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-xl">We have sent you an email to confirm your subscription</h1>
+
+<p>Please confirm your consent for us to send you emails by clicking the link in the email.</p>
+
+<a href="/camden/list-filters" role="button" class="govuk-button govuk-button--secondary grid-row-extra-bottom-margin" data-module="govuk-button">Go back to the search page</a>
+
+
+{% endblock %}

@@ -1,0 +1,331 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your answers – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% set comment_page=true %}
+{% include "../../../components/_context-setter.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">
+        Check what you have written before sending your comment.
+      </h1>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "How do you feel about this development?"
+            },
+            value: {
+              text: data['feeling']
+            },
+            actions: {
+              items: [
+                {
+                  href: "comment-01",
+                  text: "Change",
+                  visuallyHiddenText: "feeling on this development"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "What topics do you want to comment on?"
+            },
+            value: {
+              text: data['topics']
+            },
+            actions: {
+              items: [
+                {
+                  href: "comment-02",
+                  text: "Change",
+                  visuallyHiddenText: "topics you want to comment on"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Comment on the design, size or height of new buildings or extensions"
+            },
+            value: {
+              text: data['comment-1']
+            },
+            actions: {
+              items: [
+                {
+                  href: "comment-03",
+                  text: "Change",
+                  visuallyHiddenText: "comment on the design, size or height of new buildings or extensions"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Comment on the use and function of the proposed development"
+            },
+            value: {
+              text: data['comment-2']
+            },
+            actions: {
+              items: [
+                {
+                  href: "comment-04",
+                  text: "Change",
+                  visuallyHiddenText: "comment on the use and function of the proposed development"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Comment on any impacts on natural light"
+            },
+            value: {
+              text: data['comment-3']
+            },
+            actions: {
+              items: [
+                {
+                  href: "comment-05",
+                  text: "Change",
+                  visuallyHiddenText: "comment on any impacts on natural light"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Comment on any impacts on privacy of neighbours"
+            },
+            value: {
+              text: data['comment-4']
+            },
+            actions: {
+              items: [
+                {
+                  href: "comment-06",
+                  text: "Change",
+                  visuallyHiddenText: "comment on any impacts on privacy of neighbours"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Comment on disabled access"
+            },
+            value: {
+              text: data['comment-5']
+            },
+            actions: {
+              items: [
+                {
+                  href: "comment-07",
+                  text: "Change",
+                  visuallyHiddenText: "comment on disabled access"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Comment on any noise from new uses"
+            },
+            value: {
+              text: data['comment-6']
+            },
+            actions: {
+              items: [
+                {
+                  href: "comment-08",
+                  text: "Change",
+                  visuallyHiddenText: "comment on any noise from new uses"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Comment on traffic, parking or road safety"
+            },
+            value: {
+              text: data['comment-7']
+            },
+            actions: {
+              items: [
+                {
+                  href: "comment-09",
+                  text: "Change",
+                  visuallyHiddenText: "comment on traffic, parking or road safety"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Other comments"
+            },
+            value: {
+              text: data['comment-8']
+            },
+            actions: {
+              items: [
+                {
+                  href: "comment-10",
+                  text: "Change",
+                  visuallyHiddenText: "other comments"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+
+      <h1 class="govuk-heading-l">
+        Check your details before sending your comment
+      </h1>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: data['name']
+            },
+            actions: {
+              items: [
+                {
+                  href: "comment-11",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Address"
+            },
+            value: {
+              text: data['address']
+            },
+            actions: {
+              items: [
+                {
+                  href: "comment-11",
+                  text: "Change",
+                  visuallyHiddenText: "address"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Postcode"
+            },
+            value: {
+              text: data['postcode']
+            },
+            actions: {
+              items: [
+                {
+                  href: "comment-11",
+                  text: "Change",
+                  visuallyHiddenText: "postcode"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              text: data['email']
+            },
+            actions: {
+              items: [
+                {
+                  href: "comment-11",
+                  text: "Change",
+                  visuallyHiddenText: "email address"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Telephone number"
+            },
+            value: {
+              text: data['telephone']
+            },
+            actions: {
+              items: [
+                {
+                  href: "comment-11",
+                  text: "Change",
+                  visuallyHiddenText: "telephone number"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+
+
+
+
+      <h2 class="govuk-heading-m">
+        Now send your comment
+      </h2>
+
+      <p class="govuk-body"> By submitting this comment you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+      
+      {% include "../../../components/_handle-your-data.html" %}
+
+      <form action="confirmation" method="post" novalidate>
+
+        {{ govukButton({
+          text: "Accept and send"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

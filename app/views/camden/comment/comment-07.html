@@ -1,0 +1,46 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Tell us what you think – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+<h1 class="govuk-heading-l">Tell us what you think</h1>
+
+{% set comment_page=true %}
+{% include "../../../components/_context-setter.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="check-answers" method="post">
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--m" for="comment-5">
+              Comment on impacts on disabled persons' access
+            </label>
+          </h1>
+          <div id="comment-{{ data['questionNumber'] }}-hint" class="govuk-hint">
+              <p class="govuk-hint">Such as a development not providing accessible access to it's entrance, or removing a previous accessible route.</p>
+          </div>
+          <textarea class="govuk-textarea" id="comment-5" name="comment-5" rows="5" ></textarea>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

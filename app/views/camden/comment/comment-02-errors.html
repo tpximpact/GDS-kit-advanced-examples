@@ -1,0 +1,91 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Tell us what you think – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+<h1 class="govuk-heading-l">Tell us what you think</h1>
+
+{% set comment_page=true %}
+{% include "../../../components/_context-setter.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <form class="form" action="comment-flow" method="post">
+
+        
+        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+              {{ govukCheckboxes({
+                name: "topics",
+                fieldset: {
+                  legend: {
+                    text: "What topics do you want to comment on?",
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l"
+                  }
+                },
+                errorMessage: {
+                  text: "Select at least one topic to comment on"
+                },
+                hint: {
+                  text: "Help us understand what your comments on this development are about. Select all the topics that apply."
+                },
+                items: [
+                  {
+                    value: "Design, size or height of new buildings or extensions",
+                    text: "Design, size or height of new buildings or extensions"
+                  },
+                  {
+                    value: "Use and function of the proposed development",
+                    text: "Use and function of the proposed development"
+                  },
+                  {
+                    value: "Impacts on natural light",
+                    text: "Impacts on natural light"
+                  },
+                  {
+                    value: "Privacy of neighbours",
+                    text: "Privacy of neighbours"
+                  },
+                  {
+                    value: "Disabled persons' access",
+                    text: "Disabled persons' access"
+                  },
+                  {
+                    value: "Noise from new uses",
+                    text: "Noise from new uses"
+                  },
+                  {
+                    value: "Traffic, parking or road safety",
+                    text: "Traffic, parking or road safety"
+                  },
+                  {
+                    value: "Other",
+                    text: "Other"
+                  }
+                ]
+              }) }}
+
+              
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

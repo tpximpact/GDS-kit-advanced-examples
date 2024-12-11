@@ -1,0 +1,304 @@
+{# For guidance on how to use layouts see:
+https://prototype-kit.service.gov.uk/docs/how-to-use-layouts #} {% extends
+"govuk-prototype-kit/layouts/govuk-branded.njk" %} {% block stylesheets %} {{
+super() }}
+<!-- maplibre -->
+<script src='https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js'></script>
+<link rel='stylesheet' href='https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css' />
+{% endblock %} 
+
+{% block header %}
+
+<!--Cookies Banner-->
+{% include "../../components/_cookies-banner.html" %}
+
+<!-- Header -->
+{% include "../../components/_header.html" %}
+{% include "../../components/_beta-banner.html" %}
+
+
+{% endblock %}
+
+{% block footer %}
+<!-- Footer -->
+{% include "../../components/_footer.html" %}
+{% endblock %} 
+
+{% block pageScripts %} 
+{{ super() }}
+{% if mapToggle == "maplibre" %}
+  <!-- maplibre -->
+  <script>
+
+    const bounds = [
+          [-6, 49.5], // Southwest coordinates
+          [2, 57] // Northeast coordinates
+      ];
+
+    {% if mapFilter == "layers" %}
+      const map = new maplibregl.Map({
+          container: 'map',
+          style:
+              'https://api.maptiler.com/maps/streets/style.json?key=t0dgROEqWyQJnBneYmmK',
+          zoom: 15,
+          center: [-0.15685909867286713, 51.54386742058888],
+          maxBounds: bounds,
+          pitch:0,
+          antialias: true
+      });
+    {% elseif mapFilter == "search" %}
+      const map = new maplibregl.Map({
+        container: 'map',
+        style:
+            'https://api.maptiler.com/maps/streets/style.json?key=t0dgROEqWyQJnBneYmmK',
+        zoom: 12.5,
+        center: [-0.16595909867286713, 51.54386742058888],
+        maxBounds: bounds,
+        pitch:0,
+        antialias: true
+      });
+    {% else %}
+      const map = new maplibregl.Map({
+          container: 'map',
+          style:
+              'https://api.maptiler.com/maps/streets/style.json?key=t0dgROEqWyQJnBneYmmK',
+          zoom: 12,
+          center: [-0.15685909867286713, 51.54386742058888],
+          maxBounds: bounds,
+          pitch:0,
+          antialias: true
+      });
+    {% endif %} 
+
+    // Toggling layers with radio buttons
+    var radioElements = document.getElementsByClassName('constraint-input');
+    var radios = document.querySelectorAll('input[type=radio][name="constraint"]');
+    var activeLayer = "none";
+    function toggleLayers(newLayer) {
+      if (newLayer !== activeLayer) {
+        map.removeLayer(activeLayer);
+        map.removeLayer(activeLayer + "Lines");
+        
+        // Add layer fills
+        map.addLayer({
+          'id': newLayer,
+          'type': 'fill',
+          'source': newLayer,
+          'layout': {},
+          'paint': {
+              'fill-color': '#D8760D',
+              'fill-opacity': 0.2
+          }
+        });
+        // Add layer lines
+        map.addLayer({
+          'id': newLayer+'Lines',
+          'type': 'line',
+          'source': newLayer,
+          'layout': {},
+          'paint': {
+              'line-color': '#D8760D',
+              'line-width': 3
+          }
+        });
+        activeLayer = newLayer;
+      };
+    };
+    radios.forEach(radio => radio.addEventListener('change', () =>  toggleLayers(radio.value)));
+
+    // Toggle applications with checkbox
+    var appToggler = document.getElementById("Show applications");
+    function toggleApps(appsValue) {
+      if (appsValue == true) {        
+        // Add applications fills
+        map.addLayer({
+          'id': 'locations',
+          'type': 'fill',
+          'source': 'locations',
+          'layout': {},
+          'paint': {
+              'fill-color': '#003078',
+              'fill-opacity': 0.2
+          }
+        });
+
+        // Add applications lines
+        map.addLayer({
+          'id': 'locationLines',
+          'type': 'line',
+          'source': 'locations',
+          'layout': {},
+          'paint': {
+              'line-color': '#003078',
+              'line-width': 3
+          }
+        });
+      }
+      else {
+        map.removeLayer("locations");
+        map.removeLayer("locationLines");
+      };
+    };
+    appToggler.addEventListener('change', () =>  toggleApps(appToggler.checked))
+
+  
+
+    // Main map load
+    map.on('load', () => {
+      map.addControl(new maplibregl.FullscreenControl(), 'top-left');
+      // Add zoom and rotation controls to the map.
+      map.addControl(new maplibregl.NavigationControl(), 'top-left');
+      // Initialize the geolocate control.
+      map.addControl(new maplibregl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+      },
+      trackUserLocation: true
+      }), 'top-left');
+      map.addControl(new maplibregl.ScaleControl(), 'bottom-left');
+
+      // Add polygon sources
+      {% include "../../components/_data-title-boundaries-filtered.json" %}
+      {% include "../../components/_data-wards.json" %}
+      {% include "../../components/_data-parks.json" %}
+      {% include "../../components/_data-article4.json" %}
+
+      // Add applications fills
+      map.addLayer({
+        'id': 'locations',
+        'type': 'fill',
+        'source': 'locations',
+        'layout': {},
+        'paint': {
+            'fill-color': '#003078',
+            'fill-opacity': 0.2
+        }
+      });
+
+      // Add applications lines
+      map.addLayer({
+        'id': 'locationLines',
+        'type': 'line',
+        'source': 'locations',
+        'layout': {},
+        'paint': {
+            'line-color': '#003078',
+            'line-width': 3
+        }
+      });
+
+      // Remove highlight when clicking off layer
+      map.on('click', (e) => {        
+        var elements = document.getElementsByClassName('card-active');
+        for (var i = 0; i < elements.length; i++) {
+          elements[i].classList.remove('card-active');
+        };
+      });
+
+      var description = "";
+      function descriptionBuilder(feature) {
+        description = description.concat(feature.properties.name);
+      };
+
+      // When a click event occurs on a feature in the locations layer, open a popup at the
+      // location of the feature, with description HTML from its properties.
+      map.on('click', 'locations', (e) => {
+        if (activeLayer == "none") {
+          const locDescription = e.features[0].properties.name;
+          const bops_id = e.features[0].properties.bops_id;
+
+          new maplibregl.Popup()
+              .setLngLat(e.lngLat)
+              .setHTML(locDescription)
+              .addTo(map);
+          
+          var elements = document.getElementsByClassName('card-active');
+          for (var i = 0; i < elements.length; i++) {
+            elements[i].classList.remove('card-active');
+          }    
+
+          var activeApp = document.getElementById(bops_id);
+          activeApp.classList.add("card-active");
+        }
+        else {
+          description = "";
+          descriptionBuilder(e.features[0]);
+          const bops_id = e.features[0].properties.bops_id;
+          
+          var elements = document.getElementsByClassName('card-active');
+          for (var i = 0; i < elements.length; i++) {
+            elements[i].classList.remove('card-active');
+          }    
+
+          var activeApp = document.getElementById(bops_id);
+          activeApp.classList.add("card-active");
+        }
+      });
+
+      // When a click event occurs on a feature in the wards layer, open a popup at the
+      // location of the feature, with description HTML from its properties.
+      function popup(e) {
+        if (!appToggler.checked) {
+          description = "";
+        }
+        e.features.forEach(descriptionBuilder);
+
+        new maplibregl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(description)
+            .addTo(map);
+      };
+      map.on('click', 'wards', (e) => popup(e));
+      map.on('click', 'article4', (e) => popup(e));
+      map.on('click', 'parks', (e) => popup(e));
+      
+
+      // Change the cursor to a pointer when the mouse is over the active layer.
+      function pointerOn() {map.getCanvas().style.cursor = 'pointer'};
+      map.on('mouseenter', 'wards', () => { pointerOn() });
+      map.on('mouseenter', 'article4', () => { pointerOn() });
+      map.on('mouseenter', 'parks', () => { pointerOn() });
+      map.on('mouseenter', 'locations', () => { pointerOn() });
+      // Change it back to a pointer when it leaves.
+      function pointerOff() {map.getCanvas().style.cursor = '';};
+      map.on('mouseleave', 'wards', () => { pointerOff() });
+      map.on('mouseleave', 'article4', () => { pointerOff() });
+      map.on('mouseleave', 'parks', () => { pointerOff() });
+      map.on('mouseleave', 'locations', () => { pointerOff() });
+
+    });
+
+    // Change button state when map moves, on pages where area selection has happened already
+    function changeButtonState() {
+      if (document.getElementById('changeOnMoveButton')) {
+        document.getElementById('changeOnMoveButton').classList.add('blue-button');
+        document.getElementById('changeOnMoveButton').innerHTML = 'Show only for this area';
+        document.getElementById('changeOnMoveButton').removeAttribute("disabled")
+      }
+    }
+    map.on('moveend', () => { changeButtonState(); })
+
+  </script>
+
+{% else %}
+
+  <!-- OSL map -->
+  <script src="https://cdn.jsdelivr.net/npm/@opensystemslab/map@0.8.3?v=0.8.3"></script>
+  <script>
+    const myMap = document.querySelector("my-map");
+
+    myMap.addEventListener("ready", (event) => {
+      console.log("map ready");
+    });
+
+    myMap.addEventListener("areaChange", ({ detail: area }) => {
+      console.debug({ area });
+    });
+    myMap.addEventListener("geojsonChange", ({ detail: geojson }) => {
+      console.debug({ geojson });
+    });
+  </script>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,405 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  DPR components reference page
+{% endblock %}
+
+
+{% block header %}
+<style>
+  .comphr {
+    margin:3rem 0;
+    border-top:2px solid #1d70b8;
+  }
+  .comph {
+    color:#1d70b8;
+  }
+  *:target {
+    margin-left:-2rem;
+  }
+  *:target::before {
+    content:">>";
+    position:relative;
+    left:-25px;
+  }
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+<h1>Design components</h1>
+<p>A list of all the components used in the design prototype for the Digital Planning Register. This page is for reference and documentation only.</p>
+<p>If you need to clear session data to get all components back to their default stte, you can <a href="./manage-prototype/clear-data">use the clearing data page</a>, then reload this page.</p>
+
+<h2>Contents</h2>
+<ul>
+  <li><a href="#cookies-banner">Cookies banner</a></li>
+  <li><a href="#header">Header</a></li>
+  <li><a href="#landing-header">Landing page header</a></li>
+  <li><a href="#beta-banner">Beta banner</a></li>
+  <li><a href="#footer">Footer</a></li>
+  <li><a href="#pagination">Pagination</a></li>
+  <li><a href="#sort-byn">Sort by</a></li>
+  <li><a href="#main-search">Main search</a></li>
+  <li><a href="#advanced-search">Advanced search</a></li>
+  <li><a href="#document-search">Document search</a></li>
+  <li><a href="#comment-search">Comment search</a></li>
+  <li><a href="#no-app-matches">No application search matches</a></li>
+  <li><a href="#application-card">Application card</a></li>
+  <li><a href="#context-setter">Context setter</a></li>
+  <li><a href="#app-hero">Application hero</a></li>
+  <li><a href="#app-contents">Application contents sidebar</a></li>
+  <li><a href="#app-progress">Application progress info</a></li>
+  <li><a href="#app-description">Application description</a></li>
+  <li><a href="#app-constraints">Application constraints</a></li>
+  <li><a href="#app-impact">Application impact</a></li>
+  <li><a href="#app-people">Application people</a></li>
+  <li><a href="#file">File</a></li>
+  <li><a href="#image-gallery">Image gallery</a></li>
+  <li><a href="#specialist-comments">Specialist comments</a></li>
+  <li><a href="#public-comments">Public comments</a></li>
+  <li><a href="#show-more">Show more</a></li>
+  <li><a href="#decision-notice">Decision notice</a></li>
+  <li><a href="#app-history-entry">Application history entry</a></li>
+  <li><a href="#dsn-entry">DSN entry</a></li>
+  <li><a href="#alerts-frequency">Alerts frequency</a></li>
+  <li><a href="#alerts-signups">Alerts signups</a></li>
+  <li><a href="#alerts-area">Alerts area</a></li>
+  <li><a href="#alerts-types">Alerts types</a></li>
+  <li><a href="#handling-your-data">Handling your data</a></li>
+</ul>
+<hr class="comphr">
+
+<h2 class="comph" id="cookies-banner">Cookies banner</h2>
+<p>Uses <a href="https://design-system.service.gov.uk/components/cookie-banner/">gov.uk cookie banner component</a></p>
+<p><em>If you can't see the banner here it's because it depends on globally set session data. Use <a href="./manage-prototype/clear-data">this page</a> to clear your session data then reload this page.</em></p>
+<h3 class="comph">The component:</h3>
+  {% include "../components/_cookies-banner.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="header">Header</h2>
+<p>Uses <a href="https://design-system.service.gov.uk/components/header/">gov.uk header component</a> and <a href="https://design-system.service.gov.uk/components/service-navigation/">gov.uk service navigation component</a> as bases, but the logo is specific to the active council, it has a dropdown for selecting the council, and the style is slightly altered from the default navigation to more closely follow that shown on the <a href="https://design-system.service.gov.uk">design-system.service.gov.uk</a> site itself.</p>
+<p>The active page underline is only shown on pages that directly align with the navigation elements. So no underline is shown on an application detail page, for example.</p>
+<p>A different header is used on the landing page, where no council has been selected yet.</p>
+<h3 class="comph">The component:</h3>
+  {% include "../components/_header.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="landing-header">Landing page header</h2>
+<p>Uses <a href="https://design-system.service.gov.uk/components/header/">gov.uk header component</a> and <a href="https://design-system.service.gov.uk/components/service-navigation/">gov.uk service navigation component</a> as bases, but without a logo, and it has a dropdown for selecting the council rather than any navigation elements.</p>
+<p>This is only used on the landing page, where no council has been selected yet.</p>
+<h3 class="comph">The component:</h3>
+  {% include "../components/_landing-header.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="beta-banner">Beta banner</h2>
+<p>Uses <a href="https://design-system.service.gov.uk/components/phase-banner/">gov.uk phase banner component</a>.</p>
+<h3 class="comph">The component:</h3>
+  {% include "../components/_beta-banner.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="footer">Footer</h2>
+<p>Uses <a href="https://design-system.service.gov.uk/components/footer/">gov.uk footer component</a> as a base, but uses the ODP logo and removes the crown copyright logo.</p>
+<h3 class="comph">The component:</h3>
+  {% include "../components/_footer.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="pagination">Pagination</h2>
+<p>Uses <a href="https://design-system.service.gov.uk/components/pagination/">gov.uk pagination component</a>.</p>
+<h3 class="comph">The component:</h3>
+{% include "../components/_pagination.html" %}
+  
+<hr class="comphr">
+
+<h2 class="comph" id="sort-by">Sort by</h2>
+<p>Uses various <a href="https://design-system.service.gov.uk/components/select/">GDS select components</a>.</p>
+<p>Has variants for the different kinds of sorting that are available in different contexts.</p>
+<h3 class="comph">The component:</h3>
+<h4 class="comph">VARIANT: Default</h4>
+{% set filename = "Image.JPG" %}
+{% include "../components/_sort-by.html" %}
+
+<h4 class="comph">VARIANT: Alphanumeric and chronological</h4>
+{% set sort_type = "alphachrono" %}
+{% include "../components/_sort-by.html" %}
+
+<h4 class="comph">VARIANT: Multifield</h4>
+{% set sort_type = "multifield" %}
+{% include "../components/_sort-by.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="main-search">Main search</h2>
+<p>Uses <a href="https://design-system.service.gov.uk/components/text-input/">gov.uk text input component</a> with search icon used in the header of <a href="https://design-system.service.gov.uk/">https://design-system.service.gov.uk</a> (though not included in the design system) and the <a href="https://design-system.service.gov.uk/components/button/">gov.uk button group component</a>.</p>
+<h3 class="comph">The component:</h3>
+  {% include "../components/_main-search.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="advanced-search">Advanced search</h2>
+<p>Uses various <a href="https://design-system.service.gov.uk/components/">gov.uk components</a>.</p>
+<p>Important to note that the date fields do not follow GDS, as the context of GDS is usually for filling in forms, where dates are entered in longer formats. The native date field of the browser is used instead.</p>
+<h3 class="comph">The component:</h3>
+  {% include "../components/_main-filters.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="document-search">Document search</h2>
+<p>Uses various <a href="https://design-system.service.gov.uk/components/">gov.uk components</a>.</p>
+<p>Important to note that the date fields do not follow GDS, as the context of GDS is usually for filling in forms, where dates are entered in longer formats. The native date field of the browser is used instead.</p>
+<p>Used only to search and sort documents.</p>
+<h3 class="comph">The component:</h3>
+  {% include "../components/_document-search.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="comment-search">Comment search</h2>
+<p>Uses various <a href="https://design-system.service.gov.uk/components/">gov.uk components</a>.</p>
+<p>Important to note that the date fields do not follow GDS, as the context of GDS is usually for filling in forms, where dates are entered in longer formats. The native date field of the browser is used instead.</p>
+<p>Used only to search and sort comments, but is the same for specialist or public comments.</p>
+<h3 class="comph">The component:</h3>
+  {% include "../components/_comment-search.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="no-app-matches">No application search matches</h2>
+<p>The content to be shown when an application search comes back with no results.</p>
+<h3 class="comph">The component:</h3>
+  {% include "../components/_no-matches.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="application-card">Application card</h2>
+<p>For displaying the application on the main listing page and on search results pages.</p>
+<p>Decision date and decision fields will only be shown if a decision hs been made.</p>
+<p>Description should be shortened to approximately the height of the map, if it's longer.</p>
+<p>The map is not interactive to avoid interfering with scrolling behaviour.</p>
+<p>Note that the blue button is not from GDS, but uses GDS colours. This is added to allow a primary, secondary and tertiary button hierachy - with blue pushing the GDS grey secondary style into a tertiary position. This also avoids the problem of grey buttons not being very visible against white or grey, without making all buttons primary buttons.</p>
+<h3 class="comph">The component:</h3>
+{% for application_id, application_data in data.application_array %}
+  {% if (loop.index <= 1) %}
+    {% include "../components/_application-card.html" %}
+  {% endif %}
+{% endfor %}
+<hr class="comphr">
+
+<h2 class="comph" id="context-setter">Context setter</h2>
+<p>Used at the top of many pages to ensure the user knows they are still looking at the corrct application.</p>
+<p>On each page in the comment flow it has an additional line of text about the importance of commenting, which does not appear elsewhere.</p>
+<h3 class="comph">The component:</h3>
+{% set comment_page=true %}
+{% include "../components/_context-setter.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="app-hero">Application hero</h2>
+<p>Displayed at the top of application detail pages. Uses the OSL map, in an interactive state, and various <a href="https://design-system.service.gov.uk/components/">gov.uk components</a>, including the <a href="https://design-system.service.gov.uk/components/tag/">tag component</a>, which has colours dependent on the values of status and decision fields.</p>
+<h3 class="comph">The component:</h3>
+{% include "../components/_app-hero.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="app-contents">Application contents sidebar</h2>
+<p>Implementation note: This component is always intended to be a one-third width column, so that is included in the component itself.</p>
+<p>Dynamic contents sidebar which includes variations for different states of an application. Uses sticky positioning so it doesn't get lost when the user scrolls down. Based on <a href="https://components.publishing.service.gov.uk/component-guide/contents_list">the Gov.uk contents list component</a>, but not actually included in the GDS components list.</p>
+<p><em>The dynamic nature of this component is dependent on the last application viewed, so if you can't see elements of it here, try visiting <a href="./camden/application-details?current_app=06">this application</a> or <a href="./camden/application-details?current_app=03">this application</a> then reloading this page. This is also fixed to the screen bottom on mobile, so may not appear here if the screen width is too small.</em></p>
+<h3 class="comph">The component:</h3>
+<div class="govuk-grid-row">
+{% include "../components/_app-contents.html" %}
+</div>
+<hr class="comphr">
+  
+<h2 class="comph" id="app-progress">Application progress info</h2>
+<p><em>WIP - mobile design for this is not sorted yet!</em></p>
+<p>Used on the application page to display the key dates related to an application. A heavy customisation of the <a href="https://design-system.service.gov.uk/components/accordion/">gov.uk accordion component</a>.</p>
+<p>Includes the buttons which may or may not appear depending on the application status.</p>
+<p><em>The dynamic nature of this component is dependent on the last application viewed, so if you can't see elements of it here, try visiting <a href="./camden/application-details?current_app=06">this application</a> or <a href="./camden/application-details?current_app=03">this application</a> then reloading this page.</em></p>
+<h3 class="comph">The component:</h3>
+{% include "../components/_progress.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="app-description">Application description</h2>
+<p>Used on the application page to describe the application, includes dynamic sections which only show for DSNs.</p>
+<p><em>The dynamic nature of this component is dependent on the last application viewed, so if you can't see elements of it here, try visiting <a href="./camden/application-details?current_app=06">this application</a> or <a href="./camden/application-details?current_app=03">this application</a> then reloading this page.</em></p>
+<h3 class="comph">The component:</h3>
+{% include "../components/_app-description.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="app-constraints">Application constraints</h2>
+<p>Displays the constraints that apply to an application. Will use the OSL map paired with data from the planning data API.</p>
+<p>Utilises the <a href="https://design-system.service.gov.uk/components/accordion/">GDS accordion component</a>.</p>
+<p><em>The dynamic nature of this component is dependent on the last application viewed, so if you can't see elements of it here, try visiting <a href="./camden/application-details?current_app=03">this application</a> then reloading this page.</em></p>
+<h3 class="comph">The component:</h3>
+{% include "../components/_app-constraints.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="app-impact">Application impact</h2>
+<p>Used on the application page to display the impact of the application, but only for DSNs.</p>
+<p><em>The dynamic nature of this component is dependent on the last application viewed, so if you can't it here, try visiting <a href="./camden/application-details?current_app=06">this application</a> or <a href="./camden/application-details?current_app=03">this application</a> then reloading this page.</em></p>
+<h3 class="comph">The component:</h3>
+{% include "../components/_app-impact.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="app-people">Application people</h2>
+<p>Used on the application page to display the people related to the application.</p>
+<h3 class="comph">The component:</h3>
+{% include "../components/_app-people.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="image-gallery">Image gallery</h2>
+<p>Used on the application page to display images for the application, but only for DSNs.</p>
+<p>This uses CSS and janky html to create a working lightbox gallery without javascript, which we might be able to resuse in the final version, but it would need lot of accessibility and cross-browser testing.</p>
+<p><em>The dynamic nature of this component is dependent on the last application viewed, so if you can't it here, try visiting <a href="./camden/application-details?current_app=06">this application</a> or <a href="./camden/application-details?current_app=03">this application</a> then reloading this page.</em></p>
+<h3 class="comph">The component:</h3>
+{% include "../components/_image-gallery.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="file">File</h2>
+<p>Used to display basic details of, and link to, files attached to applications or comments. The icon shown here is a fallback, and these should show a preivew of the file when these are provided. This is based on the <a href="https://components.publishing.service.gov.uk/component-guide/attachment">Gov.uk attachment component</a></p>
+<p>Based on <a href="https://www.gov.uk/government/publications/rights-to-light"></a>how documents are displayed on gov.uk pages</a>, though this is not included in the official GDS components.</p>
+<p>There are three variants of this component, and all can have the document name set.</p>
+<h3 class="comph">The component:</h3>
+
+<h4 class="comph">VARIANT: Default</h4>
+<div class="govuk-grid-row">
+  {% set filename = "Document.PDF" %}
+  {% include "../components/_file.html" %}
+</div>
+
+<h4 class="comph">VARIANT: Application form</h4>
+<div class="govuk-grid-row">
+  {% set file_type = "application-form" %}
+  {% include "../components/_file.html" %}
+</div>
+
+<h4 class="comph">VARIANT: JPG</h4>
+<div class="govuk-grid-row">
+  {% set file_type = "jpg" %}
+  {% set filename = "Image.JPG" %}
+  {% include "../components/_file.html" %}
+</div>
+
+<hr class="comphr">
+
+<h2 class="comph" id="specialist-comments">Specialist comments</h2>
+<p>Used to display comments submitted by specialists. Includes the file component when files are attached to a comment.</p>
+<p>There are three variants of this component to show different ways the comments may be shown based on length and content.</p>
+<p>There are also two variants which are used when showing the comments as part of a thread from the same specialist who was consulted. These are Thread 1 and Thread 2</p>
+<h3 class="comph">The component:</h3>
+<h4 class="comph">VARIANT: Default</h4>
+{% include "../components/_specialist-comments.html" %}
+
+<h4 class="comph">VARIANT: Short</h4>
+{% set spec_comment_type="short" %}
+{% include "../components/_specialist-comments.html" %}
+
+<h4 class="comph">VARIANT: Thread</h4>
+{% set spec_comment_type="thread" %}
+{% include "../components/_specialist-comments.html" %}
+
+<h4 class="comph">VARIANT: Thread 1</h4>
+{% set spec_comment_type="thread1" %}
+{% include "../components/_specialist-comments.html" %}
+
+<h4 class="comph">VARIANT: Thread 2</h4>
+{% set spec_comment_type="thread2" %}
+{% include "../components/_specialist-comments.html" %}
+
+<hr class="comphr">
+
+<h2 class="comph" id="public-comments">Public comments</h2>
+<p>Used to display comments submitted by specialists.</p>
+<p>There are three variants of this component, to show different ways the comments may be shown based on length and content.</p>
+<p>The comment number can be set for all variants.</p>
+<h3 class="comph">The component:</h3>
+  <h4 class="comph">VARIANT: Default</h4>
+  {% set comment_number = "1" %}
+  {% include "../components/_public-comments.html" %}
+
+  <h4 class="comph">VARIANT: Long 1</h4>
+  {% set comment_number = "2" %}
+  {% set comment_type="long1" %}
+  {% include "../components/_public-comments.html" %}
+
+  <h4 class="comph">VARIANT: Long 2</h4>
+  {% set comment_number = "3" %}
+  {% set comment_type="long2" %}
+  {% include "../components/_public-comments.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="show-more">Show more</h2>
+<p>Used wherever there is a list of items which is resctricted to a set number shown, and the total number available is greater than that shown. This includes comments and documents.</p>
+<h3 class="comph">The component:</h3>
+{% set shown_number = "6" %}
+{% set show_more_of = "documents" %}
+{% set show_more_link = "all-documents" %}
+{% include "../components/_show-more.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="decision-notice">Decision notice</h2>
+<p>Used to display the decision notice as it's published by BOPS, without relying on PDF. Had a refused and granted variant. The content is GDS compliant, but is wrapped in a border to imply it's a 'document'.</p>
+<h3 class="comph">The component:</h3>
+
+<h4 class="comph">VARIANT: Refused</h4>
+{% include "../components/_decision-notice.html" %}
+
+<h4 class="comph">VARIANT: Granted</h4>
+{% set decision = "granted" %}
+{% include "../components/_decision-notice.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="app-history-entry">Application history entry</h2>
+<p>For showing the events on any given date in the application's history. GDS text styles, but the border on the left is our touch.</p>
+<p>Accepts an array to show and hide the different possible sections that can be shown, and the date can be changed.</p>
+<h3 class="comph">The component:</h3>
+{% set history_date="01 Feb 2024" %}
+{% set history_array=["status","decision","content","comments","documents","created"] %}
+{% include "../components/_history-entry.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="dsn-entry">DSN entry</h2>
+<p>For displaying DSN applictions on the DSN page.</p>
+<h3 class="comph">The component:</h3>
+<div class="govuk-grid-row grid-row-extra-bottom-margin">
+{% for application_id, application_data in data.application_array %}
+    {% if application_data.site_notice_content|length %}
+      {% if loop.index0 < 1 %} 
+        {% include "../components/_dsn-listing.html" %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</div>
+<hr class="comphr">
+
+<h2 class="comph" id="alerts-frequency">Alerts frequency</h2>
+<p>An implementtion of the <a href="https://design-system.service.gov.uk/components/radios/">GDS radio buttons component</a>, used to select how often the user wants to receive emails.</p>
+<h3 class="comph">The component:</h3>
+{% include "../components/_alerts-frequency.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="alerts-signup">Alerts signup</h2>
+<p>A set of standard GDS components, used for the submission of email alert signup pages.</p>
+<h3 class="comph">The component:</h3>
+{% include "../components/_alerts-signup.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="alerts-area">Alerts area</h2>
+<p>A mixture of <a href="https://design-system.service.gov.uk/components/radios/">GDS radio buttons</a>, <a href="https://design-system.service.gov.uk/components/text-input/">GDS text inputs</a>, and a map which responds to the fields being entered.</p>
+<p>Used when the user needs to specify an area of land to be notifed about. More complex due to the need to include wards alongside a range.</p>
+<h3 class="comph">The component:</h3>
+{% include "../components/_alerts-area.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="alerts-types">Alerts types</h2>
+<p>An implementation of <a href="https://design-system.service.gov.uk/components/radios/">GDS checkboxes</a>, used to select the types of events users want to be notified about.</p>
+<h3 class="comph">The component:</h3>
+{% include "../components/_alerts-types.html" %}
+<hr class="comphr">
+
+<h2 class="comph" id="handling-your-data">Handling your data</h2>
+<p>An implementation of <a href="https://design-system.service.gov.uk/components/details/">GDS details component</a>, used to communicate the ways the DPR processes your data.</p>
+<h3 class="comph">The component:</h3>
+{% include "../components/_handle-your-data.html" %}
+<hr class="comphr">
+
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+

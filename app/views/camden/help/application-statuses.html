@@ -1,0 +1,52 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Help – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-xl">Application statuses</h1>
+
+<p class="huge-bottom-margin">Planning applications use different statuses to show where they are in the application process. You can find these statuses when checking the details of an application on this register. </p>
+
+
+<div class="govuk-grid-row">   
+  <div class="govuk-grid-column-one-third-from-desktop contents-bar">
+    <h2 class="govuk-heading-l">Contents</h2>
+
+    <p class="list-heading"><a href="#consultation-in-progress">Consultation in progress</a></p>
+    <p class="list-heading"><a href="#assessment-in-progress">Assessment in progress</a></p>
+    <p class="list-heading"><a href="#determine">Determined</a></p>
+    <p class="list-heading"><a href="#withdrawn">Withdrawn</a></p>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    
+      <h2 class="govuk-heading-l" id="consultation-in-progress">Consultation in progress</h2>
+      <p>This means the consultation process is in progress. Once an application has been submitted, there are 21 days (not including bank holidays) where neighbours and the local community must be consulted. This is the statutory consultation period. It can go on for longer than 21 working days, but it cannot be any less. The council cannot make a decision until the statutory consultation period is over.</p>
+      <p>During this time any comments can be submitted for consideration by the planning team. Comments submitted after the statutory consultation period are usually considered if they are submitted before a decision is made.</p>
+
+      <h2 class="govuk-heading-l" id="assessment-in-progress">Assessment in progress</h2>
+      <p>Once the consultation has been completed, planning applications are assessed. The application and all its documentation, along with any comments, is checked and considered. </p>
+      <p>As part of their assessment, the case officer creates a decision notice. The notice includes reasons for the decision, and responses to significant points raised by comments.</p>
+
+      <h2 class="govuk-heading-l" id="determined">Determined</h2>
+      <p>This means a decision has been made about the application. The <a href="/camden/help/decisions">decision</a> is published with all the supporting documentation.</p>
+      <p>Determined planning applications which have been <a href="/camden/help/decisions#rejected">refused</a> can be appealed by applicants or their agents.</p>
+
+      <h2 class="govuk-heading-l" id="withdrawn">Withdrawn</h2>
+      <p>Planning applications can be withdrawn by the applicant, or sometimes by the council. This usually means they no longer intend to do the work they applied for. It can also mean they have decided to significantly change the proposed work, and may submit a new planning application at a later date.</p>
+
+
+  </div>
+</div>
+
+{% endblock %}

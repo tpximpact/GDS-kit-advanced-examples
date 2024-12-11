@@ -1,0 +1,571 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Search for an application – {{ serviceName }}
+{% endblock %}
+
+{% set mapToggle = "maplibre" %}
+
+{% block header %}
+<!--Cookies Banner-->
+{% include "../../../components/_cookies-banner.html" %}
+
+<!-- Header -->
+{% set active_nav = "map-nav" %}
+{% include "../../../components/_header.html" %}
+{% include "../../../components/_beta-banner.html" %}
+
+{% endblock %}
+
+{% block content %}
+<div class="map-page govuk-grid-row">
+
+  <div class="govuk-tabs govuk-grid-column-one-third map-columns" data-module="govuk-tabs">
+    <h2 class="govuk-tabs__title">
+      Contents
+    </h2>
+    <ul class="govuk-tabs__list">
+      <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+        <a class="govuk-tabs__tab" href="#list">
+          List
+        </a>
+      </li>
+      <li class="govuk-tabs__list-item">
+        <a class="govuk-tabs__tab" href="#search">
+          Search
+        </a>
+      </li>
+      <li class="govuk-tabs__list-item">
+        <a class="govuk-tabs__tab" href="#layers">
+          Layers
+        </a>
+      </li>
+    </ul>
+
+<!-- List -->
+    <div class="govuk-tabs__panel" id="list">
+      <div class="map-search-fields">
+        <p class="govuk-hint">Showing 10 of 30,506 results</p>
+        <!-- For loop of applications-->
+        {% for application_id, application_data in data.application_array %}
+          <div class="govuk-grid-row search-card" id="{{ application_data['reference'] }}">  
+            <div class="govuk-grid-column-full">
+              <h2 class="govuk-heading-s">Application reference</h2>
+              <p>{{ application_data['reference'] }}</p>
+              
+              <h2 class="govuk-heading-s">Address</h2>
+              <p>{{ application_data.site.address_1 }}, 
+                {% if application_data.site.address_2|length %}
+                  {{application_data.site.address_2}}, 
+                {% endif %}
+                {% if application_data.town|length %}
+                  {{application_data.town}}, 
+                {% endif %}
+                {{ application_data.site.postcode }}</p>
+              
+                <a href="/camden/application-details?current_app={{ application_id }}" class="govuk-button govuk-button--secondary blue-button">View details</a>
+            </div>
+          </div>
+        {%- endfor %}
+        <div class="govuk-grid-row extra-top-margin">  
+          <div class="govuk-grid-column-full">
+            <a href="#" class="govuk-button govuk-button--secondary govuk-!-width-full">Load next 10 results</a>
+          </div>
+        </div>
+      </div>
+      <!-- Search button -->
+      <a href="#" role="button" id="changeOnMoveButton" class="govuk-button govuk-button--secondary govuk-!-width-full" data-module="govuk-button" disabled>Showing for this area</a>
+      
+    </div>
+
+<!-- Search -->
+    <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="search">
+      <div class="map-search-fields">
+      {{ govukInput({
+        label: {
+          text: "Application reference"
+        },
+        classes: "govuk-!-width-full",
+        id: "reference",
+        name: "reference"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Address"
+        },
+        classes: "govuk-!-width-full",
+        id: "address",
+        name: "address"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Postcode"
+        },
+        classes: "govuk-!-width-full",
+        id: "postcode",
+        name: "postcode"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Description"
+        },
+        classes: "govuk-!-width-full",
+        id: "description",
+        name: "description"
+      }) }}
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="date5">
+          Received date
+        </label>
+        <input class="govuk-input govuk-input--width-7 inline-block" id="date-5" name="date5" type="date">
+        <p class="inline-block">to</p>
+        <input class="govuk-input govuk-input--width-7 inline-block" id="date-6" name="date6" type="date">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="date3">
+          Valid from date
+        </label>
+        <input class="govuk-input govuk-input--width-7 inline-block" id="date-3" name="date3" type="date">
+        <p class="inline-block">to</p>
+        <input class="govuk-input govuk-input--width-7 inline-block" id="date-4" name="date4" type="date">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="date3">
+          Published date
+        </label>
+        <input class="govuk-input govuk-input--width-7 inline-block" id="date-3" name="date3" type="date">
+        <p class="inline-block">to</p>
+        <input class="govuk-input govuk-input--width-7 inline-block" id="date-4" name="date4" type="date">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="date5">
+          Consultation end date
+        </label>
+        <input class="govuk-input govuk-input--width-7 inline-block" id="date-5" name="date5" type="date">
+        <p class="inline-block">to</p>
+        <input class="govuk-input govuk-input--width-7 inline-block" id="date-6" name="date6" type="date">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="date3">
+          Decision date
+        </label>
+        <input class="govuk-input govuk-input--width-7 inline-block" id="date-3" name="date3" type="date">
+        <p class="inline-block">to</p>
+        <input class="govuk-input govuk-input--width-7 inline-block" id="date-4" name="date4" type="date">
+      </div>
+
+      {{ govukAccordion({
+        id: "accordion-default",
+        items: [
+          {
+            heading: {
+              text: "Application type"
+            },
+            content: {
+              html: '<fieldset class="govuk-fieldset">
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Lawful development certificate" name="Lawful development certificate" type="checkbox" value="Lawful development certificate">
+                    <label class="govuk-label govuk-checkboxes__label" for="Lawful development certificate">
+                      Lawful development certificate
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Prior approval" name="Prior approval" type="checkbox" value="Prior approval">
+                    <label class="govuk-label govuk-checkboxes__label" for="Prior approval">
+                      Prior approval
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Householder planning permission" name="Householder planning permission" type="checkbox" value="Householder planning permission">
+                    <label class="govuk-label govuk-checkboxes__label" for="Householder planning permission">
+                      Householder planning permission
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Full planning permission - minor and changes of use" name="Full planning permission - minor and changes of use" type="checkbox" value="Full planning permission - minor and changes of use">
+                    <label class="govuk-label govuk-checkboxes__label" for="Full planning permission - minor and changes of use">
+                      Full planning permission - minor and changes of use
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Full planning permission - major" name="Full planning permission - major" type="checkbox" value="Full planning permission - major">
+                    <label class="govuk-label govuk-checkboxes__label" for="Full planning permission - major">
+                      Full planning permission - major
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Full planning permission - minerals extraction" name="Full planning permission - minerals extraction" type="checkbox" value="Full planning permission - minerals extraction">
+                    <label class="govuk-label govuk-checkboxes__label" for="Full planning permission - minerals extraction">
+                      Full planning permission - minerals extraction
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Full planning permission - oil and gas extraction" name="Full planning permission - oil and gas extraction" type="checkbox" value="Full planning permission - oil and gas extraction">
+                    <label class="govuk-label govuk-checkboxes__label" for="Full planning permission - oil and gas extraction">
+                      Full planning permission - oil and gas extraction
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Full planning permission - waste" name="Full planning permission - waste" type="checkbox" value="Full planning permission - waste">
+                    <label class="govuk-label govuk-checkboxes__label" for="Full planning permission - waste">
+                      Full planning permission - waste
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Listed building consent" name="Listed building consent" type="checkbox" value="Listed building consent">
+                    <label class="govuk-label govuk-checkboxes__label" for="Listed building consent">
+                      Listed building consent
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Work to trees - works to trees in a conservation area" name="Work to trees - works to trees in a conservation area" type="checkbox" value="Work to trees - works to trees in a conservation area">
+                    <label class="govuk-label govuk-checkboxes__label" for="Work to trees - works to trees in a conservation area">
+                      Work to trees - works to trees in a conservation area
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Work to trees - works to a protected tree" name="Work to trees - works to a protected tree" type="checkbox" value="Work to trees - works to a protected tree">
+                    <label class="govuk-label govuk-checkboxes__label" for="Work to trees - works to a protected tree">
+                      Work to trees - works to a protected tree
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Advertisement consent" name="Advertisement consent" type="checkbox" value="Advertisement consent">
+                    <label class="govuk-label govuk-checkboxes__label" for="Advertisement consent">
+                      Advertisement consent
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Hedgerow removal notice" name="Hedgerow removal notice" type="checkbox" value="Hedgerow removal notice">
+                    <label class="govuk-label govuk-checkboxes__label" for="Hedgerow removal notice">
+                      Hedgerow removal notice
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Hazardous Substance Consent" name="Hazardous Substance Consent" type="checkbox" value="Hazardous Substance Consent">
+                    <label class="govuk-label govuk-checkboxes__label" for="Hazardous Substance Consent">
+                      Hazardous Substance Consent
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Footpath diversions - planning act (S257 TCPA)" name="Footpath diversions - planning act (S257 TCPA)" type="checkbox" value="Footpath diversions - planning act (S257 TCPA)">
+                    <label class="govuk-label govuk-checkboxes__label" for="Footpath diversions - planning act (S257 TCPA)">
+                      Footpath diversions - planning act (S257 TCPA)
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Application for additional environmental approval to extend planning permission " name="Application for additional environmental approval to extend planning permission " type="checkbox" value="Application for additional environmental approval to extend planning permission ">
+                    <label class="govuk-label govuk-checkboxes__label" for="Application for additional environmental approval to extend planning permission ">
+                      Application for additional environmental approval to extend planning permission 
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Land drainage consent" name="Land drainage consent" type="checkbox" value="Land drainage consent">
+                    <label class="govuk-label govuk-checkboxes__label" for="Land drainage consent">
+                      Land drainage consent
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Full planning permission - regulation 3 (developed by LPA on LPA land)" name="Full planning permission - regulation 3 (developed by LPA on LPA land)" type="checkbox" value="Full planning permission - regulation 3 (developed by LPA on LPA land)">
+                    <label class="govuk-label govuk-checkboxes__label" for="Full planning permission - regulation 3 (developed by LPA on LPA land)">
+                      Full planning permission - regulation 3 (developed by LPA on LPA land)
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Full planning permission - regulation 4 (development by someone else on LPA land, or by the LPA on non-LPA owned land)" name="Full planning permission - regulation 4 (development by someone else on LPA land, or by the LPA on non-LPA owned land)" type="checkbox" value="Full planning permission - regulation 4 (development by someone else on LPA land, or by the LPA on non-LPA owned land)">
+                    <label class="govuk-label govuk-checkboxes__label" for="Full planning permission - regulation 4 (development by someone else on LPA land, or by the LPA on non-LPA owned land)">
+                      Full planning permission - regulation 4 (development by someone else on LPA land, or by the LPA on non-LPA owned land)
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Consultation on applications in adjourning authority" name="Consultation on applications in adjourning authority" type="checkbox" value="Consultation on applications in adjourning authority">
+                    <label class="govuk-label govuk-checkboxes__label" for="Consultation on applications in adjourning authority">
+                      Consultation on applications in adjourning authority
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Pre-application advice - householder" name="Pre-application advice - householder" type="checkbox" value="Pre-application advice - householder">
+                    <label class="govuk-label govuk-checkboxes__label" for="Pre-application advice - householder">
+                      Pre-application advice - householder
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Pre-application advice - non-householder" name="Pre-application advice - non-householder" type="checkbox" value="Pre-application advice - non-householder">
+                    <label class="govuk-label govuk-checkboxes__label" for="Pre-application advice - non-householder">
+                      Pre-application advice - non-householder
+                    </label>
+                  </div>
+                </div> 
+              </fieldset>'
+            }
+          },
+          {
+            heading: {
+              text: "Status"
+            },
+            content: {
+              html: '<fieldset class="govuk-fieldset">
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Consultation in progress" name="Consultation in progress" type="checkbox" value="Consultation in progress">
+                    <label class="govuk-label govuk-checkboxes__label" for="Consultation in progress">
+                      Consultation in progress
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Assessment in progress" name="Assessment in progress" type="checkbox" value="Assessment in progress">
+                    <label class="govuk-label govuk-checkboxes__label" for="Assessment in progress">
+                      Assessment in progress
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Determined" name="Determined" type="checkbox" value="Determined">
+                    <label class="govuk-label govuk-checkboxes__label" for="Determined">
+                      Determined
+                    </label>
+                  </div>
+                </div>
+              </fieldset>'
+            }
+          },
+          {
+            heading: {
+              text: "Decision"
+            },
+            content: {
+              html: '<fieldset class="govuk-fieldset">
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Granted" name="Granted" type="checkbox" value="Granted">
+                    <label class="govuk-label govuk-checkboxes__label" for="Granted">
+                      Granted
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Refused" name="Refused" type="checkbox" value="Refused">
+                    <label class="govuk-label govuk-checkboxes__label" for="Refused">
+                      Refused
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Prior approval required and approved" name="Prior approval required and approved" type="checkbox" value="Prior approval required and approved">
+                    <label class="govuk-label govuk-checkboxes__label" for="Prior approval required and approved">
+                      Prior approval required and approved
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Prior approval required and refused" name="Prior approval required and refused" type="checkbox" value="Prior approval required and refused">
+                    <label class="govuk-label govuk-checkboxes__label" for="Prior approval required and refused">
+                      Prior approval required and refused
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="Prior approval not required" name="Prior approval not required" type="checkbox" value="Prior approval not required">
+                    <label class="govuk-label govuk-checkboxes__label" for="Prior approval not required">
+                      Prior approval not required
+                    </label>
+                  </div>
+                </div>
+              </fieldset>'
+            }
+          }
+        ]
+      }) }}
+      </div>
+      
+      <!-- Search button -->
+      <a href="/camden/map/filtered-search#search" role="button" class="govuk-button govuk-button--primary govuk-!-width-full" data-module="govuk-button">Search map</a>
+        
+    </div>
+
+<!-- Layers -->
+    <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="layers">
+      <div class="map-search-fields govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="constraint-hint">
+          <legend class="govuk-fieldset__legend">
+            <h2 class="govuk-heading-m">
+              Data relevant to planning applications
+            </h2>
+          </legend>
+
+          <div class="govuk-checkboxes__item average-bottom-margin">
+            <input class="govuk-checkboxes__input" id="Show applications" name="Show applications" type="checkbox" value="Show applications" checked>
+            <label class="govuk-label govuk-checkboxes__label" for="Show applications">
+              Show applications
+            </label>
+          </div>
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input constraint-input" id="constraint-0" name="constraint" type="radio" value="none" checked>
+              <label class="govuk-label govuk-radios__label" for="constraint-0">
+                None
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input constraint-input" id="constraint" name="constraint" type="radio" value="article4">
+              <label class="govuk-label govuk-radios__label" for="constraint">
+                Article 4 direction area
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input constraint-input" id="constraint-2" name="constraint" type="radio" value="parks">
+              <label class="govuk-label govuk-radios__label" for="constraint-2">
+                Tree preservation zone
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input constraint-input" id="constraint-3" name="constraint" type="radio" value="article4">
+              <label class="govuk-label govuk-radios__label" for="constraint-3">
+                Special protection area
+              </label>
+            </div>
+            
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input constraint-input" id="constraint-4" name="constraint" type="radio" value="wards">
+              <label class="govuk-label govuk-radios__label" for="constraint-4">
+                Wards
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input constraint-input" id="constraint-5" name="constraint" type="radio" value="parks">
+              <label class="govuk-label govuk-radios__label" for="constraint-5">
+                Agricultural land classification
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input constraint-input" id="constraint-6" name="constraint" type="radio" value="article4">
+              <label class="govuk-label govuk-radios__label" for="constraint-6">
+                Brownfield land
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input constraint-input" id="constraint-7" name="constraint" type="radio" value="parks">
+              <label class="govuk-label govuk-radios__label" for="constraint-7">
+                Brownfield sites
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input constraint-input" id="constraint-8" name="constraint" type="radio" value="wards">
+              <label class="govuk-label govuk-radios__label" for="constraint-8">
+                Conservation area
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input constraint-input" id="constraint-9" name="constraint" type="radio" value="article4">
+              <label class="govuk-label govuk-radios__label" for="constraint-9">
+                Flood risk zone
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input constraint-input" id="constraint-9" name="constraint" type="radio" value="parks">
+              <label class="govuk-label govuk-radios__label" for="constraint-9">
+                Local authority border
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input constraint-input" id="constraint-9" name="constraint" type="radio" value="wards">
+              <label class="govuk-label govuk-radios__label" for="constraint-9">
+                Listed building
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input constraint-input" id="constraint-9" name="constraint" type="radio" value="parks">
+              <label class="govuk-label govuk-radios__label" for="constraint-9">
+                Local nature reserve
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input constraint-input" id="constraint-9" name="constraint" type="radio" value="article4">
+              <label class="govuk-label govuk-radios__label" for="constraint-9">
+                National nature reserve
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input constraint-input" id="constraint-9" name="constraint" type="radio" value="wards">
+              <label class="govuk-label govuk-radios__label" for="constraint-9">
+                National nature reserve
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input constraint-input" id="constraint-9" name="constraint" type="radio" value="parks">
+              <label class="govuk-label govuk-radios__label" for="constraint-9">
+                Historic parks and gardens
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input constraint-input" id="constraint-9" name="constraint" type="radio" value="article4">
+              <label class="govuk-label govuk-radios__label" for="constraint-9">
+                Scheduled monument
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input constraint-input" id="constraint-9" name="constraint" type="radio" value="parks">
+              <label class="govuk-label govuk-radios__label" for="constraint-9">
+                Site of special scientific interest
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input constraint-input" id="constraint-9" name="constraint" type="radio" value="wards">
+              <label class="govuk-label govuk-radios__label" for="constraint-9">
+                Special area of conservation
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input constraint-input" id="constraint-9" name="constraint" type="radio" value="parks">
+              <label class="govuk-label govuk-radios__label" for="constraint-9">
+                Special protection area
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input constraint-input" id="constraint-9" name="constraint" type="radio" value="article4">
+              <label class="govuk-label govuk-radios__label" for="constraint-9">
+                Special protection area
+              </label>
+            </div>
+
+          </div>
+        </fieldset>
+      </div>
+      <!-- Search button -->
+      <a href="/camden/map/filtered-layers#layers" role="button" class="govuk-button govuk-button--secondary blue-button govuk-!-width-full" data-module="govuk-button">Show only for this area</a>
+    </div>
+  </div>
+
+  <div class="govuk-tabs govuk-grid-column-two-thirds map-columns" data-module="govuk-tabs">
+
+    <div id="map"></div>
+    
+  </div>
+        
+</div>
+
+{% endblock %}

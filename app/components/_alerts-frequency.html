@@ -1,0 +1,27 @@
+{{ govukRadios({
+    name: "timings",
+    fieldset: {
+      legend: {
+        text: "How often do you want to receive emails?",
+        classes: "govuk-fieldset__legend--m"
+      }
+    },
+    hint: {
+      text: "Select how frequently you want to be emailed. We may email you less regularly than this, if there is nothing to tell you about. We will not email you more frequently than you select here."
+    },
+    items: [
+      {
+        value: "daily",
+        text: "Daily",
+        checked: true
+      },
+      {
+        value: "weekly",
+        text: "Weekly"
+      },
+      {
+        value: "monthly",
+        text: "Monthly"
+      }
+    ]
+  }) }}

@@ -1,0 +1,28 @@
+<div class="govuk-grid-column-one-third-from-desktop contents-bar">
+    <h2 class="govuk-heading-l">Contents</h2>
+    <p class="sub-list"><a href="#key-info">Key information</a></p>
+    <p class="sub-list"><a href="#progress">Progress</a></p>
+    <p class="sub-list"><a href="#description">Description</a></p>
+    {% if data.application_array[data['current_app']].result_override|length %}
+    <p class="sub-list"><a href="#appeal">Appeal</a></p>
+    {% endif %}
+    {% if data.application_array[data['current_app']].site_notice_content|length %}
+    <p class="sub-list"><a href="#images">Images</a></p>
+    <p class="sub-list"><a href="#impact">Impact</a></p>
+    {% endif %}
+    <p class="sub-list"><a href="#documents">Documents</a></p>
+    <p class="sub-list"><a href="#people">People</a></p>
+    {% if data.application_array[data['current_app']].constraints|length %}
+    <p class="sub-list"><a href="#constraints">Constraints</a></p>
+    {% endif %}
+    <p class="sub-list"><a href="#specialist-comments">Specialist comments</a></p>
+    <p class="sub-list"><a href="#public-comments">Public comments</a></p>
+
+    {% if not data.application_array[data['current_app']].result_flag|length %}
+    <div class="app-action-buttons extra-top-margin">
+        <a href="/camden/comment" role="button" class="govuk-button govuk-button--primary" data-module="govuk-button">Comment on this application</a>
+
+        <a class="govuk-button govuk-button--secondary blue-button" href="/camden/alerts/applications" style="text-decoration: none;">Sign up for email alerts</a>
+    </div>
+    {% endif %}
+</div>

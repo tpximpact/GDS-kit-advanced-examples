@@ -1,0 +1,54 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Help – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-xl">Important dates</h1>
+
+<p class="huge-bottom-margin">What the important dates are for planning applications. Explains what things like 'valid from date' mean.</p>
+
+
+<div class="govuk-grid-row">   
+  <div class="govuk-grid-column-one-third-from-desktop contents-bar">
+    <h2 class="govuk-heading-l">Contents</h2>
+
+    <p class="list-heading"><a href="#received-date">Received date</a></p>
+    <p class="list-heading"><a href="#validated-date">Valid from date</a></p>
+    <p class="list-heading"><a href="#published-date">Published date</a></p>
+    <p class="list-heading"><a href="#consultation-end-date">Consultation end date</a></p>
+    <p class="list-heading"><a href="#decision-date">Decision date</a></p>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    
+    <h2 class="govuk-heading-l" id="received-date">Received date</h2>
+    <p>This is the date that the application is received by the council. It may not be the date it was sent, if there have been delays in the submission process.</p>
+
+    <h2 class="govuk-heading-l" id="validated-date">Valid from date</h2>
+    <p>This is the date that the application is considered a valid application. Usually this will be the same as the received date, but sometimes applications are submitted incorrectly, and need correcting to be valid. This is the date that processing the application officially begins.</p>
+
+    <h2 class="govuk-heading-l" id="published-date">Published date</h2>
+    <p>This is the date the application is registered by the council and published on the digital planning register. It may be different from the date the application is valid from, as it can take time to put a valid application online.</p>
+
+    <h2 class="govuk-heading-l" id="consultation-end-date">Consultation end date</h2>
+    <p>This is the date that the statutory consultation will end for the application.</p>
+    <p>Once an application has been submitted, there are at least 21 days (excluding bank/public holidays) where the council is not permitted to make a decision. This is the statutory consultation period. It can go on for longer than 21 days, but it cannot be any less.</p>
+    <p>During this time, comments can be submitted for consideration by the planning team. Some councils allow comments to be submitted until a decision has been made, but they all must accept comments during the consultation.</p>
+
+    <h2 class="govuk-heading-l" id="decision-date">Decision date</h2>
+    <p>The date the council made a formal decision to grant or refuse the planning application.</p>
+
+  </div>
+</div>
+
+{% endblock %}

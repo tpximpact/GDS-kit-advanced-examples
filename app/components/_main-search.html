@@ -1,0 +1,20 @@
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukInput({
+        label: {
+          text: "Search by application reference, address or description",
+          classes: "govuk-label",
+          isPageHeading: true
+        },
+        id: "app-ref",
+        name: "app-ref",
+        classes: "search"
+      }) }}
+    </div>
+  
+    <div class="govuk-grid-column-one-third search-bar-buttons govuk-button-group">
+      <a href="/camden/list-no-results" role="button" class="govuk-button govuk-button--primary grid-row-extra-bottom-margin" data-module="govuk-button">Search</a>
+
+      <a href="/camden/list-filters" role="button" class="govuk-button govuk-button--secondary grid-row-extra-bottom-margin" data-module="govuk-button">Advanced search</a>
+    </div>
+</div>

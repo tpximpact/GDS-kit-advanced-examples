@@ -1,0 +1,97 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Search for an application – {{ serviceName }}
+{% endblock %}
+
+{% block header %}
+
+<!--Cookies Banner-->
+{% include "../components/_cookies-banner.html" %}
+
+<!-- Header -->
+{% include "../components/_landing-header.html" %}
+{% include "../components/_beta-banner.html" %}
+
+
+{% endblock %}
+
+{% block content %}
+<h1 class="govuk-heading-l">Welcome to the Digital Planning Register</h1>
+<p>You can find planning applications submitted through the Open Digital Planning system for your local council planning authority.</p>
+<p class="huge-bottom-margin">Not all planning applications will be available through this register. You may need to check individual council's websites to see what records are kept here.</p>
+
+<h2 class="govuk-heading-m">Select your council to start exploring planning applications in your area</h2>
+
+<div class="govuk-form-group">
+  <h2 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--s" for="postcode">
+      Find your council by entering your postcode
+    </label>
+  </h2>
+  <div id="postcode-hint" class="govuk-hint">
+    For example SW1A 2AA
+  </div>
+  <input class="govuk-input govuk-input--width-10" id="postcode" name="accountNumber" type="text" spellcheck="false" aria-describedby="postcode-hint" inputmode="numeric" autocomplete="postal-code">
+  {{ govukButton({
+    text: "Find council",
+    href: "/camden"
+  }) }}
+</div>
+
+
+<h2 class="govuk-heading-s">Or browse this list</h2>
+
+<div class="logos-container">
+  <a href="/barnet" class="govuk-button govuk-button--secondary" title="Barnet Council"><img src="/public/images/barnet-logo.svg" alt="Barnet Council"></a>
+
+  <a href="/buckinghamshire" class="govuk-button govuk-button--secondary" title="Buckinghamshire Council"><img src="/public/images/bucks-logo.svg" alt="Buckinghamshire Council"></a>
+
+  <a href="/camden" class="govuk-button govuk-button--secondary" title="Camden Council"><img src="/public/images/camdenlogo.svg" alt="Camden Council"></a>
+
+  <a href="/gateshead" class="govuk-button govuk-button--secondary" title="Gateshead Council"><img src="/public/images/gatesheadlogo.svg" alt="Gateshead Council"></a>
+
+  <a href="/lambeth" class="govuk-button govuk-button--secondary" title="Lambeth Council"><img src="/public/images/lambethlogo.svg" alt="Lambeth Council"></a>
+
+  <a href="/medway" class="govuk-button govuk-button--secondary" title="Medway Council"><img src="/public/images/medwaylogo.svg" alt="Medway Council"></a>
+
+  <a href="/southwark" class="govuk-button govuk-button--secondary" title="Southwark Council"><img src="/public/images/southwarklogo.svg" alt="Southwark Council"></a>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+<footer class="govuk-footer">
+  <div class="govuk-width-container">
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item">
+        <img src="/public/images/odp-logo.svg" alt="Open Digital Planning Logo" height="100" width="200">
+      </div>
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+        <h2 class="govuk-visually-hidden">Support links</h2>
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          class="govuk-footer__licence-logo"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 483.2 195.7"
+          height="17"
+          width="41">
+          <path
+            fill="currentColor"
+            d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145" />
+        </svg>
+        <span class="govuk-footer__licence-description">
+          All content is available under the
+          <a
+            class="govuk-footer__link"
+            href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+            rel="license">Open Government Licence v3.0</a>, except where otherwise stated
+        </span>
+      </div>
+      <div class="govuk-footer__meta-item">
+      </div>
+    </div>
+  </div>
+</footer>
+  {% endblock %}

@@ -1,0 +1,143 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Manage your email subscriptions – {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-xl">Manage your email subscriptions</h1>
+
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Unsubscribe from all emails",
+    classes: "govuk-button--secondary blue-button grid-row-extra-bottom-margin"
+  }) }}
+</div>
+
+{{ govukInput({
+  label: {
+    text: "Email address"
+  },
+  hint: {
+    text: "Change this if you want emails to go to a different address"
+  },
+  id: "email",
+  name: "email",
+  value: "my.email@email.com"
+}) }}
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Save new email",
+    classes: "govuk-button--secondary grid-row-extra-bottom-margin"
+  }) }}
+</div>
+
+
+<hr class="grid-row-extra-bottom-margin">
+
+  <div class="govuk-grid-row grid-row-extra-bottom-margin">
+    {% include "../../../components/_alerts-area.html" %}
+  </div>
+
+  {% include "../../../components/_alerts-frequency.html" %}
+
+  <div class="govuk-checkboxes__item grid-row-extra-bottom-margin">
+    <input class="govuk-checkboxes__input" id="dsns" name="dsns" type="checkbox" value="yes">
+    <label class="govuk-label govuk-checkboxes__label" for="dsns">
+      Only email about new applications which have site notices
+    </label>
+  </div>
+
+  <div class="govuk-button-group">
+    {{ govukButton({
+      text: "Save changes to new planning application notifications",
+      classes: "govuk-button--secondary grid-row-extra-bottom-margin"
+    }) }}
+  </div>
+
+  <hr class="grid-row-extra-bottom-margin">
+
+<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+  <h1 class="govuk-fieldset__heading">
+    Searches you are subscribed to
+  </h1>
+</legend>
+<div id="waste-hint" class="govuk-hint">
+  You will receive emails when new planning applications are published which match these results. Uncheck these if you do not wish to receive emails for these searches.
+</div>
+
+<div class="govuk-checkboxes__item">
+  <input class="govuk-checkboxes__input" id="app01" name="app01" type="checkbox" value="yes" checked>
+  <label class="govuk-label govuk-checkboxes__label" for="app01">
+    <p>Application reference: "happ"</p>
+    <p>Address: "Steve Road"</p>
+    <p><a href="/camden/alerts/edit-search">Edit</a></p>
+  </label>
+</div>
+
+<div class="govuk-checkboxes__item">
+  <input class="govuk-checkboxes__input" id="app02" name="app02" type="checkbox" value="yes" checked>
+  <label class="govuk-label govuk-checkboxes__label" for="app02">
+    <p>Address: "Sally Road"</p>
+    <p>Postcode: "NW1 7UP"</p>
+    <p>Description: "extension"</p>
+    <p>Application type: "Prior Approval"</p>
+    <p><a href="/camden/alerts/edit-search">Edit</a></p>
+  </label>
+</div>
+
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Save changes to subscribed searches",
+    classes: "govuk-button--secondary grid-row-extra-bottom-margin"
+  }) }}
+</div>
+
+
+<hr class="grid-row-extra-bottom-margin">
+
+
+<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+  <h1 class="govuk-fieldset__heading">
+    Planning applications you are subscribed to
+  </h1>
+</legend>
+<div id="waste-hint" class="govuk-hint">
+  You will receive emails when these planning applications are changed. Uncheck them to no longer receive emails about these applications.
+</div>
+
+<div class="govuk-checkboxes__item">
+  <input class="govuk-checkboxes__input" id="app01" name="app01" type="checkbox" value="yes" checked>
+  <label class="govuk-label govuk-checkboxes__label" for="app01">
+    23-00141-HAPP: 11 Abbey Gardens, Southwark, SE16 3RQ - <a href="/camden/alerts/edit-app">Edit</a>
+  </label>
+</div>
+
+<div class="govuk-checkboxes__item grid-row-extra-bottom-margin">
+  <input class="govuk-checkboxes__input" id="app02" name="app02" type="checkbox" value="yes" checked>
+  <label class="govuk-label govuk-checkboxes__label" for="app02">
+    24-00608-HAPP: 45 GOWLETT ROAD, SE15 4HX - <a href="/camden/alerts/edit-app">Edit</a>
+  </label>
+</div>
+
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Save changes to applications you are subscribed to",
+    classes: "govuk-button--secondary grid-row-extra-bottom-margin"
+  }) }}
+</div>
+
+<hr class="grid-row-extra-bottom-margin">
+
+
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Save all changes"
+  }) }}
+</div>
+
+</form>
+
+
+{% endblock %}

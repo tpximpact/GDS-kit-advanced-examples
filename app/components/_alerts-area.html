@@ -1,0 +1,243 @@
+<div class="govuk-grid-row grid-row-extra-bottom-margin">
+    <div class="govuk-grid-column-one-half">
+
+      {% set postcodeHtml %}
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="postcode">
+         Postcode
+        </label>
+        <input class="govuk-input" id="postcode" name="postcode" type="text">
+        <span></span>
+      </div>
+      {% endset -%}
+
+      {% set addressHtml %}
+      <div class="range-radios">
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="address">
+           Address
+          </label>
+          <input class="govuk-input" id="address" name="address" type="text">
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-label">
+              How far from this address do you want to know about new applications?
+            </legend>
+  
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="nearby-2" name="nearby" type="radio" value="1mile">
+                <label class="govuk-label govuk-radios__label" for="nearby-2">
+                  Within 1 mile
+                </label>
+                <span></span>
+              </div>
+              
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="nearby-3" name="nearby" type="radio" value="2miles">
+                <label class="govuk-label govuk-radios__label" for="nearby-3">
+                  Within 2 miles
+                </label>
+                <span></span>
+              </div>
+              
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="nearby-4" name="nearby" type="radio" value="5miles">
+                <label class="govuk-label govuk-radios__label" for="nearby-4">
+                  Within 5 miles
+                </label>
+                <span></span>
+              </div>
+              
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="nearby-5" name="nearby" type="radio" value="10miles">
+                <label class="govuk-label govuk-radios__label" for="nearby-5">
+                  Within 10 miles
+                </label>
+                <span></span>
+              </div>
+              
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      {% endset -%}
+
+      {% set wardHtml %}
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+            <div class="govuk-grid-column-full">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Belsize" name="Belsize" type="checkbox" value="Belsize">
+                <label class="govuk-label govuk-checkboxes__label" for="Belsize">
+                  Belsize
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Bloomsbury" name="Bloomsbury" type="checkbox" value="Bloomsbury">
+                <label class="govuk-label govuk-checkboxes__label" for="Bloomsbury">
+                  Bloomsbury
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Camden Square" name="Camden Square" type="checkbox" value="Camden Square">
+                <label class="govuk-label govuk-checkboxes__label" for="Camden Square">
+                  Camden Square
+                </label>
+              </div> 
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Camden Town" name="Camden Town" type="checkbox" value="Camden Town">
+                <label class="govuk-label govuk-checkboxes__label" for="Camden Town">
+                  Camden Town
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Fortune Green" name="Fortune Green" type="checkbox" value="Fortune Green">
+                <label class="govuk-label govuk-checkboxes__label" for="Fortune Green">
+                  Fortune Green
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Frognal" name="Frognal" type="checkbox" value="Frognal">
+                <label class="govuk-label govuk-checkboxes__label" for="Frognal">
+                  Frognal
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Gospel Oak" name="Gospel Oak" type="checkbox" value="Gospel Oak">
+                <label class="govuk-label govuk-checkboxes__label" for="Gospel Oak">
+                  Gospel Oak
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Hampstead Town" name="Hampstead Town" type="checkbox" value="Hampstead Town">
+                <label class="govuk-label govuk-checkboxes__label" for="Hampstead Town">
+                  Hampstead Town
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Haverstock" name="Haverstock" type="checkbox" value="Haverstock">
+                <label class="govuk-label govuk-checkboxes__label" for="Haverstock">
+                  Haverstock
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Highgate" name="Highgate" type="checkbox" value="Highgate">
+                <label class="govuk-label govuk-checkboxes__label" for="Highgate">
+                  Highgate
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Holborn and Covent Garden" name="Holborn and Covent Garden" type="checkbox" value="Holborn and Covent Garden">
+                <label class="govuk-label govuk-checkboxes__label" for="Holborn and Covent Garden">
+                  Holborn and Covent Garden
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Kentish Town North" name="Kentish Town North" type="checkbox" value="Kentish Town North">
+                <label class="govuk-label govuk-checkboxes__label" for="Kentish Town North">
+                  Kentish Town North
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Kentish Town South" name="Kentish Town South" type="checkbox" value="Kentish Town South">
+                <label class="govuk-label govuk-checkboxes__label" for="Kentish Town South">
+                  Kentish Town South
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Kilburn" name="Kilburn" type="checkbox" value="Kilburn">
+                <label class="govuk-label govuk-checkboxes__label" for="Kilburn">
+                  Kilburn
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Kings Cross" name="Kings Cross" type="checkbox" value="Kings Cross">
+                <label class="govuk-label govuk-checkboxes__label" for="Kings Cross">
+                  Kings Cross
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Primrose Hill" name="Primrose Hill" type="checkbox" value="Primrose Hill">
+                <label class="govuk-label govuk-checkboxes__label" for="Primrose Hill">
+                  Primrose Hill
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Regents Park" name="Regents Park" type="checkbox" value="Regents Park">
+                <label class="govuk-label govuk-checkboxes__label" for="Regents Park">
+                  Regents Park
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="South Hampstead" name="South Hampstead" type="checkbox" value="South Hampstead">
+                <label class="govuk-label govuk-checkboxes__label" for="South Hampstead">
+                  South Hampstead
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="St Pancras and Somers Town" name="St Pancras and Somers Town" type="checkbox" value="St Pancras and Somers Town">
+                <label class="govuk-label govuk-checkboxes__label" for="St Pancras and Somers Town">
+                  St Pancras and Somers Town
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="West Hampstead" name="West Hampstead" type="checkbox" value="West Hampstead">
+                <label class="govuk-label govuk-checkboxes__label" for="West Hampstead">
+                  West Hampstead
+                </label>
+              </div>
+          </div>
+        </fieldset>
+      {% endset -%}
+
+      {{ govukRadios({
+        name: "location",
+        classes: "range-radios",
+        fieldset: {
+          legend: {
+            text: "Select the area to be notified about",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "address",
+            text: "Around an address",
+            conditional: {
+              html: addressHtml
+            }
+            
+          },
+          {
+            value: "postcode",
+            text: "In a postcode",
+            conditional: {
+              html: postcodeHtml
+            },
+            hint: {
+              text: "A"
+            }
+          },
+          {
+            value: "ward",
+            text: "By ward",
+            conditional: {
+              html: wardHtml
+            },
+            hint: {
+              text: "A"
+            }
+          }
+        ]
+      }) }}  
+    </div>
+
+    <div class="govuk-grid-column-one-half">
+      <img src="/public/images/range-map.png" alt="Range indicator map">
+    </div>
+  </div>

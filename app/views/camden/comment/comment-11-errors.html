@@ -1,0 +1,164 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Your details – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+<h1 class="govuk-heading-l">Tell us what you think</h1>
+
+{% set comment_page=true %}
+{% include "../../../components/_context-setter.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Your details</h1>
+
+      <form class="form" action="comment-11-answers" method="post">
+
+        {% if data['name'] %}
+          {{ govukInput({
+            label: {
+              text: "Name"
+            },
+            classes: "govuk-input--width-20",
+            id: "name",
+            name: "name",
+            value: data['name']
+          }) }}
+        {% else %}
+          {{ govukInput({
+            label: {
+              text: "Name"
+            },
+            classes: "govuk-input--width-20",
+            id: "name",
+            name: "name",
+            errorMessage: {
+              text: "Your name is required"
+            }
+          }) }}
+        {% endif %}
+        
+        {% if data['address'] %}
+          {{ govukInput({
+            label: {
+              text: "Address"
+            },
+            classes: "govuk-input--width-20",
+            id: "address",
+            name: "address",
+            value: data['address']
+          }) }}
+        {% else %}
+          {{ govukInput({
+            label: {
+              text: "Address"
+            },
+            classes: "govuk-input--width-20",
+            id: "address",
+            name: "address",
+            errorMessage: {
+              text: "Your address is required"
+            }
+          }) }}
+        {% endif %}
+
+      {% if data['postcode'] %}
+        {{ govukInput({
+          label: {
+            text: "Postcode"
+          },
+          classes: "govuk-input--width-10",
+          id: "postcode",
+          name: "postcode",
+          value: data['postcode']
+        }) }}
+      {% else %}
+        {{ govukInput({
+          label: {
+            text: "Postcode"
+          },
+          classes: "govuk-input--width-10",
+          id: "postcode",
+          name: "postcode",
+          errorMessage: {
+            text: "Your postcode is required"
+          }
+        }) }}
+      {% endif %}
+      
+        {{ govukInput({
+          label: {
+            text: "Email address"
+          },
+          classes: "govuk-input--width-20",
+          id: "email",
+          name: "email",
+          value: data['email'],
+          hint: {
+            text: "Optional"
+          }
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Telephone number"
+          },
+          classes: "govuk-input--width-20",
+          id: "telephone",
+          name: "telephone",
+          value: data['telephone'],
+          hint: {
+            text: "Optional"
+          }
+        }) }}
+
+        {% if data['consent'] %}
+        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+        {{ govukCheckboxes({
+          name: "consent",
+          items: [
+            {
+              value: "consent",
+              text: "I consent to Camden Council using my data for the purposes of assessing this planning application"
+            }
+          ]
+        }) }}
+        {% else %}
+        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+        {{ govukCheckboxes({
+          name: "consent",
+          items: [
+            {
+              value: "consent",
+              text: "I consent to Camden Council using my data for the purposes of assessing this planning application"
+            }
+          ],
+          errorMessage: {
+            text: "You need to consent"
+          }
+        }) }}
+        {% endif %}
+
+        {% include "../../../components/_handle-your-data.html" %}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

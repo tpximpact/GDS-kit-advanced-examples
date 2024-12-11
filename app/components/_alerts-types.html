@@ -1,0 +1,39 @@
+{{ govukCheckboxes({
+    name: "types",
+    fieldset: {
+      legend: {
+        text: "What changes should we email you about?",
+        classes: "govuk-fieldset__legend--m"
+      }
+    },
+    hint: {
+        text: "Select all the events you want to be notified about."
+    },
+    items: [
+      {
+        value: "status_updates",
+        text: "When the status of the application changes",
+        checked: true
+      },
+      {
+        value: "new_documents",
+        text: "When new documents are added to an application",
+        checked: true
+      },
+      {
+        value: "new_comments",
+        text: "When new comments are published",
+        checked: true
+      },
+      {
+        value: "content_changes",
+        text: "When the content of the application is changed",
+        checked: true
+      },
+      {
+        value: "decisions",
+        text: "When a decision is made on the application",
+        checked: true
+      }
+    ]
+  }) }}

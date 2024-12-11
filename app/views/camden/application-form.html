@@ -1,0 +1,659 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Application form {{ data.application_array[data['current_app']].reference }} – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+{% include "../../components/_context-setter.html" %}
+
+
+<h1 class="govuk-heading-xl">Application form as submitted</h1>
+<p>This is the full application form as submitted by the applicant to the planning team.</p>
+
+<div class="govuk-grid-row faux-document">
+   
+  <div class="govuk-grid-column-full">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h3 class="govuk-heading-m">Property</h3>
+ 
+      <dl class="govuk-summary-list">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            EPC
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data.application_submission.submission.data.property.EPC.known }}
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Property type
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data.application_submission.submission.data.property.type.description }}
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Region
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data.application_submission.submission.data.property.region }}
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data.application_submission.submission.data.property.address.singleLine }}
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Coordinates (lat, long)
+          </dt>
+          <dd class="govuk-summary-list__value"> 
+            {{ data.application_submission.submission.data.property.address.latitude }},
+            {{ data.application_submission.submission.data.property.address.longitude }}
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            UPRN
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data.application_submission.submission.data.property.address.uprn }}
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            USRN
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data.application_submission.submission.data.property.address.usrn }}
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Parking
+          </dt>
+          <dd class="govuk-summary-list__value">
+
+            {% for parking_type, parking_value in data.application_submission.submission.data.property.parking %}
+
+              {% if parking_value.count %}
+              <p>
+                {{parking_type}}: {{parking_value.count}}
+              </p>
+              {% endif %}
+
+            {%- endfor %}
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Area
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data.application_submission.submission.data.property.boundary.area.squareMetres }} m2 / {{ data.application_submission.submission.data.property.boundary.area.hectares }} hectares
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Planning designations
+          </dt>
+          <dd class="govuk-summary-list__value">
+            
+            {% for designation in data.application_submission.submission.data.property.planning.designations %}
+
+              {% if designation.intersects %}
+              <p>
+                {{ designation.description }}
+              </p>
+              {% endif %}
+
+            {%- endfor %}
+
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Title number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data.application_submission.submission.data.property.titleNumber.number }}
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Local authority
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data.application_submission.submission.data.property.localAuthorityDistrict }}
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Property boundary
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data.application_array[data['current_app']].boundary_geojson %}
+            {% set geojsonData = data.application_array[data['current_app']].boundary_geojson %}
+            {% if geojsonData.type == "FeatureCollection" or geojsonData.type == "Feature" %}
+              {% set validGeojson = geojsonData %}
+            {% else %}
+              {% set validGeojson = {
+                "type": "Feature",
+                "geometry": geojsonData.geometry,
+                "properties": geojsonData.properties | default({})
+              } %}
+            {% endif %}
+          
+            {% if validGeojson %}
+
+              <my-map
+                zoom="24"
+                latitude="{{ application_data.site.latitude }}"
+                longitude="{{ application_data.site.longitude }}"
+                geojsonColor="#ff0000"
+                geojsonBuffer="12"
+                geojsonData="{{ validGeojson | dump | escape }}"
+                osCopyright="© Crown copyright and database rights 2024 OS (0)100024857"
+                showScale="true"
+              ></my-map>
+              {# Add the static mode property to enable zooming in and out and
+              moving around the map #} {% endif %} {% endif %}  
+          </dd>
+        </div>
+
+      </dl>
+        
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h3 class="govuk-heading-m">Proposal</h3>
+ 
+      <dl class="govuk-summary-list">
+        
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Construction dates
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data.application_submission.submission.data.proposal.date.start | govukDate("truncate") }} to {{ data.application_submission.submission.data.proposal.date.completion | govukDate("truncate") }}
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Extension size
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data.application_submission.submission.data.proposal.extend.area.squareMetres }} m2
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Additional parking
+          </dt>
+          <dd class="govuk-summary-list__value">
+
+            {% for parking_type, parking_value in data.application_submission.submission.data.proposal.parking %}
+
+              {% if parking_value.difference %}
+              <p>
+                {{parking_type}}: +{{parking_value.difference}}
+              </p>
+              {% endif %}
+
+            {%- endfor %}
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Proposed area
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data.application_submission.submission.data.proposal.boundary.area.squareMetres }} m2 / {{ data.application_submission.submission.data.proposal.boundary.area.hectares }} hectares
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Proposed property boundary
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data.application_array[data['current_app']].boundary_geojson %}
+            {% set geojsonData = data.application_array[data['current_app']].boundary_geojson %}
+            {% if geojsonData.type == "FeatureCollection" or geojsonData.type == "Feature" %}
+              {% set validGeojson = geojsonData %}
+            {% else %}
+              {% set validGeojson = {
+                "type": "Feature",
+                "geometry": geojsonData.geometry,
+                "properties": geojsonData.properties | default({})
+              } %}
+            {% endif %}
+          
+            {% if validGeojson %}
+
+              <my-map
+                zoom="24"
+                latitude="{{ application_data.site.latitude }}"
+                longitude="{{ application_data.site.longitude }}"
+                geojsonColor="#ff0000"
+                geojsonBuffer="12"
+                geojsonData="{{ validGeojson | dump | escape }}"
+                osCopyright="© Crown copyright and database rights 2024 OS (0)100024857"
+                showScale="true"
+              ></my-map>
+              {# Add the static mode property to enable zooming in and out and
+              moving around the map #} {% endif %} {% endif %}  
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Description
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data.application_submission.submission.data.proposal.description }}
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Project type
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data.application_submission.submission.data.proposal.projectType.description }}
+          </dd>
+        </div>
+
+      </dl>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h3 class="govuk-heading-m">Applicant</h3>
+ 
+      <dl class="govuk-summary-list">
+        
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Applicant name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data.application_submission.submission.data.applicant.name.first }} {{ data.application_submission.submission.data.applicant.name.last }}
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Applicant type
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data.application_submission.submission.data.applicant.type | capitalize }}
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Applicant address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data.application_submission.submission.data.applicant.address.sameAsSiteAddress %}
+              Same as site address
+            {% endif %}
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Ownership
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data.application_submission.submission.data.applicant.ownership.certificate == "a" %}
+              Certificate A - Sole owner
+            {% endif %}
+            {% if data.application_submission.submission.data.applicant.ownership.certificate == "b" %}
+              Certificate B - Not a sole owner
+            {% endif %}
+            {% if data.application_submission.submission.data.applicant.ownership.certificate == "c" %}
+              Certificate C - Some unknown owners
+            {% endif %}
+            {% if data.application_submission.submission.data.applicant.ownership.certificate == "d" %}
+              Certificate D - Unknown owners
+            {% endif %}
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Site contact
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data.application_submission.submission.data.applicant.siteContact.role | capitalize }}
+          </dd>
+        </div>
+
+      </dl>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h3 class="govuk-heading-m">Applicant's agent</h3>
+ 
+      <dl class="govuk-summary-list">
+        
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Agent name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data.application_submission.submission.data.applicant.agent.name.first }} {{ data.application_submission.submission.data.applicant.name.last }}
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Applicant type
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data.application_submission.submission.data.applicant.type | capitalize }}
+          </dd>
+        </div>
+
+      </dl>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h3 class="govuk-heading-m">Application</h3>
+ 
+      <dl class="govuk-summary-list">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Application type
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data.application_submission.submission.data.application.type.description }}
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Pre-application advice
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p>{{ data.application_submission.submission.data.application.preApp.summary }}</p>
+            <p>Date: {{ data.application_submission.submission.data.application.preApp.date }}</p>
+            <p>Reference: {{ data.application_submission.submission.data.application.preApp.reference }}</p>
+          </dd>
+        </div>
+
+      </dl>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h3 class="govuk-heading-m">Files</h3>
+ 
+      <dl class="govuk-summary-list">
+
+        {% for file in data.application_submission.submission.files %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              File upload
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <!-- The file name will have to be stripped of it's preceding url in the API return -->
+              {{ file.type.description }}: <em>{{ file.name }}</em>
+            </dd>
+          </div>
+
+        {%- endfor %}
+
+      </dl>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h3 class="govuk-heading-m">The Property</h3>
+ 
+      <dl class="govuk-summary-list">
+        
+        {% for response in data.application_submission.submission.responses %}
+
+        {% if response.metadata.sectionName == "The property" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              {{ response.question }}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ response.responses.value }}</em>
+            </dd>
+          </div>
+          {% endif %}
+
+        {%- endfor %}
+
+      </dl>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h3 class="govuk-heading-m">About You</h3>
+ 
+      <dl class="govuk-summary-list">
+        
+        {% for response in data.application_submission.submission.responses %}
+
+        {% if response.metadata.sectionName == "About you" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              {{ response.question }}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ response.responses.value }}</em>
+            </dd>
+          </div>
+          {% endif %}
+
+        {%- endfor %}
+
+      </dl>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h3 class="govuk-heading-m">The Project</h3>
+ 
+      <dl class="govuk-summary-list">
+        
+        {% for response in data.application_submission.submission.responses %}
+
+        {% if response.metadata.sectionName == "The project" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              {{ response.question }}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ response.responses.value }}</em>
+            </dd>
+          </div>
+          {% endif %}
+
+        {%- endfor %}
+
+      </dl>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h3 class="govuk-heading-m">Your application</h3>
+ 
+      <dl class="govuk-summary-list">
+        
+        {% for response in data.application_submission.submission.responses %}
+
+        {% if response.metadata.sectionName == "Your application" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              {{ response.question }}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ response.responses.value }}</em>
+            </dd>
+          </div>
+          {% endif %}
+
+        {%- endfor %}
+
+      </dl>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h3 class="govuk-heading-m">Upload your documents</h3>
+ 
+      <dl class="govuk-summary-list">
+        
+        {% for response in data.application_submission.submission.responses %}
+
+        {% if response.metadata.sectionName == "Upload your documents" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              {{ response.question }}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ response.responses.value }}</em>
+            </dd>
+          </div>
+          {% endif %}
+
+        {%- endfor %}
+
+      </dl>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h3 class="govuk-heading-m">Review and Confirm</h3>
+ 
+      <dl class="govuk-summary-list">
+        
+        {% for response in data.application_submission.submission.responses %}
+
+        {% if response.metadata.sectionName == "Review and confirm" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              {{ response.question }}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ response.responses.value }}</em>
+            </dd>
+          </div>
+          {% endif %}
+
+        {%- endfor %}
+
+      </dl>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h3 class="govuk-heading-m">Pay and send</h3>
+ 
+      <dl class="govuk-summary-list">
+        
+        {% for response in data.application_submission.submission.responses %}
+
+        {% if response.metadata.sectionName == "Pay and send" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              {{ response.question }}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ response.responses.value }}</em>
+            </dd>
+          </div>
+          {% endif %}
+
+        {%- endfor %}
+
+      </dl>
+
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

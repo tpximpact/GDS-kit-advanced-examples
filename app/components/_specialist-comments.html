@@ -1,0 +1,231 @@
+{% if spec_comment_type=="thread" %}
+<div class="govuk-grid-row average-bottom-margin">
+    <div class="govuk-grid-column-full comment">
+       
+      <input type="checkbox" id="show-comment-11" name="show-comment-11" class="show-comment">
+  
+      <div class="specialist-comment-container comment-container">
+  
+        <h4 class="govuk-heading-s">Consultee Name</h4>
+        <p>Jane Smith</p>
+  
+        <h4 class="govuk-heading-s">Organisation / Specialism</h4>
+        <p>Historic England</p>
+  
+        <h4 class="govuk-heading-s">Reason / Constraint</h4>
+        <p class="govuk-body"><a href="https://www.planning.data.gov.uk/dataset/article-4-direction" class="govuk-link govuk-link--no-visited-state">Article 4 Direction Area</a></p>
+  
+        <h4 class="govuk-heading-s">Sentiment towards application</h4>
+        <p class="govuk-body">Accepted, subject to conditions</p>
+  
+        <h4 class="govuk-heading-s">Date Consulted</h4>
+        <p class="govuk-body">01/02/2024</p>
+  
+        <h4 class="govuk-heading-s">Date of Response</h4>
+        <p class="govuk-body">14/02/2024</p>
+  
+        <h4 class="govuk-heading-s">Files</h4>
+        <div class="govuk-grid-row grid-row file-table">
+        
+          {% set file_type = "jpg" %}
+          {% set filename = "File 1.JPG" %}
+          {% include "./_file.html" %}
+  
+          {% set file_type = "jpg" %}
+          {% set filename = "File 2.JPG" %}
+          {% include "./_file.html" %}
+        
+        </div>
+  
+  
+        <h4 class="govuk-heading-s">Full comment</h4>
+        <p>Sent by email.</p>
+        <p>Re: 23-00141-HAPP – 11 Abbey Gardens, Southwark, SE16 3RQ</p>
+        <p>Thank you for your letter consulting us on the above planning permission for a new chimney stack.</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+        <p>Yours sincerely,</p>
+        <p>Jane Smith</p>
+        <p>Job title</p>
+        <p>Heritage Conservation</p>
+  
+      </div>
+   
+      <label class="govuk-body govuk-link govuk-link--no-visited-state comment-expander" for="show-comment-11">
+        <span class="read-comment">Read</span> <span class="hide-comment">Minimise</span> full comment
+      </label>
+    </div>
+</div>
+  
+<!-- View all responses from consultee 1 -->
+<p class="govuk-body huge-bottom-margin"><a href="/camden/one-consultee-all-comments" class="govuk-link govuk-link--no-visited-state">View all responses (2)</a></p>
+   
+<hr class="govuk-section-break govuk-section-break--visible  huge-bottom-margin">
+
+{% elseif spec_comment_type=="short" %}
+<div class="govuk-grid-row huge-bottom-margin">
+    <div class="govuk-grid-column-full comment">
+       
+      <input type="checkbox" id="show-comment-11" name="show-comment-11" class="show-comment">
+  
+      <div class="specialist-comment-container comment-container">
+  
+        <h4 class="govuk-heading-s">Consultee Name</h4>
+        <p>Jeff Smith</p>
+  
+        <h4 class="govuk-heading-s">Organisation / Specialism</h4>
+        <p>Historic Wales</p>
+  
+        <h4 class="govuk-heading-s">Reason / Constraint</h4>
+        <p class="govuk-body"><a href="https://www.planning.data.gov.uk/dataset/article-4-direction" class="govuk-link govuk-link--no-visited-state">Article 4 Direction Area</a></p>
+  
+        <h4 class="govuk-heading-s">Sentiment towards application</h4>
+        <p class="govuk-body">Accepted</p>
+  
+        <h4 class="govuk-heading-s">Date Consulted</h4>
+        <p class="govuk-body">01/02/2024</p>
+  
+        <h4 class="govuk-heading-s">Date of Response</h4>
+        <p class="govuk-body">No response yet</p>
+  
+        <h4 class="govuk-heading-s">Files</h4>
+        <p class="govuk-body">No files</p>
+  
+  
+        <h4 class="govuk-heading-s">Full comment</h4>
+        <p>Sent by email.</p>
+        <p>Thank you for your enquiry, we see no issues with this application.</p>
+      </div>
+    </div>
+</div>
+<hr class="govuk-section-break govuk-section-break--visible  huge-bottom-margin">
+
+{% elseif spec_comment_type=="thread1" %}
+<div class="govuk-grid-row huge-bottom-margin">
+  <div class="govuk-grid-column-full comment">
+     
+    <input type="checkbox" id="show-comment-12" name="show-comment-12" class="show-comment">
+
+    <div class="specialist-comment-4-container comment-container">
+      <h3 class="govuk-heading-m">Response #2</h3>
+
+      <h4 class="govuk-heading-s">Date of Response</h4>
+      <p class="govuk-body">16/02/2024</p>
+
+      <h4 class="govuk-heading-s">Files</h4>
+      <p class="govuk-body">No files</p>
+
+
+      <h4 class="govuk-heading-s">Full comment</h4>
+      <p>Sent by email.</p>
+      <p>Re: 23-00141-HAPP – 11 Abbey Gardens, Southwark, SE16 3RQ</p>
+      <p>Thank you for your letter consulting us on the above planning permission for a new chimney stack.</p>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+      <p>Yours sincerely,</p>
+      <p>Jane Smith</p>
+      <p>Job title</p>
+      <p>Heritage Conservation</p>
+
+    </div>
+ 
+    <label class="govuk-body govuk-link govuk-link--no-visited-state comment-expander" for="show-comment-12">
+      <span class="read-comment">Read</span> <span class="hide-comment">Minimise</span> full comment
+    </label>
+  </div>
+</div>
+
+<hr class="govuk-section-break govuk-section-break--visible grid-row-extra-bottom-margin">
+
+{% elseif spec_comment_type=="thread2" %}
+<div class="govuk-grid-row huge-bottom-margin">
+  <div class="govuk-grid-column-full comment">
+     
+    <input type="checkbox" id="show-comment-11" name="show-comment-11" class="show-comment">
+
+    <div class="specialist-comment-3-container comment-container">
+      <h3 class="govuk-heading-m">Response #1</h3>
+
+      <h4 class="govuk-heading-s">Date of Response</h4>
+      <p class="govuk-body">14/02/2024</p>
+
+      <h4 class="govuk-heading-s">Files</h4>
+      <div class="govuk-grid-row grid-row file-table">
+
+        {% set file_type = "jpg" %}
+        {% set filename = "Image1.JPG" %}
+        {% include "./_file.html" %}
+      
+        {% set filename = "Image2.JPG" %}
+        {% include "./_file.html" %}
+      
+      </div>
+
+
+      <h4 class="govuk-heading-s">Full comment</h4>
+      <p>Sent by email.</p>
+      <p>Re: 23-00141-HAPP – 11 Abbey Gardens, Southwark, SE16 3RQ</p>
+      <p>Thank you for your letter consulting us on the above planning permission for a new chimney stack.</p>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+      <p>Yours sincerely,</p>
+      <p>Jane Smith</p>
+      <p>Job title</p>
+      <p>Heritage Conservation</p>
+
+    </div>
+ 
+    <label class="govuk-body govuk-link govuk-link--no-visited-state comment-expander" for="show-comment-11">
+      <span class="read-comment">Read</span> <span class="hide-comment">Minimise</span> full comment
+    </label>
+  </div>
+</div>
+<hr class="govuk-section-break govuk-section-break--visible grid-row-extra-bottom-margin">
+
+{% else %}
+<!-- Consultee 2 no files -->
+<div class="govuk-grid-row huge-bottom-margin">
+    <div class="govuk-grid-column-full comment">
+       
+      <input type="checkbox" id="show-comment-12" name="show-comment-12" class="show-comment">
+  
+      <div class="specialist-comment-2-container comment-container">
+  
+        <h4 class="govuk-heading-s">Consultee Name</h4>
+        <p>John Smith</p>
+  
+        <h4 class="govuk-heading-s">Organisation / Specialism</h4>
+        <p>Historic England</p>
+  
+        <h4 class="govuk-heading-s">Reason / Constraint</h4>
+        <p class="govuk-body"><a href="https://www.planning.data.gov.uk/dataset/article-4-direction" class="govuk-link govuk-link--no-visited-state">Article 4 Direction Area</a></p>
+  
+        <h4 class="govuk-heading-s">Sentiment towards application</h4>
+        <p class="govuk-body">Accepted, subject to conditions</p>
+  
+        <h4 class="govuk-heading-s">Date Consulted</h4>
+        <p class="govuk-body">01/02/2024</p>
+  
+        <h4 class="govuk-heading-s">Date of Response</h4>
+        <p class="govuk-body">No response yet</p>
+  
+        <h4 class="govuk-heading-s">Files</h4>
+        <p class="govuk-body">No files</p>
+  
+  
+        <h4 class="govuk-heading-s">Full comment</h4>
+        <p>Sent by email.</p>
+        <p>Re: 23-00141-HAPP – 11 Abbey Gardens, Southwark, SE16 3RQ</p>
+        <p>Thank you for your letter consulting us on the above planning permission for a new chimney stack.</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+        <p>Yours sincerely,</p>
+        <p>Jane Smith</p>
+        <p>Job title</p>
+        <p>Heritage Conservation</p>
+  
+      </div>
+   
+      <label class="govuk-body govuk-link govuk-link--no-visited-state comment-expander" for="show-comment-12">
+        <span class="read-comment">Read</span> <span class="hide-comment">Minimise</span> full comment
+      </label>
+    </div>
+ </div>
+ <hr class="govuk-section-break govuk-section-break--visible huge-bottom-margin">
+{% endif %}

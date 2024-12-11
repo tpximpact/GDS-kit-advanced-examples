@@ -1,0 +1,45 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Search for an application – {{ serviceName }}
+{% endblock %}
+
+{% block header %}
+
+<!--Cookies Banner-->
+{% include "../../components/_cookies-banner.html" %}
+
+<!-- Header -->
+{% set active_nav = "app-search-nav" %}
+{% include "../../components/_header.html" %}
+{% include "../../components/_beta-banner.html" %}
+
+{% endblock %}
+
+{% block content %}
+
+<!-- back to simple search -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <a href="/camden/" role="button" class="govuk-button govuk-button--secondary" data-module="govuk-button">Back to simple search</a>
+  </div>
+</div>
+
+{% include "../../components/_main-filters.html" %}
+
+<!-- Sign up for email alerts-->
+<div class="govuk-grid-row  grid-row-extra-bottom-margin">
+  <div class="govuk-grid-column-full">
+    <a href="/camden/alerts/advanced-search" role="button" class="govuk-button govuk-button--secondary" data-module="govuk-button">Sign up for email alerts on this search</a>
+  </div>
+</div>
+
+<!-- For loop of applications-->
+{% for application_id, application_data in data.application_array %}
+  {% include "../../components/_application-card.html" %}
+{% endfor %}
+    
+
+{% include "../../components/_pagination.html" %}
+
+{% endblock %}

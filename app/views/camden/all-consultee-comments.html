@@ -1,0 +1,64 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Specialist comments for {{ data.application_array[data['current_app']].reference }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% include "../../components/_context-setter.html" %}
+
+<h1 class="govuk-heading-l">Specialist Comments</h1>
+
+<!-- Search -->
+{% include "../../components/_comment-search.html" %}
+
+<hr class="govuk-section-break govuk-section-break--visible grid-row-extra-bottom-margin">
+
+<!-- comments here -->
+{% include "../../components/_specialist-comments.html" %}
+
+{% set spec_comment_type="short" %}
+{% include "../../components/_specialist-comments.html" %}
+
+{% set spec_comment_type="thread" %}
+{% include "../../components/_specialist-comments.html" %}
+
+{% set spec_comment_type=null %}
+{% include "../../components/_specialist-comments.html" %}
+
+{% set spec_comment_type="short" %}
+{% include "../../components/_specialist-comments.html" %}
+
+{% set spec_comment_type="thread" %}
+{% include "../../components/_specialist-comments.html" %}
+
+{% set spec_comment_type=null %}
+{% include "../../components/_specialist-comments.html" %}
+
+{% set spec_comment_type="short" %}
+{% include "../../components/_specialist-comments.html" %}
+
+{% set spec_comment_type="thread" %}
+{% include "../../components/_specialist-comments.html" %}
+
+{% set spec_comment_type=null %}
+{% include "../../components/_specialist-comments.html" %}
+
+{% set spec_comment_type="short" %}
+{% include "../../components/_specialist-comments.html" %}
+
+{% set spec_comment_type="thread" %}
+{% include "../../components/_specialist-comments.html" %}
+
+
+{% include "../../components/_pagination.html" %}
+
+{% endblock %}

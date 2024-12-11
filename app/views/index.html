@@ -1,0 +1,46 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Prototype info – {{ serviceName }}
+{% endblock %}
+
+{% block header %}
+<header class="govuk-header" role="banner" data-module="govuk-header">
+  <div class="govuk-header__container govuk-width-container">
+    <div class="govuk-header__content">
+      <a href="/" class="govuk-header__link govuk-header__service-name">
+        {{ serviceName }}
+      </a>
+    </div>
+  </div>
+</header>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        {{ serviceName }}
+      </h1>
+
+      <p>This is the prototype for the public index ODP project. The intention of this prototype is to design the public-facing interface which will be built for the project.</p>
+
+      <p>This interface is intended to meet the following core requirements:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Publish applications processed through BOPS in compliance with relevant legislation.</li>
+        <li>Enable users to search for and find particular applications.</li>
+        <li>Eventually support wide range of use cases for utilising the data contained in the index.</li>
+      </ul>
+
+      {{ govukButton({
+        text: "Explore the prototype",
+        href: "start",
+        isStartButton: true
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

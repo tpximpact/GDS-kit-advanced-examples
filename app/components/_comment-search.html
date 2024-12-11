@@ -1,0 +1,131 @@
+<h2 class="govuk-heading-m">Search comments</h2>
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    {{ govukInput({
+      label: {
+        text: "Contents"
+      },
+      classes: "govuk-!-width-full",
+      id: "contents",
+      name: "contents"
+    }) }}
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    {% from "govuk/components/select/macro.njk" import govukSelect %}
+    {{ govukSelect({
+      id: "sentiment",
+      name: "sentiment",
+      classes: "govuk-!-width-full",
+      label: {
+        text: "Sentiment"
+      },
+      items: [
+        {
+          value: "All",
+          text: "All",
+          selected: true
+        },
+        {
+          value: "Opposed",
+          text: "Opposed"
+        },
+        {
+          value: "Support",
+          text: "Support"
+        },
+        {
+          value: "Neutral",
+          text: "Neutral"
+        }
+      ]
+    }) }}
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    {% from "govuk/components/select/macro.njk" import govukSelect %}
+    {{ govukSelect({
+      id: "topic",
+      name: "topic",
+      classes: "govuk-!-width-full",
+      label: {
+        text: "Topic"
+      },
+      items: [
+        {
+          value: "All",
+          text: "All",
+          selected: true
+        },
+        {
+          value: "Design, size or height of new buildings or extensions",
+          text: "Design, size or height of new buildings or extensions"
+        },
+        {
+          value: "Use and function of the proposed development",
+          text: "Use and function of the proposed development"
+        },
+        {
+          value: "Impacts on natural light",
+          text: "Impacts on natural light"
+        },
+        {
+          value: "Privacy of neighbours",
+          text: "Privacy of neighbours"
+        },
+        {
+          value: "Disabled persons' access",
+          text: "Disabled persons' access"
+        },
+        {
+          value: "Noise from new uses",
+          text: "Noise from new uses"
+        },
+        {
+          value: "Traffic, parking or road safety",
+          text: "Traffic, parking or road safety"
+        },
+        {
+          value: "Other",
+          text: "Other"
+        }
+      ]
+    }) }}
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <label class="govuk-label" for="date3">
+      Published date
+    </label>
+    <input class="govuk-input govuk-input--width-5 inline-block" id="date-3" name="date3" type="date">
+    <p class="inline-block">to</p>
+    <input class="govuk-input govuk-input--width-5 inline-block" id="date-4" name="date4" type="date">
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    {% include "./_sort-by.html" %}
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+      <label class="govuk-label" for="show-number">
+        Comments per page
+      </label>
+      <select class="govuk-select" id="show-number" name="show-number">
+        <option value="10" selected >10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="all">All comments</option>
+      </select>
+  </div>
+  
+</div>
+
+<!-- Search button -->
+<div class="govuk-grid-row grid-row-extra-bottom-margin">
+  <div class="govuk-grid-column-full">
+    <a href="#" role="button" class="govuk-button govuk-button--primary grid-row-extra-bottom-margin" data-module="govuk-button">Search</a>
+  </div>
+</div>

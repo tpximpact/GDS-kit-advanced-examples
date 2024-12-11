@@ -1,0 +1,149 @@
+{% if data.application_array[data['current_app']].site_notice_content|length %}
+<h1 class="govuk-heading-l" id="key-info">Name of the site</h1>
+{% endif %}
+
+<div class="govuk-grid-row" id="key-info">   
+  <div class="govuk-grid-column-one-third">
+    {% if data.application_array[data['current_app']].boundary_geojson %}
+    {% set geojsonData = data.application_array[data['current_app']].boundary_geojson %}
+    {% if geojsonData.type == "FeatureCollection" or geojsonData.type == "Feature" %}
+      {% set validGeojson = geojsonData %}
+    {% else %}
+      {% set validGeojson = {
+        "type": "Feature",
+        "geometry": geojsonData.geometry,
+        "properties": geojsonData.properties | default({})
+      } %}
+    {% endif %}
+  
+    {% if validGeojson %}
+
+      <my-map
+        zoom="24"
+        latitude="{{ application_data.site.latitude }}"
+        longitude="{{ application_data.site.longitude }}"
+        geojsonColor="#ff0000"
+        geojsonBuffer="12"
+        hideResetControl
+        geojsonData="{{ validGeojson | dump | escape }}"
+        osCopyright="© Crown copyright and database rights 2024 OS (0)100024857"
+        showScale="true"
+      ></my-map>
+      {# Add the static mode property to enable zooming in and out and
+      moving around the map #} {% endif %} {% endif %}  
+  </div>
+
+  <div class="govuk-grid-column-two-thirds-from-desktop key-info">
+    <div class="govuk-grid-row">
+
+      <div class="govuk-grid-column-one-half">
+        <h2 class="govuk-heading-s">Application Reference</h2>
+        <p>{{ data.application_array[data['current_app']].reference }}</p>
+      </div>
+
+      <div class="govuk-grid-column-one-half">
+        <h2 class="govuk-heading-s">Status</h2>
+        <p>
+          {% if (data.application_array[data['current_app']].status == "Determined") or (data.application_array[data['current_app']].status == "Appeal decided") %} 
+            {{govukTag({
+              text: data.application_array[data['current_app']].status | capitalize  ,
+              classes: "govuk-tag--green"
+            })}}
+          {% endif %}
+
+          {% if (data.application_array[data['current_app']].status == "Appeal lodged") or (data.application_array[data['current_app']].status == "Appeal in progress") or (data.application_array[data['current_app']].status == "Appeal validated") %}
+            {{govukTag({
+              text: data.application_array[data['current_app']].status | capitalize  ,
+              classes: "govuk-tag--red"
+            })}}
+          {% endif %}
+          
+          {% if (data.application_array[data['current_app']].status == "Consultation in progress") or (data.application_array[data['current_app']].status == "Assessment in progress") %}
+          {{govukTag({
+            text: data.application_array[data['current_app']].status | capitalize  ,
+            classes: "govuk-tag--blue"
+          })}}
+        {% endif %}
+        <a class="info-icon" href="/camden/help/application-statuses" title="Understanding application statuses">i</a>
+        </p>
+      </div>
+
+    </div>
+
+    <div class="govuk-grid-row">
+
+      <div class="govuk-grid-column-full">
+        <h2 class="govuk-heading-s">Address</h2>
+    <p>{{ data.application_array[data['current_app']].site.address_1 }}, 
+      {% if data.application_array[data['current_app']].site.address_2|length %}
+        {{data.application_array[data['current_app']].site.address_2}}, 
+      {% endif %}
+      {% if data.application_array[data['current_app']].town|length %}
+        {{data.application_array[data['current_app']].town}}, 
+      {% endif %}
+      {{ data.application_array[data['current_app']].site.postcode }}</p>
+      </div>
+
+    </div>
+
+    <div class="govuk-grid-row">
+      
+      <div class="govuk-grid-column-one-half">
+        <h2 class="govuk-heading-s">Application Type </h2>
+        <p>{{ data.application_array[data['current_app']].application_type | capitalize }} <a class="info-icon" href="/camden/help/application-types" title="Understanding application types">i</a></p>
+      </div>
+
+      {% if (data.application_array[data['current_app']].result_flag) %}
+      <div class="govuk-grid-column-one-half">
+        <h2 class="govuk-heading-s">Council decision </h2>
+          <p>
+
+            {% if (data.application_array[data['current_app']].result_flag == "Granted") or (data.application_array[data['current_app']].result_flag == "Prior approval required and approved") or (data.application_array[data['current_app']].result_flag == "Prior approval not required")  %}
+              {{govukTag({
+                text: data.application_array[data['current_app']].result_flag | capitalize  ,
+                classes: "govuk-tag--green"
+              })}}
+            {% endif %}
+
+            {% if (data.application_array[data['current_app']].result_flag == "Refused") or (data.application_array[data['current_app']].result_flag == "Prior approval required and refused") %}
+              {{govukTag({
+                text: data.application_array[data['current_app']].result_flag | capitalize  ,
+                classes: "govuk-tag--red"
+              })}}
+            {% endif %}
+
+            <a class="info-icon" href="/camden/help/decisions" title="Understanding decisions">i</a>
+          </p>
+      </div>
+      {% endif %}
+    </div>    
+    
+
+    {% if (data.application_array[data['current_app']].result_override) %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        <h2 class="govuk-heading-s">Appeal decision </h2>
+          <p>
+
+            {% if (data.application_array[data['current_app']].result_override == "Appeal allowed") or (data.application_array[data['current_app']].result_override == "Appeal split decision")  %}
+              {{govukTag({
+                text: data.application_array[data['current_app']].result_override | capitalize  ,
+                classes: "govuk-tag--green"
+              })}}
+            {% endif %}
+
+            {% if (data.application_array[data['current_app']].result_override == "Appeal rejected") or (data.application_array[data['current_app']].result_override == "Appeal dismissed") %}
+              {{govukTag({
+                text: data.application_array[data['current_app']].result_override | capitalize  ,
+                classes: "govuk-tag--red"
+              })}}
+            {% endif %}
+
+            <a class="info-icon" href="/camden/help/appeals" title="Understanding appeals">i</a>
+          </p>
+      </div>
+    </div> 
+    {% endif %}
+
+  </div>
+</div>

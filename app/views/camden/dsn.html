@@ -1,0 +1,85 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Search for an application – {{ serviceName }}
+{% endblock %}
+
+{% block header %}
+
+<!--Cookies Banner-->
+{% include "../../components/_cookies-banner.html" %}
+
+<!-- Header -->
+{% set active_nav = "site-notice-nav" %}
+{% include "../../components/_header.html" %}
+{% include "../../components/_beta-banner.html" %}
+
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-xl small-bottom-margin" role="heading">Find digital site notices near you</h1>
+<p class="grid-row-extra-bottom-margin">Digital site notices are created for significant planning applications that require public consultation. They present information differently to planning applications that do not require public consultation. This is to make it easier for you to access the information most important to the local community.</p>
+
+<a class="govuk-button govuk-button--secondary" href="/camden/alerts/dsn" style="text-decoration: none;">Sign up for email alerts on site notices near you</a>
+
+
+<h2 class="govuk-label-wrapper">
+  <label class="govuk-label govuk-label--m" for="dsn-search">
+    Enter a postcode to find nearby site notices
+  </label>
+</h2>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukInput({
+      classes: "govuk-input",
+      id: "dsn-search",
+      name: "dsn-search"
+    }) }}
+  </div>
+  <div class="govuk-grid-column-one-third">
+    {{ govukButton({
+      text: "Search",
+      href: "#"
+    }) }}
+  </div>
+</div>
+
+<div class="govuk-grid-row grid-row-extra-bottom-margin">
+  {% for application_id, application_data in data.application_array %}
+    {% if application_data.site_notice_content|length %}
+      {% include "../../components/_dsn-listing.html" %}
+    {% endif %}
+  {% endfor %}
+</div>
+
+<div class="govuk-grid-row grid-row-extra-bottom-margin">
+  {% for application_id, application_data in data.application_array %}
+    {% if application_data.site_notice_content|length %}
+      {% include "../../components/_dsn-listing.html" %}
+    {% endif %}
+  {% endfor %}
+</div>
+
+<div class="govuk-grid-row grid-row-extra-bottom-margin">
+  {% for application_id, application_data in data.application_array %}
+    {% if application_data.site_notice_content|length %}
+      {% include "../../components/_dsn-listing.html" %}
+    {% endif %}
+  {% endfor %}
+</div>
+
+<div class="govuk-grid-row grid-row-extra-bottom-margin">
+  {% for application_id, application_data in data.application_array %}
+    {% if application_data.site_notice_content|length %}
+      {% include "../../components/_dsn-listing.html" %}
+    {% endif %}
+  {% endfor %}
+</div>
+
+
+{% include "../../components/_pagination.html" %}
+
+  </div>
+</div>
+{% endblock %}

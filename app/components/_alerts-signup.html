@@ -1,0 +1,24 @@
+{{ govukCheckboxes({
+    name: "consent",
+    items: [
+      {
+        value: "consent",
+        text: "I confirm I want to receive regular email updates from Camden Council."
+      }
+    ]
+  }) }}
+
+  <details class="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+          How we handle your data
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      This is how we handle your data
+    </div>
+  </details>
+
+  {{ govukButton({
+    text: "Sign up"
+  }) }}

@@ -1,0 +1,68 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Specialist comment thread for {{ data.application_array[data['current_app']].reference }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% include "../../components/_context-setter.html" %}
+
+<!-- Consultee details -->
+
+<h1 class="govuk-heading-l">View consultee responses</h1>
+
+<div class="govuk-grid-row grid-row-extra-bottom-margin">   
+  <div class="govuk-grid-column-one-third">
+    <h4 class="govuk-heading-s">Consultee Name</h4>
+    <p>Jane Smith</p>
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    <h4 class="govuk-heading-s">Organisation / Specialism</h4>
+    <p>Historic England</p>
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    <h4 class="govuk-heading-s">Reason / Constraint</h4>
+    <p class="govuk-body"><a href="https://www.planning.data.gov.uk/dataset/article-4-direction" class="govuk-link govuk-link--no-visited-state">Article 4 Direction Area</a></p>
+  </div>
+
+</div>
+
+<div class="govuk-grid-row grid-row-extra-bottom-margin">   
+  <div class="govuk-grid-column-one-third">
+    <h4 class="govuk-heading-s">Date Consulted</h4>
+    <p class="govuk-body">01/02/2024</p>
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    <h4 class="govuk-heading-s">Sentiment towards application</h4>
+    <p class="govuk-body">Accepted, subject to conditions</p>
+  </div>
+
+</div>
+
+
+<hr class="govuk-section-break govuk-section-break--visible grid-row-extra-bottom-margin">
+
+<!-- Sort by -->
+{% include "../../components/_sort-by.html" %}
+
+<!-- Responses -->
+
+{% set spec_comment_type="thread1" %}
+{% include "../../components/_specialist-comments.html" %}
+
+
+{% set spec_comment_type="thread2" %}
+{% include "../../components/_specialist-comments.html" %}
+
+{% endblock %}

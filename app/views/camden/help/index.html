@@ -1,0 +1,60 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Help – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block header %}
+<!--Cookies Banner-->
+{% include "../../../components/_cookies-banner.html" %}
+
+<!-- Header -->
+{% set active_nav = "help-nav" %}
+{% include "../../../components/_header.html" %}
+{% include "../../../components/_beta-banner.html" %}
+
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-xl">Help using the Digital Planning Register</h1>
+
+<p>In these pages you can find information to help you to understand the planning process, explanations of what specialised planning words mean, how you can engage with planning applications, and where you go to find out more.</p>
+<p class="grid-row-extra-bottom-margin">If you cannot find the information you are looking for, you can always <a href="https://www.camden.gov.uk/contact-camden">contact your council</a> for more help.</p>
+
+<h2 class="govuk-heading-l">Topics</h2>
+<ul class="help-links">
+  <li>
+    <h3 class="govuk-heading-s"><a href="/camden/help/planning-process" class="govuk-link">Overview of the planning process</a></h3>
+    <p>Help understanding how planning applications are handled.</p>
+  </li>
+  <li>
+    <h3 class="govuk-heading-s"><a href="/camden/help/application-statuses" class="govuk-link">Application statuses</a></h3>
+    <p>What the statuses like 'assessment in progress' or 'determined' mean for a planning application.</p>
+  </li>
+  <li>
+    <h3 class="govuk-heading-s"><a href="/camden/help/important-dates" class="govuk-link">Important dates</a></h3>
+    <p>What the important dates are for planning applications. Explains what things like 'valid from date' mean.</p>
+  </li>
+  <li>
+    <h3 class="govuk-heading-s"><a href="/camden/help/decisions" class="govuk-link">Decisions</a></h3>
+    <p>What kinds of outcomes different planning applications can have, because there can be more complexity than just 'granted' or 'refused'.</p>
+  </li>
+  <li>
+    <h3 class="govuk-heading-s"><a href="/camden/help/application-types" class="govuk-link">Application types</a></h3>
+    <p>The different sorts of applications that are published on the planning register, and what they are for.</p>
+  </li>
+  <li>
+    <h3 class="govuk-heading-s"><a href="/camden/help/concerns" class="govuk-link">What to do if your concerns can't be addressed by planning</a></h3>
+    <p>There are some concerns that your local planning authority can't address. Find out what you can do about these issues.</p>
+  </li>
+</ul>
+
+{% endblock %}
